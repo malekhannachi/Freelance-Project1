@@ -1,0 +1,17 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server:dev": "cd server && nodemon index.js",
+    "client:dev": "cd client && ng serve -o",
+    "start": "node index.js",
+    "dev": "concurrently -n'server,client' -c'green,red' \"npm run server:dev\" \"npm run client:dev\""
+  },
+  "author": "nour",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
