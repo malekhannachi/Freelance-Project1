@@ -8,6 +8,7 @@
     "client:dev": "cd client && ng serve -o",
     "start": "node index.js",
     "dev": "concurrently -n'server,client' -c'green,red' \"npm run server:dev\" \"npm run client:dev\""
+    
   },
   "author": "nour",
   "license": "ISC",
