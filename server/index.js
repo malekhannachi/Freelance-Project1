@@ -16,7 +16,7 @@ mongoose.connection.on("error", (err) => {
   console.log("mongoose failed with", err);
 });
 //import routes
-// const adminRouter = require("./auth/admin.routes");
+const adminRouter = require("./auth/admin.routes");
 // const authRouter = require("./auth/auth.routes");
 // const productRoute = require("./routes/product.routes");
 // const storeRouter = require("./routes/store.routes");
@@ -37,7 +37,7 @@ app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 app.use(compression()); //reduire taile for operations
 //routes middleware
 app.use("/images", express.static("./uploads"));
-// app.use("/api/admin", adminRouter);
+app.use("/api/admin", adminRouter);
 // app.use("/api/auth", authRouter);
 // app.use("/api/products", productRoute);
 // app.use("/api/store", storeRouter);
