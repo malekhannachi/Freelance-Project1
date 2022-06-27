@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
       process.env.TOKEN_KEY,
       { expiresIn: "3 days" }
     );
-    return res.status(200).json({ admin: admin, token: token });
+    return res.status(200).json({token: token });
   } catch (err) {
     return res.status(500).json(err);
   }
