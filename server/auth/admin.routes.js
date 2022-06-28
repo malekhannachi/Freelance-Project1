@@ -131,7 +131,7 @@ router.put("/update/password", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.get("/allAdmin", verifyToken, isAdmin, async (req, res) => {
+router.get("/allAdmin", isAdmin, async (req, res) => {
   try {
     const admin = await Admin.find();
     return res.status(200).json(admin);
