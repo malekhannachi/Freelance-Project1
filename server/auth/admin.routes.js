@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/addAdmin", verifyToken, isAdmin, async (req, res) => {
+router.post("/addAdmin", /*verifyToken, isAdmin,*/ async (req, res) => {
 
   const email = req.body.email;
   try {
@@ -74,7 +74,7 @@ router.post("/addAdmin", verifyToken, isAdmin, async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: hashedPassword,
-      createdBy: req.verifiedUser._id,
+      //createdBy: req.verifiedUser._id,
     });
     const savedAdmin = await newAdmin.save();
     return res.status(201).json(savedAdmin);
@@ -83,7 +83,7 @@ router.post("/addAdmin", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.delete("/:admin/delete", verifyToken, isAdmin, async (req, res) => {
+router.delete("/:admin/delete",/* verifyToken, isAdmin,*/ async (req, res) => {
   const adminId = req.admin._id;
   try {
     await Admin.findByIdAndDelete(adminId);
@@ -93,7 +93,7 @@ router.delete("/:admin/delete", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.put("/update/me", verifyToken, isAdmin, async (req, res) => {
+router.put("/update/me",/*verifyToken, isAdmin,*/ async (req, res) => {
   const currentAdmin = req.verifiedUser._id;
 
   try {
@@ -111,7 +111,7 @@ router.put("/update/me", verifyToken, isAdmin, async (req, res) => {
     return res.status(404).json(err);
   }
 });
-router.put("/update/password", verifyToken, isAdmin, async (req, res) => {
+router.put("/update/password", /*verifyToken, isAdmin,*/ async (req, res) => {
   const currentAdmin = req.verifiedUser._id;
 
   try {
@@ -131,7 +131,7 @@ router.put("/update/password", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.get("/allAdmin", isAdmin, async (req, res) => {
+router.get("/allAdmin"/*,verifyToken, isAdmin*/, async (req, res) => {
   try {
     const admin = await Admin.find();
     return res.status(200).json(admin);
@@ -141,7 +141,7 @@ router.get("/allAdmin", isAdmin, async (req, res) => {
 });
 
 
-router.get("/check",verifyToken,async (req, res) => {
+router.get("/check",/*verifyToken, isAdmin,*/async (req, res) => {
   try {
     const admin = await Admin.findById(req.verifiedUser._id);
     if (!admin) {
