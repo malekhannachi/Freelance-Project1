@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema(
     profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
     role: {
       type: String,
-      enum: ["analyticsAgent", "receptionAgent","Fournisseur","admin","billAgent"],
+      enum: ["AgentAnalyser", "agentReception","Fournisseur","admin","agentFacturation"],
      // default: "analyticsAgent",
     },
     isAdmin: { type: Boolean, default: false },
