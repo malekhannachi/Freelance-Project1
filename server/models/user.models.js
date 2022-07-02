@@ -15,15 +15,15 @@ const UserSchema = new mongoose.Schema(
     profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
     role: {
       type: String,
-      enum: ["customer", "merchant"],
-      //default: "customer",
+      enum: ["analyticsAgent", "receptionAgent","Fournisseur","admin","billAgent"],
+     // default: "analyticsAgent",
     },
     isAdmin: { type: Boolean, default: false },
     address: { type: mongoose.Schema.Types.ObjectId, ref: "Address" },
     googleId: { type: String },
-    store: { type: mongoose.Schema.Types.ObjectId, ref: "Store" },
-    emailToken: { type: String },
-    isVerified: { type: Boolean, default:false},
+
+   // emailToken: { type: String },
+   // isVerified: { type: Boolean, default:false},
   },
   { timestamps: true }
 );

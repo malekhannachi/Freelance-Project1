@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server:dev": "cd server && nodemon index.js",
+    "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && ng serve -o",
-    "start": "node index.js",
-    "dev": "concurrently -n'server,client' -c'green,red' \"npm run server:dev\" \"npm run client:dev\""
+    "start": "cd server && npm start",
+    "dev": "concurrently -n'server,client' -c'green,blue' \"npm run server:dev\" \"npm run client:dev\""
     
   },
   "author": "nour",

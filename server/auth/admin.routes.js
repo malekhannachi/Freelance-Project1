@@ -1,4 +1,4 @@
-const Admin = require("../models/admin.models");
+const User = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
@@ -8,7 +8,7 @@ const isAdmin = require("../middlewares/isAdmin");
 //param
 router.param("admin", async (req, res, next, id) => {
   try {
-    const admin = await Admin.findById(id);
+    const admin = await User.findById(id);
 
     if (!admin) {
       return res.status(404).json("not found admin");
@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
   email = req.body.email;
   password = req.body.password;
   try {
-    const admin = await Admin.findOne({ email: email });
+    const admin = await User.findOne({ email: email });
     if (!admin) {
       return res.status(401).json("wrong email or password ");
     }
@@ -47,57 +47,64 @@ router.post("/login", async (req, res) => {
       process.env.TOKEN_KEY,
       { expiresIn: "3 days" }
     );
-    return res.status(200).json({token: token });
+    return res.status(200).json({ token: token });
   } catch (err) {
     return res.status(500).json(err);
   }
 });
 
-router.post("/addAdmin", /*verifyToken, isAdmin,*/ async (req, res) => {
-
-  const email = req.body.email;
-  try {
-    const admin = await Admin.findOne({ email: email });
-    if (admin) {
-      return res.status(422).json("Email already exist");
+router.post(
+  "/addAdmin",
+  /*verifyToken, isAdmin,*/ async (req, res) => {
+    const email = req.body.email;
+    try {
+      const admin = await User.findOne({ email: email });
+      if (admin) {
+        return res.status(422).json("Email already exist");
+      }
+    } catch (err) {
+      return res.status(500).json(err);
     }
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-  //*cripte passworde
-  const salt = await bcrypt.genSalt(16);
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    //*cripte passworde
+    const salt = await bcrypt.genSalt(16);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  try {
-    const newAdmin = new Admin({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: hashedPassword,
-      //createdBy: req.verifiedUser._id,
-    });
-    const savedAdmin = await newAdmin.save();
-    return res.status(201).json(savedAdmin);
-  } catch (err) {
-    return res.status(500).json(err);
+    try {
+      const newAdmin = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hashedPassword,
+        isAdmin: true,
+        role: "admin",
+        //createdBy: req.verifiedUser._id,
+      });
+      const savedAdmin = await newAdmin.save();
+      return res.status(201).json(savedAdmin);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
   }
-});
+);
 
-router.delete("/:admin/delete",/* verifyToken, isAdmin,*/ async (req, res) => {
-  const adminId = req.admin._id;
-  try {
-    await Admin.findByIdAndDelete(adminId);
-    return res.status(200).json("deleteAdmin");
-  } catch (err) {
-    return res.status(500).json(err);
+router.delete(
+  "/:admin/delete",
+  /* verifyToken, isAdmin,*/ async (req, res) => {
+    const adminId = req.admin._id;
+    try {
+      await User.findByIdAndDelete(adminId);
+      return res.status(200).json("deleteAdmin");
+    } catch (err) {
+      return res.status(500).json(err);
+    }
   }
-});
+);
 
-router.put("/update/me",/*verifyToken, isAdmin,*/ async (req, res) => {
+router.put("/update/me", verifyToken, isAdmin, async (req, res) => {
   const currentAdmin = req.verifiedUser._id;
 
   try {
-    const updatedAdmin = await Admin.findByIdAndUpdate(
+    const updatedAdmin = await User.findByIdAndUpdate(
       currentAdmin,
       {
         firstName: req.body.firstName,
@@ -111,46 +118,53 @@ router.put("/update/me",/*verifyToken, isAdmin,*/ async (req, res) => {
     return res.status(404).json(err);
   }
 });
-router.put("/update/password", /*verifyToken, isAdmin,*/ async (req, res) => {
+router.put("/update/password", verifyToken, isAdmin, async (req, res) => {
   const currentAdmin = req.verifiedUser._id;
+
+  // const isPasswordValid = await bcrypt.compare(req.body.OldPassword, currentAdmin.password);
+  // if (!isPasswordValid) {
+  //   return res.status(401).json("wrong email or password ");
+  // }
 
   try {
     const salt = await bcrypt.genSalt(16);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const hashedPassword = await bcrypt.hash(req.body.NewPassword, salt);
 
-    await Admin.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       currentAdmin,
       {
         password: hashedPassword,
       },
       { new: true }
     );
-    return res.status(200).json({ password: req.body.password });
+    return res.status(200).json({ NewPassword: req.body.NewPassword });
   } catch (err) {
     return res.status(404).json(err);
   }
 });
 
-router.get("/allAdmin"/*,verifyToken, isAdmin*/, async (req, res) => {
+router.get("/allAdmin" /*,verifyToken, isAdmin*/, async (req, res) => {
   try {
-    const admin = await Admin.find();
+    const admin = await User.find({ role: "admin" });
     return res.status(200).json(admin);
   } catch (err) {
     return res.status(404).json(err);
   }
 });
 
-
-router.get("/check",/*verifyToken, isAdmin,*/async (req, res) => {
-  try {
-    const admin = await Admin.findById(req.verifiedUser._id);
-    if (!admin) {
-      return res.status(404).json("not found admin");
-    } else {
-      return res.status(200).json(admin);
+router.get(
+  "/check",
+  /*verifyToken, isAdmin,*/ async (req, res) => {
+    try {
+      const admin = await User.findById(req.verifiedUser._id);
+      if (!admin) {
+        return res.status(404).json("not found admin");
+      } else {
+        return res.status(200).json(admin);
+      }
+    } catch (err) {
+      return res.status(500).json(err);
     }
-  } catch (err) {
-    return res.status(500).json(err);
   }
-});
+);
 module.exports = router;
