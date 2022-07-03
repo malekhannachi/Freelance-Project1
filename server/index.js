@@ -18,7 +18,7 @@ mongoose.connection.on("error", (err) => {
 //import routes
 const adminRouter = require("./auth/admin.routes");
 const authRouter = require("./auth/auth.routes");
-// const productRoute = require("./routes/product.routes");
+const agentRoute = require("./routes/agentManager.routes");
 // const storeRouter = require("./routes/store.routes");
 // const cartRouter = require("./routes/cart.routes");
 // const orderRouter = require("./routes/order.routes");
@@ -39,7 +39,7 @@ app.use(compression()); //reduire taile for operations
 app.use("/images", express.static("./uploads"));
 app.use("/api/admin", adminRouter);
 app.use("/api/auth", authRouter);
-// app.use("/api/products", productRoute);
+app.use("/api/agent", agentRoute);
 // app.use("/api/store", storeRouter);
 // app.use("/api/cart", cartRouter);
 // app.use("/api/orders", orderRouter);

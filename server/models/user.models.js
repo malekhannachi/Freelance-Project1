@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema(
       lowercase: true,
       required: true,
     },
-    password: { type: String, required: true },
+    password: { type: String,  },
     profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
     role: {
       type: String,

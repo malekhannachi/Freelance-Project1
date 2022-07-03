@@ -1,23 +1,36 @@
 const Address = require("../models/address.models");
 const User = require("../models/user.models");
-
+const bcrypt = require("bcryptjs");
 const addAgent = async (req, res) => {
   //console.log(req.verifiedUser);
+
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      return res.status(422).json({ message: "Email already exist" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+  const salt = await bcrypt.genSalt(16);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
   const newAgent = new User({
-    street: req.body.street,
-    city: req.body.city,
-    country: req.body.country,
-    zipCode: req.body.zipCode,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: hashedPassword,
+    role: req.body.role,
   });
   try {
-    const savedAddress = await createAddress.save();
+    const savedAgent = await newAgent.save();
 
-    return res.status(201).json(savedAddress);
+    return res.status(201).json(savedAgent);
   } catch (err) {
     return res.status(500).json(err);
   }
 };
-const getAgent= async (req, res) => {
+const getAgent = async (req, res) => {
   const id = req.params.addressId;
   try {
     const getAddress = await Address.findById(id);
@@ -26,7 +39,6 @@ const getAgent= async (req, res) => {
     return res.status(500).json(err);
   }
 };
-
 
 const getAgents = async (req, res) => {
   try {
@@ -60,8 +72,4 @@ const deleteAgent = async (req, res) => {
 
 module.exports.addAgent = addAgent;
 
-module.exports.createAddress = createAddress;
-module.exports.getAddress = getAddress;
-module.exports.getAddresses = getAddresses;
-module.exports.updateMyAddress = updateMyAddress;
-module.exports.deleteAddress = deleteAddress;
+
