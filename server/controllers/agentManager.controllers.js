@@ -31,19 +31,20 @@ const addAgent = async (req, res) => {
   }
 };
 const getAgent = async (req, res) => {
-  const id = req.params.addressId;
+  const id = req.params.agentId;
   try {
-    const getAddress = await Address.findById(id);
-    return res.status(200).json(getAddress);
+    const getAgent = await User.findById(id);
+    return res.status(200).json(getAgent);
   } catch (err) {
     return res.status(500).json(err);
   }
 };
 
 const getAgents = async (req, res) => {
+  const role = req.query.role;
   try {
-    const getAddresses = await Address.find();
-    return res.status(200).json(getAddresses);
+    const getAgents = await User.find({ role: role }).sort({ createdAt: -1 });
+    return res.status(200).json(getAgents);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -71,5 +72,4 @@ const deleteAgent = async (req, res) => {
 };
 
 module.exports.addAgent = addAgent;
-
-
+module.exports.getAgents = getAgents;
