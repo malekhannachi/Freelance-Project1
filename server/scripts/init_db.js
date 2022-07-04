@@ -13,7 +13,7 @@ mongoose.connection.on("error", (err) => {
   console.log("mongoose failed with", err);
 });
 async function initAdmin() {
-  const salt = await bcrypt.genSalt(16);
+  const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash("123456789", salt);
   const newAdmin = new Admin({
     firstName: "noura",

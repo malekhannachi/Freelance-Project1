@@ -19,7 +19,7 @@ mongoose.connection.on("error", (err) => {
 const adminRouter = require("./auth/admin.routes");
 const authRouter = require("./auth/auth.routes");
 const agentRoute = require("./routes/agentManager.routes");
-// const storeRouter = require("./routes/store.routes");
+const fournisseurRouter = require("./routes/fournisseur.routes");
 // const cartRouter = require("./routes/cart.routes");
 // const orderRouter = require("./routes/order.routes");
  const addressRouter = require("./routes/address.routes");
@@ -40,7 +40,7 @@ app.use("/images", express.static("./uploads"));
 app.use("/api/admin", adminRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/agent", agentRoute);
-// app.use("/api/store", storeRouter);
+app.use("/api/fournisseur", fournisseurRouter);
 // app.use("/api/cart", cartRouter);
 // app.use("/api/orders", orderRouter);
 app.use("/api/address", addressRouter);
