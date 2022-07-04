@@ -1,6 +1,7 @@
 const Address = require("../models/address.models");
 const User = require("../models/user.models");
 const bcrypt = require("bcryptjs");
+
 const addAgent = async (req, res) => {
   //console.log(req.verifiedUser);
 
@@ -12,7 +13,7 @@ const addAgent = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err });
   }
-  const salt = await bcrypt.genSalt(16);
+  const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
   const newAgent = new User({
@@ -58,22 +59,22 @@ const getAgents = async (req, res) => {
   }
 };
 const updateAgent = async (req, res) => {
-  const id = req.verifiedUser.address;
-  console.log(id);
+  const id = req.agent._id;
+  //console.log(id);
   try {
-    const updateAddress = await Address.findByIdAndUpdate(id, req.body, {
+    const updateAgent = await User.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    return res.status(200).json(updateAddress);
+    return res.status(200).json(updateAgent);
   } catch (err) {
     return res.status(500).json(err);
   }
 };
 const deleteAgent = async (req, res) => {
-  const id = req.params.addressId;
+  const id = req.agent._id;
   try {
-    const deleteAddress = await Address.findByIdAndDelete(id);
-    return res.status(200).json(deleteAddress);
+    await User.findByIdAndDelete(id);
+    return res.status(200).json({ message: " delete successfully" });
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -82,3 +83,5 @@ const deleteAgent = async (req, res) => {
 module.exports.addAgent = addAgent;
 module.exports.getAgents = getAgents;
 module.exports.getAgent = getAgent;
+module.exports.updateAgent = updateAgent;
+module.exports.deleteAgent = deleteAgent;
