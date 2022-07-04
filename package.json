@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server:dev": "cd server && nodemon index.js",
+    "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && ng serve -o",
+<<<<<<< HEAD
     "start": "node index.js",
     "dev": "concurrently -n'server,client' -c'green,red' \"npm run server:dev\" \"npm run client:dev\""
+=======
+    "start": "cd server && npm start",
+    "dev": "concurrently -n'server,client' -c'green,blue' \"npm run server:dev\" \"npm run client:dev\""
+    
+>>>>>>> 3b428914fee93e6fb9e58d6993a830ce0bb64997
   },
   "author": "nour",
   "license": "ISC",

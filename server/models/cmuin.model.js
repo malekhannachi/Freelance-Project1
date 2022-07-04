@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const FournisseurSchema = new mongoose.Schema(
+const AnalysisTypeSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String },
@@ -20,4 +20,4 @@ const FournisseurSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Fournisseur", FournisseurSchema);
+module.exports = mongoose.model("AnalysisType", AnalysisTypeSchema);

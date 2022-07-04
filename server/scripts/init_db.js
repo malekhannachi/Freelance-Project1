@@ -1,7 +1,7 @@
 //import section
 const bcrypt = require("bcryptjs");
 // const axios = require("axios");
-const Admin = require("../models/admin.models");
+const Admin = require("../models/user.models");
 // const Category = require("../models/category.models");
 // const Product = require("../models/product.models");
 const mongoose = require("mongoose");
@@ -18,7 +18,9 @@ async function initAdmin() {
   const newAdmin = new Admin({
     firstName: "noura",
     lastName: "noura",
+    role: "admin",
     email: "noura@gmail.com",
+    isAdmin: true,
     password: hashedPassword,
   });
 
