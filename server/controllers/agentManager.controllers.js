@@ -31,7 +31,7 @@ const addAgent = async (req, res) => {
   }
 };
 const getAgent = async (req, res) => {
-  const id = req.params.agentId;
+  const id = req.agent._id;
   try {
     const getAgent = await User.findById(id);
     return res.status(200).json(getAgent);
@@ -73,3 +73,4 @@ const deleteAgent = async (req, res) => {
 
 module.exports.addAgent = addAgent;
 module.exports.getAgents = getAgents;
+module.exports.getAgent= getAgent;
