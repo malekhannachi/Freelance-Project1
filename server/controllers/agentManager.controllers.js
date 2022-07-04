@@ -41,9 +41,17 @@ const getAgent = async (req, res) => {
 };
 
 const getAgents = async (req, res) => {
-  const role = req.query.role;
+  //const role = req.query.role;
+
   try {
-    const getAgents = await User.find({ role: role }).sort({ createdAt: -1 });
+    // const getAgents = await User.find(/*{ role: role }*/).sort({ createdAt: -1 });
+    const getAgents = await User.find({
+      $or: [
+        { role: "agentAnalyser" },
+        { role: "agentReception" },
+        { role: "agentFacturation" },
+      ],
+    }).sort({ createdAt: -1 });
     return res.status(200).json(getAgents);
   } catch (err) {
     return res.status(500).json(err);
@@ -73,4 +81,4 @@ const deleteAgent = async (req, res) => {
 
 module.exports.addAgent = addAgent;
 module.exports.getAgents = getAgents;
-module.exports.getAgent= getAgent;
+module.exports.getAgent = getAgent;
