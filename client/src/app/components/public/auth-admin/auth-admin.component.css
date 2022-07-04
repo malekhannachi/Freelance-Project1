@@ -1,0 +1,6 @@
+.bg-login-image {
+  background: url(./../../../../assets/admin/img/Login.png) no-repeat;
+  background-position-y: center;
+  background-position-x: 20px;
+  background-size: contain;
+}
