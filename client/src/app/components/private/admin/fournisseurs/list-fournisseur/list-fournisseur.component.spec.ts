@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthAdminComponent } from './auth-admin.component';
+import { ListFournisseurComponent } from './list-fournisseur.component';
 
-describe('AuthAdminComponent', () => {
-  let component: AuthAdminComponent;
-  let fixture: ComponentFixture<AuthAdminComponent>;
+describe('ListFournisseurComponent', () => {
+  let component: ListFournisseurComponent;
+  let fixture: ComponentFixture<ListFournisseurComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthAdminComponent ]
+      declarations: [ ListFournisseurComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthAdminComponent);
+    fixture = TestBed.createComponent(ListFournisseurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

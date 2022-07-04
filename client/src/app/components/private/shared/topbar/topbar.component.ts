@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/services/admin.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-topbar',
@@ -10,16 +10,16 @@ import { AdminService } from 'src/app/services/admin.service';
 export class TopbarComponent implements OnInit {
   UserName: String = '';
   profilAdmin: any;
-  constructor(private router: Router, private adminService: AdminService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.profilAdmin = this.adminService.saveDataProfil();
+    this.profilAdmin = this.userService.saveDataProfil();
     console.log(this.profilAdmin);
     this.UserName = this.profilAdmin.email;
   }
 
   logout() {
     localStorage.removeItem('myToken');
-    this.router.navigate(['/auth-admin']);
+    this.router.navigate(['/login']);
   }
 }

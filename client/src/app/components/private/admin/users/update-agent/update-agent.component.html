@@ -20,18 +20,18 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ajouter Un Admin</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Modifier Un Agent</h1>
                     </div>
 
                 </div>
                 <div class="col">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Add Admin's details</h6>
+                            <h6 class="m-0 font-weight-bold text-warning">Modifier Agent details</h6>
                         </div>
 
                         <div class="card-body">
-                            <form [formGroup]="adminForm" (ngSubmit)="addAdmin()">
+                            <form [formGroup]="userForm" (ngSubmit)="updateUser()">
                                 <div class="form-group">
                                     <label for="name" id="name">Prénom : </label>
                                     <input type="text" class="form-control" formControlName="firstname">
@@ -53,10 +53,20 @@
                                         <input type="password" class="form-control" formControlName="password">
 
                                     </div>
+                                    <div class="form-group">
+                                        <label>Type d'Agent : </label>
+                                        <select class="custom-select" formControlName="role">
+                                            <option hidden selected>Choisir un agent</option>
+                                            <option value="agentAnalyser">Agent Analyser</option>
+                                            <option value="agentReception">agent Reception</option>
+                                            <option value="agentFacturation">agent Facturation</option>
+
+                                        </select>
+                                    </div>
 
 
-                                    <button class="btn btn-sm btn-primary mt-3" type="submit"
-                                        [disabled]="adminForm.invalid">Add</button>
+                                    <button class="btn btn-sm btn-warning mt-3" type="submit"
+                                        [disabled]="userForm.invalid">Modifier</button>
                                 </div>
                             </form>
                         </div>
