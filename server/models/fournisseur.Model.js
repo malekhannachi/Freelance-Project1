@@ -12,7 +12,7 @@ const FournisseurSchema = new mongoose.Schema(
       lowercase: true,
       required: true,
     },
-    isAdmin: { type: Boolean, default: false },
+    //isAdmin: { type: Boolean, default: false },
     address: { type: mongoose.Schema.Types.ObjectId, ref: "Address" },
  
 
