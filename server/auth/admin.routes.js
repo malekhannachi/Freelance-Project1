@@ -53,54 +53,44 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post(
-  "/addAdmin",
-  /*verifyToken, isAdmin,*/ async (req, res) => {
-    const email = req.body.email;
-    try {
-      const admin = await User.findOne({ email: email });
-      if (admin) {
-        return res.status(422).json("Email already exist");
-      }
-    } catch (err) {
-      return res.status(500).json(err);
+router.post("/addAdmin", async (req, res) => {
+
+  const email = req.body.email;
+  try {
+    const admin = await Admin.findOne({ email: email });
+    if (admin) {
+      return res.status(422).json("Email already exist");
     }
     //*cripte passworde
     const salt = await bcrypt.genSalt(16);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    try {
-      const newAdmin = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPassword,
-        isAdmin: true,
-        role: "admin",
-        //createdBy: req.verifiedUser._id,
-      });
-      const savedAdmin = await newAdmin.save();
-      return res.status(201).json(savedAdmin);
-    } catch (err) {
-      return res.status(500).json(err);
-    }
+  try {
+    const newAdmin = new Admin({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: hashedPassword,
+    //  createdBy: req.verifiedUser._id,
+    });
+    const savedAdmin = await newAdmin.save();
+    return res.status(201).json(savedAdmin);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+router.delete("/:admin/delete", async (req, res) => {
+  const adminId = req.admin._id;
+  try {
+    await Admin.findByIdAndDelete(adminId);
+    return res.status(200).json("deleteAdmin");
+  } catch (err) {
+    return res.status(500).json(err);
   }
 );
 
-router.delete(
-  "/:admin/delete",
-  /* verifyToken, isAdmin,*/ async (req, res) => {
-    const adminId = req.admin._id;
-    try {
-      await User.findByIdAndDelete(adminId);
-      return res.status(200).json("deleteAdmin");
-    } catch (err) {
-      return res.status(500).json(err);
-    }
-  }
-);
-
-router.put("/update/me", verifyToken, isAdmin, async (req, res) => {
+router.put("/update/me", async (req, res) => {
   const currentAdmin = req.verifiedUser._id;
 
   try {
@@ -143,7 +133,7 @@ router.put("/update/password", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.get("/allAdmin" /*,verifyToken, isAdmin*/, async (req, res) => {
+router.get("/allAdmin", async (req, res) => {
   try {
     const admin = await User.find({ role: "admin" });
     return res.status(200).json(admin);
