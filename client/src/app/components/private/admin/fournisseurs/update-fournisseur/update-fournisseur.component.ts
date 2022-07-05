@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fournisseur } from 'src/app/models/fournisseur';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
@@ -7,7 +12,7 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 @Component({
   selector: 'app-update-fournisseur',
   templateUrl: './update-fournisseur.component.html',
-  styleUrls: ['./update-fournisseur.component.css']
+  styleUrls: ['./update-fournisseur.component.css'],
 })
 export class UpdateFournisseurComponent implements OnInit {
   fourForm!: FormGroup;
@@ -50,12 +55,9 @@ export class UpdateFournisseurComponent implements OnInit {
         street: user.address.street,
         city: user.address.city,
         country: user.address.country,
-        zipCode:user.address.zipCode,
-       
+        zipCode: user.address.zipCode,
       });
     });
-
-
   }
 
   updateFourni() {
@@ -63,7 +65,7 @@ export class UpdateFournisseurComponent implements OnInit {
     console.log(data);
 
     let fournisseur = new Fournisseur(
-      undefined,
+      this.id,
       data.firstname,
       data.lastname,
       data.email,
@@ -75,7 +77,7 @@ export class UpdateFournisseurComponent implements OnInit {
     );
     console.log(fournisseur);
 
-    this.fs.addFournisseur(fournisseur).subscribe((res) => {
+    this.fs.updateFournisseur(this.id, fournisseur).subscribe((res) => {
       console.log(res);
 
       this.router.navigate(['/list-fournisseur']);

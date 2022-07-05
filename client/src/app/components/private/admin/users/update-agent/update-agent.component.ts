@@ -47,6 +47,7 @@ export class UpdateAgentComponent implements OnInit {
         firstname: user.firstName,
         lastname: user.lastName,
         email: user.email,
+      //  password:user.password,
         role: user.role,
        
       });
