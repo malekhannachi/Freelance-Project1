@@ -6,16 +6,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { Page404Component } from './components/public/page404/page404.component';
-import { AuthAdminComponent } from './components/public/auth-admin/auth-admin.component';
 import { SidebarComponent } from './components/private/shared/sidebar/sidebar.component';
 import { TopbarComponent } from './components/private/shared/topbar/topbar.component';
 import { DashboardComponent } from './components/private/shared/dashboard/dashboard.component';
-import { AdminListComponent } from './components/private/admin/admin-management/admin-list/admin-list.component';
-import { AdminAddComponent } from './components/private/admin/admin-management/admin-add/admin-add.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUserComponent } from './components/private/admin/users/add-user/add-user.component';
 import { ListUserComponent } from './components/private/admin/users/list-user/list-user.component';
+import { UpdateAgentComponent } from './components/private/admin/users/update-agent/update-agent.component';
+import { AddFournisseurComponent } from './components/private/admin/fournisseurs/add-fournisseur/add-fournisseur.component';
+import { ListFournisseurComponent } from './components/private/admin/fournisseurs/list-fournisseur/list-fournisseur.component';
+import { UpdateFournisseurComponent } from './components/private/admin/fournisseurs/update-fournisseur/update-fournisseur.component';
+import { EspaceAgentAnalyserComponent } from './components/private/agentAnalyser/espace-agent-analyser/espace-agent-analyser.component';
+import { EspaceAgentFacturationComponent } from './components/private/agentFacturation/espace-agent-facturation/espace-agent-facturation.component';
+import { EspaceAgentReceptionComponent } from './components/private/agentReception/espace-agent-reception/espace-agent-reception.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +28,20 @@ import { ListUserComponent } from './components/private/admin/users/list-user/li
     HomeComponent,
     LoginComponent,
     Page404Component,
-    AuthAdminComponent,
+  
     SidebarComponent,
     TopbarComponent,
     DashboardComponent,
-    AdminListComponent,
-    AdminAddComponent,
+   
     AddUserComponent,
     ListUserComponent,
+    UpdateAgentComponent,
+    AddFournisseurComponent,
+    ListFournisseurComponent,
+    UpdateFournisseurComponent,
+    EspaceAgentAnalyserComponent,
+    EspaceAgentFacturationComponent,
+    EspaceAgentReceptionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule,NgToastModule],
   providers: [],

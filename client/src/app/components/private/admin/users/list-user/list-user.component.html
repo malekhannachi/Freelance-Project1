@@ -16,7 +16,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des Utilisateurs</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gestion des Agents</h1>
                     </div>
                     <div>
                         <a [routerLink]="['/add-user']" class="btn btn-sm btn-primary mb-2">Ajouter Agent</a>
@@ -26,7 +26,7 @@
                 <div class="col ml-2">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary"> Liste des utilisateurs </h6>
+                            <h6 class="m-0 font-weight-bold text-primary"> Liste des agents </h6>
                         </div>
 
                         <div class="card-body">
@@ -53,6 +53,9 @@
 
                                         <td class="align-middle">
 
+                                            <a [routerLink]="['/update-user',user._id]" class="btn btn-sm btn-warning mr-2">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                             <button (click)="deleteUser(user)" class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
@@ -60,7 +63,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="userList.length == 0" class="alert alert-warning">Aucun utilisateur trouvé</div>
+                            <div *ngIf="userList.length == 0" class="alert alert-warning">Aucun agent trouvé</div>
                         </div>
                     </div>
                 </div>
