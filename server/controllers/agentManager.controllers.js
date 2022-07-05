@@ -60,7 +60,7 @@ const getAgents = async (req, res) => {
 };
 const updateAgent = async (req, res) => {
   const id = req.agent._id;
-  //console.log(id);
+  console.log(id);
   try {
     const updateAgent = await User.findByIdAndUpdate(id, req.body, {
       new: true,
