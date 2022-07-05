@@ -21,7 +21,7 @@ router.param("fournisseur", async (req, res, next, id) => {
     return res.status(500).json(err);
   }
 });
-outer.post("/add", addFournisseur);
+router.post("/add", addFournisseur);
 router.get("/all", getFournisseurs);
 router.get("/getOne/:fournisseur", getFournisseur);
 router.delete("/delete/:fournisseur", deleteFournisseur);
