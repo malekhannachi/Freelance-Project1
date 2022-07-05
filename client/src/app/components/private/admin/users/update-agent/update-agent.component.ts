@@ -58,7 +58,7 @@ export class UpdateAgentComponent implements OnInit {
     console.log(data);
 
     let user = new User(
-      undefined,
+      this.id,
       data.firstname,
       data.lastname,
       data.email,
@@ -67,7 +67,7 @@ export class UpdateAgentComponent implements OnInit {
     );
     console.log(user);
 
-    this.userService.updateUser(user).subscribe((res) => {
+    this.userService.updateUser(this.id,user).subscribe((res) => {
       console.log(res);
 
       this.router.navigate(['/list-user']);

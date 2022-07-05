@@ -8,6 +8,7 @@ export class Fournisseur {
     public number?: Number,
     public street?: String,
     public city?: String,
+    public country?: String,
     public zipCode?: Number
   ) {}
 }

@@ -1,1 +1,93 @@
-<p>add-fournisseur works!</p>
+<div id="page-top">
+    <!-- Page Wrapper -->
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+
+        <app-sidebar></app-sidebar>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+
+            <div id="content">
+                <!-- Topbar -->
+
+                <app-topbar></app-topbar>
+                <!-- End of Topbar -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Ajouter Un Fourniseur</h1>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Add Fourniseur details</h6>
+                        </div>
+
+                        <div class="card-body">
+                            <form [formGroup]="fourForm" (ngSubmit)="addFourni()">
+                                <div class="form-group">
+                                    <label for="name" id="name">Prénom : </label>
+                                    <input type="text" class="form-control" formControlName="firstname">
+
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="description" id="desc">Nom : </label>
+                                        <input type="text" class="form-control" formControlName="lastname">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Email" id="Email">Email : </label>
+                                        <input type="email" class="form-control" formControlName="email">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cin : </label>
+                                        <input type="number" class="form-control" formControlName="cin">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>number : </label>
+                                        <input type="number" class="form-control" formControlName="number">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>street : </label>
+                                        <input type="text" class="form-control" formControlName="street">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>city : </label>
+                                        <input type="text" class="form-control" formControlName="city">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Country : </label>
+                                        <input type="text" class="form-control" formControlName="country">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>zipCode : </label>
+                                        <input type="number" class="form-control" formControlName="zipCode">
+
+                                    </div>
+
+
+
+                                    <button class="btn btn-sm btn-primary mt-3" type="submit">Ajouter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>

@@ -19,8 +19,8 @@ export class UserService {
     return this.http.post<any>(this.userUrl, user);
   }
 
-  updateUser(user: User) {
-    return this.http.put<any>(this.userUrl + '/', user);
+  updateUser(id:any,user: User) {
+    return this.http.put<any>(this.userUrl + '/'+id, user);
   }
 
   getAllUser() {

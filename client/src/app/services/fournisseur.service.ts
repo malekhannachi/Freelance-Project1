@@ -22,6 +22,6 @@ export class FournisseurService {
   }
 
   getbyId(id: any) {
-    return this.http.get<any>(this.FournisseurUrl + id);
+    return this.http.get<any>(this.FournisseurUrl +'getOne/' + id);
   }
 }
