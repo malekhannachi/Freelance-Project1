@@ -19,8 +19,8 @@ export class UserService {
     return this.http.post<any>(this.userUrl, user);
   }
 
-  updateUser(id:any,user: User) {
-    return this.http.put<any>(this.userUrl + '/'+id, user);
+  updateUser(id: any, user: User) {
+    return this.http.put<any>(this.userUrl + '/' + id, user);
   }
 
   getAllUser() {
@@ -35,21 +35,71 @@ export class UserService {
     return this.http.delete<any>(this.userUrl + '/' + id);
   }
 
-  //test admin logged or no
-  isLoggedInAdmin() {
-    let token = localStorage.getItem('myToken');
-
-    if (token) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   //decode token and get data
   saveDataProfil() {
     const helper = new JwtHelperService();
     let myRawToken: any = localStorage.getItem('myToken');
     const decodedToken = helper.decodeToken(myRawToken);
     return decodedToken;
+  }
+
+  //test admin logged or no
+  isLoggedInAdmin() {
+    let token = localStorage.getItem('myToken');
+
+    if (token) {
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      if (decodedToken.role == 'admin') {
+        return true;
+      } else {
+        return false;
+      }
+    } else return false;
+  }
+
+  //test agent Facturation logged or no
+  isLoggedInAgentFacturation() {
+    let token = localStorage.getItem('myToken');
+
+    if (token) {
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      if (decodedToken.role == 'agentFacturation') {
+        return true;
+      } else {
+        return false;
+      }
+    } else return false;
+  }
+
+  //test agent Reception logged or no
+  isLoggedInAgentReception() {
+    let token = localStorage.getItem('myToken');
+
+    if (token) {
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      if (decodedToken.role == 'agentReception') {
+        return true;
+      } else {
+        return false;
+      }
+    } else return false;
+  }
+
+  //test agent Analyser logged or no
+  isLoggedInAgentAnalyser() {
+    let token = localStorage.getItem('myToken');
+
+    if (token) {
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      if (decodedToken.role == 'agentAnalyser') {
+        return true;
+      } else {
+        return false;
+      }
+    } else return false;
   }
 }
