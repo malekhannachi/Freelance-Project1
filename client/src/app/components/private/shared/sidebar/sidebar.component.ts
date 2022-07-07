@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  constructor() {}
+  adminIsLogged!:Boolean
+  agentAnalyserisLogged!:Boolean
+  constructor(private us:UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.adminIsLogged=this.us.isLoggedInAdmin()
+    this.agentAnalyserisLogged=this.us.isLoggedInAgentAnalyser()
+  }
 }

@@ -13,26 +13,30 @@ import { DashboardComponent } from './components/private/shared/dashboard/dashbo
 import { HomeComponent } from './components/public/home/home.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { Page404Component } from './components/public/page404/page404.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AgentAnalyserGuard } from './guards/agent-analyser.guard';
+import { AgentFacturationGuard } from './guards/agent-facturation.guard';
+import { AgentReceptionGuard } from './guards/agent-reception.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
 
-  { path: 'dashboard', component: DashboardComponent },
-  //Gestion des Agents
-  { path: 'list-user', component: ListUserComponent },
-  { path: 'add-user', component: AddUserComponent },
-  { path: 'update-user/:id', component: UpdateAgentComponent },
-  //Gestion des Fournisseurs
-  { path: 'list-fournisseur', component: ListFournisseurComponent },
-  { path: 'add-fournisseur', component: AddFournisseurComponent },
-  { path: 'update-fournisseur/:id', component: UpdateFournisseurComponent },
+  { path: 'dashboard', component: DashboardComponent,canActivate:[AdminGuard] },
+  //ADMIN : Gestion des Agents
+  { path: 'list-user', component: ListUserComponent ,canActivate:[AdminGuard] },
+  { path: 'add-user', component: AddUserComponent ,canActivate:[AdminGuard]},
+  { path: 'update-user/:id', component: UpdateAgentComponent ,canActivate:[AdminGuard]},
+  //ADMIN :Gestion des Fournisseurs
+  { path: 'list-fournisseur', component: ListFournisseurComponent,canActivate:[AdminGuard] },
+  { path: 'add-fournisseur', component: AddFournisseurComponent,canActivate:[AdminGuard] },
+  { path: 'update-fournisseur/:id', component: UpdateFournisseurComponent ,canActivate:[AdminGuard]},
   //
-  { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent },
+  { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent,canActivate:[AgentAnalyserGuard] },
   //
-  { path: 'espace-agentReception', component: EspaceAgentReceptionComponent },
+  { path: 'espace-agentReception', component: EspaceAgentReceptionComponent ,canActivate:[AgentReceptionGuard]},
   //
-  { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent },
+  { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 
   { path: '**', component: Page404Component },
 ];

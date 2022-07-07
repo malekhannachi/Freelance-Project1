@@ -22,29 +22,48 @@
     <!-- Admin items -->
 
 
-    <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/list-user']">
+    <li class="nav-item" *ngIf="adminIsLogged">
+        <a class="nav-link" [routerLink]="['/list-user']" >
             <i class="fas fa-fw fa-users"></i>
             <span>Gestion des Agents</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="adminIsLogged">
         <a class="nav-link" [routerLink]="['/list-fournisseur']">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestion des Fournisseurs</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="adminIsLogged">
         <a class="nav-link" [routerLink]="['/']">
             <i class="fas fa-fw fa-tasks"></i>
-            <span>Gestion</span></a>
+            <span>Gestion des Types d'anlyse</span></a>
     </li>
 
 
-    <!-- Clients items -->
+    <!-- Agent reception items -->
 
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="agentAnalyserisLogged">
         <a class="nav-link" [routerLink]="['/']">
             <i class="fas fa-fw fa-tasks"></i>
-            <span>Gestion</span></a>
+            <span>Gestion des Camions </span></a>
+    </li>
+
+
+    <li class="nav-item" *ngIf="agentAnalyserisLogged">
+        <a class="nav-link" [routerLink]="['/']">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Gestion des Citernes </span></a>
+    </li>
+
+    <li class="nav-item" *ngIf="agentAnalyserisLogged">
+        <a class="nav-link" [routerLink]="['/']">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Gestion des bons de réceptions </span></a>
+    </li>
+
+    <li class="nav-item" *ngIf="agentAnalyserisLogged">
+        <a class="nav-link" [routerLink]="['/']">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Gestion des bons de vidage </span></a>
     </li>
 
     <!-- Divider -->
