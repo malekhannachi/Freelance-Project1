@@ -12,8 +12,8 @@ const AnalysisTypeSchema = new mongoose.Schema(
       lowercase: true,
       required: true,
     },
-    isAdmin: { type: Boolean, default: false },
-    address: { type: mongoose.Schema.Types.ObjectId, ref: "Address" },
+  
+    citerne: { type: mongoose.Schema.Types.ObjectId, ref: "Citerne" },
  
 
   
