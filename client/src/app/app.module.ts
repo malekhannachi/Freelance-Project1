@@ -21,9 +21,9 @@ import { UpdateFournisseurComponent } from './components/private/admin/fournisse
 import { EspaceAgentAnalyserComponent } from './components/private/agentAnalyser/espace-agent-analyser/espace-agent-analyser.component';
 import { EspaceAgentFacturationComponent } from './components/private/agentFacturation/espace-agent-facturation/espace-agent-facturation.component';
 import { EspaceAgentReceptionComponent } from './components/private/agentReception/espace-agent-reception/espace-agent-reception.component';
-import { ListCamionComponent } from './components/private/agentAnalyser/camion/list-camion/list-camion.component';
-import { AddCamionComponent } from './components/private/agentAnalyser/camion/add-camion/add-camion.component';
-import { UpdateCamionComponent } from './components/private/agentAnalyser/camion/update-camion/update-camion.component';
+import { ListCamionComponent } from './components/private/agentReception/camion/list-camion/list-camion.component';
+import { AddCamionComponent } from './components/private/agentReception/camion/add-camion/add-camion.component';
+import { UpdateCamionComponent } from './components/private/agentReception/camion/update-camion/update-camion.component';
 
 @NgModule({
   declarations: [

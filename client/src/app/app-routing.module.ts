@@ -6,6 +6,9 @@ import { UpdateFournisseurComponent } from './components/private/admin/fournisse
 import { AddUserComponent } from './components/private/admin/users/add-user/add-user.component';
 import { ListUserComponent } from './components/private/admin/users/list-user/list-user.component';
 import { UpdateAgentComponent } from './components/private/admin/users/update-agent/update-agent.component';
+import { AddCamionComponent } from './components/private/agentReception/camion/add-camion/add-camion.component';
+import { ListCamionComponent } from './components/private/agentReception/camion/list-camion/list-camion.component';
+import { UpdateCamionComponent } from './components/private/agentReception/camion/update-camion/update-camion.component';
 import { EspaceAgentAnalyserComponent } from './components/private/agentAnalyser/espace-agent-analyser/espace-agent-analyser.component';
 import { EspaceAgentFacturationComponent } from './components/private/agentFacturation/espace-agent-facturation/espace-agent-facturation.component';
 import { EspaceAgentReceptionComponent } from './components/private/agentReception/espace-agent-reception/espace-agent-reception.component';
@@ -33,9 +36,14 @@ const routes: Routes = [
   { path: 'update-fournisseur/:id', component: UpdateFournisseurComponent ,canActivate:[AdminGuard]},
   //
   { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent,canActivate:[AgentAnalyserGuard] },
+ 
   //
   { path: 'espace-agentReception', component: EspaceAgentReceptionComponent ,canActivate:[AgentReceptionGuard]},
   //
+  { path: 'list-camion', component: ListCamionComponent ,canActivate:[AgentReceptionGuard] },
+  { path: 'add-camion', component: AddCamionComponent ,canActivate:[AgentReceptionGuard]},
+  { path: 'update-camion/:id', component: UpdateCamionComponent ,canActivate:[AgentReceptionGuard]},
+
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 
   { path: '**', component: Page404Component },
