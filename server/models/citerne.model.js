@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const AnalysisTypeSchema = new mongoose.Schema(
+const CiterneSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String },
@@ -20,4 +20,4 @@ const AnalysisTypeSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("AnalysisType", AnalysisTypeSchema);
+module.exports = mongoose.model("Citerne", CiterneSchema);
