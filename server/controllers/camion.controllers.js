@@ -59,17 +59,41 @@ const getCamion = async (req, res) => {
     return res.status(500).json(err);
   }
 };
+// const getCamions = async (req, res) => {
+//   const limit = req.query.limit ? parseInt(req.query.limit) : 999;
+
+//   try {
+//     const getCamion = await Camion.find().sort({ createdAt: -1 }).limit(limit);
+//     return res.status(200).json(getCamion);
+//   } catch (err) {
+//     return res.status(500).json(err);
+//   }
+// };
+
 const getCamions = async (req, res) => {
   const limit = req.query.limit ? parseInt(req.query.limit) : 999;
-
   try {
-    const getCamion = await Camion.find().sort({ createdAt: -1 }).limit(limit);
-    return res.status(200).json(getCamion);
+    const camion = await Camion.aggregate([
+      {
+        $lookup: {
+          from: "dateentresorties",
+          localField: "_id",
+          foreignField: "camion",
+          as: "dateEntre",
+        },
+      },
+    ])
+      .sort({ createdAt: -1 })
+      .limit(limit);
+    await Camion.populate(camion, {
+      path: "fournisseur",
+      select: "firstName lastName number email",
+    });
+    return res.status(200).json(camion);
   } catch (err) {
     return res.status(500).json(err);
   }
 };
-
 const deleteCamion = async (req, res) => {
   const id = req.camion._id;
   try {
