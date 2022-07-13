@@ -37,7 +37,7 @@ const routes: Routes = [
   //
   { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent,canActivate:[AgentAnalyserGuard] },
  
-  //
+  // //agentReception :Gestion des Camions
   { path: 'espace-agentReception', component: EspaceAgentReceptionComponent ,canActivate:[AgentReceptionGuard]},
   //
   { path: 'list-camion', component: ListCamionComponent ,canActivate:[AgentReceptionGuard] },

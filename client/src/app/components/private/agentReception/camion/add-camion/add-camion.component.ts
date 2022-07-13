@@ -1,31 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
+import { Camion } from 'src/app/models/camion';
+import { CamionService } from 'src/app/services/camion.service';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
-import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-add-camion',
   templateUrl: './add-camion.component.html',
-  styleUrls: ['./add-camion.component.css']
+  styleUrls: ['./add-camion.component.css'],
 })
 export class AddCamionComponent implements OnInit {
-  userForm!: FormGroup;
+  FormCamion!: FormGroup;
   fourniList: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,private fs: FournisseurService
+    private cs: CamionService,
+    private fs: FournisseurService
   ) {
     let formControls = {
-      firstname: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
+      matricule: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      fournisseur: new FormControl('', [Validators.required, Validators.email]),
     };
-    this.userForm = this.fb.group(formControls);
+    this.FormCamion = this.fb.group(formControls);
   }
 
   ngOnInit(): void {
@@ -36,25 +41,22 @@ export class AddCamionComponent implements OnInit {
     });
   }
 
-  addUser() {
-    let data = this.userForm.value;
+  addCamion() {
+    let data = this.FormCamion.value;
     console.log(data);
 
-    let user = new User(
+    let user = new Camion(
       undefined,
-      data.firstname,
-      data.lastname,
-      data.email,
-      data.password,
-      data.role
+      data.matricule,
+      data.type,
+      data.fournisseur
     );
     console.log(user);
 
-    this.userService.addUser(user).subscribe((res) => {
+    this.cs.addCamion(user).subscribe((res) => {
       console.log(res);
 
-      this.router.navigate(['/list-user']);
+      this.router.navigate(['/list-camion']);
     });
   }
-
 }

@@ -27,36 +27,36 @@
                 <div class="col">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Add Camion details</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Ajouter Camion details</h6>
                         </div>
 
                         <div class="card-body">
-                            <form [formGroup]="userForm" (ngSubmit)="addUser()">
+                            <form [formGroup]="FormCamion" (ngSubmit)="addCamion()">
                                 <div class="form-group">
                                     <label for="name" id="name">Matricule : </label>
-                                    <input type="text" class="form-control" formControlName="firstname">
+                                    <input type="text" class="form-control" formControlName="matricule">
 
                                 </div>
                                 <div>
                                     <div class="form-group">
-                                        <label for="description" id="desc">Date d'entreé : </label>
-                                        <input type="date" class="form-control" formControlName="lastname">
+                                        <label for="description" id="desc">Type de Camion: </label>
+                                        <input type="text" class="form-control" formControlName="type">
 
                                     </div>
                                  
                                   
                                     <div class="form-group">
                                         <label>Fornisseur : </label>
-                                        <select class="custom-select" formControlName="role">
+                                        <select class="custom-select" formControlName="fournisseur">
                                             <option hidden selected value="">--Choisir un Fornisseur--</option>
-                                            <option [ngValue]="frns" *ngFor="let frns of fourniList">{{frns.firstName}}  {{frns.lastName}}</option>
+                                            <option [ngValue]="frns._id" *ngFor="let frns of fourniList">{{frns.firstName}}  {{frns.lastName}}</option>
 
                                         </select>
                                     </div>
 
 
                                     <button class="btn btn-sm btn-primary mt-3" type="submit"
-                                        [disabled]="userForm.invalid">Ajouter</button>
+                                        >Ajouter</button>
                                 </div>
                             </form>
                         </div>

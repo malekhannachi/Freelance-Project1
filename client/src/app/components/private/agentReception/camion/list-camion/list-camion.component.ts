@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CamionService } from 'src/app/services/camion.service';
+import { FournisseurService } from 'src/app/services/fournisseur.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,24 +11,42 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListCamionComponent implements OnInit {
 
-  userList: any[] = [];
-  constructor(private router: Router, private userService: UserService) {}
+  camionList: any[] = [];
+  constructor(private router: Router, private fc: CamionService) {}
 
-  ngOnInit(): void {
-  //  this.userService.getAllUser().subscribe((result) => {
-  //    this.userList = result;);}
+  ngOnInit(): void {this.fc.getAllCamion().subscribe(result=>{
+    this.camionList=result
+    console.log(result);
     
+  })
+ }
+    
+  
+ deleteCamion(camion: any) {
+  this.fc.deleteCamion(camion._id).subscribe(
+    (res) => {
+      console.log(res);
+      let index = this.camionList.indexOf(camion);
+      this.camionList.splice(index, 1);
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+    
+  
   }
-  deleteUser(user: any) {
-    this.userService.deleteUser(user._id).subscribe(
+
+  addDate(camion: any){
+    this.fc.enterCamion(camion._id).subscribe(
       (res) => {
         console.log(res);
-        let index = this.userList.indexOf(user);
-        this.userList.splice(index, 1);
+      
       },
       (err) => {
         console.log(err);
       }
     );
+
   }
 }

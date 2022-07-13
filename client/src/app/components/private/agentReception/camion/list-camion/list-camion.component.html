@@ -26,7 +26,7 @@
                 <div class="col ml-2">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary"> Liste des agents </h6>
+                            <h6 class="m-0 font-weight-bold text-primary"> Liste des camions </h6>
                         </div>
 
                         <div class="card-body">
@@ -36,34 +36,44 @@
                                         <th>Id</th>
                                         <th>Matricule </th>
                                        
-                                        <th>Date d'entreé</th>
+                                        <th>Type de Camion</th>
                                         <th>Fournisseur</th>
+                                        <th>Date d'entreé</th>
 
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let user of userList">
-                                        <td class="align-middle">{{user._id}}</td>
+                                    <tr *ngFor="let c of camionList">
+                                        <td class="align-middle">{{c._id}}</td>
 
-                                        <td class="align-middle">{{user.firstName}}</td>
+                                        <td class="align-middle">{{c.matricule}}</td>
                                     
-                                        <td class="align-middle">{{user.email}}</td>
-                                        <td class="align-middle">{{user.role}}</td>
+                                        <td class="align-middle">{{c.typeCamion}}</td>
+                                        <td class="align-middle">{{c.fournisseur}}</td>
+                                      
+                                        <td class="align-middle">
+                                            <a href="./../clients/my-orders-details.html" class="btn btn-sm btn-light mx-3">
+                                              <i class="fas fa-eye"></i>
+                                            </a>
+                                          </td>
 
                                         <td class="align-middle">
 
-                                            <a [routerLink]="['/update-camion',user._id]" class="btn btn-sm btn-warning mr-2">
+                                            <button (click)="addDate(c)" class="btn btn-sm btn-success">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <a [routerLink]="['/update-camion',c._id]" class="btn btn-sm btn-warning mx-2">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button (click)="deleteUser(user)" class="btn btn-sm btn-danger">
+                                            <button (click)="deleteCamion(c)" class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="userList.length == 0" class="alert alert-warning">Aucun camion trouvé</div>
+                            <div *ngIf="camionList.length == 0" class="alert alert-warning">Aucun camion trouvé</div>
                         </div>
                     </div>
                 </div>
