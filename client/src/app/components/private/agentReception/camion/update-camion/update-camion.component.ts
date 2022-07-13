@@ -49,7 +49,8 @@ export class UpdateCamionComponent implements OnInit {
       this.FormCamion.patchValue({
         matricule: camion.matricule,
         type: camion.typeCamion,
-     
+
+     fournisseur:camion.fournisseur
       
        
       });

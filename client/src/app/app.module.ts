@@ -24,6 +24,9 @@ import { EspaceAgentReceptionComponent } from './components/private/agentRecepti
 import { ListCamionComponent } from './components/private/agentReception/camion/list-camion/list-camion.component';
 import { AddCamionComponent } from './components/private/agentReception/camion/add-camion/add-camion.component';
 import { UpdateCamionComponent } from './components/private/agentReception/camion/update-camion/update-camion.component';
+import { ListCiterneComponent } from './components/private/agentReception/citerne/list-citerne/list-citerne.component';
+import { AddCiterneComponent } from './components/private/agentReception/citerne/add-citerne/add-citerne.component';
+import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { UpdateCamionComponent } from './components/private/agentReception/camio
     ListCamionComponent,
     AddCamionComponent,
     UpdateCamionComponent,
+    ListCiterneComponent,
+    AddCiterneComponent,
+    UpdateCiterneComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule,NgToastModule],
   providers: [],

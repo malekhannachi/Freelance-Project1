@@ -16,17 +16,17 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des Camions</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gestion des Agents</h1>
                     </div>
                     <div>
-                        <a [routerLink]="['/add-camion']" class="btn btn-sm btn-primary mb-2">Ajouter Camion</a>
+                        <a [routerLink]="['/add-citerne']" class="btn btn-sm btn-primary mb-2">Ajouter Citerne</a>
                     </div>
 
                 </div>
                 <div class="col ml-2">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary"> Liste des camions </h6>
+                            <h6 class="m-0 font-weight-bold text-primary"> Liste des Citernes </h6>
                         </div>
 
                         <div class="card-body">
@@ -34,46 +34,34 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Matricule </th>
-                                       
-                                        <th>Type de Camion</th>
-                                        <th>Fournisseur</th>
-                                        <th>Date d'entreé</th>
+                                        <th>Prénom </th>
+                                        <th>Camion</th>
+                                      
 
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let c of camionList">
-                                        <td class="align-middle">{{c._id}}</td>
+                                    <tr *ngFor="let citern of citerneList">
+                                        <td class="align-middle">{{citern._id}}</td>
 
-                                        <td class="align-middle">{{c.matricule}}</td>
-                                    
-                                        <td class="align-middle">{{c.typeCamion}}</td>
-                                        <td class="align-middle">{{c.fournisseur.firstName}} {{c.fournisseur.lastName}}</td>
-                                      
-                                        <td class="align-middle">
-                                            <a href="./../clients/my-orders-details.html" class="btn btn-sm btn-light mx-3">
-                                              <i class="fas fa-eye"></i>
-                                            </a>
-                                          </td>
+                                        <td class="align-middle">{{citern.Num_order}}</td>
+                                        <td class="align-middle"> {{citern.camion.typeCamion}} {{citern.camion.matricule}}</td>
+                                       
 
                                         <td class="align-middle">
 
-                                            <button (click)="addDate(c)" class="btn btn-sm btn-success">
-                                                <i class="fas fa-calendar-plus"></i>
-                                            </button>
-                                            <a [routerLink]="['/update-camion',c._id]" class="btn btn-sm btn-warning mx-2">
+                                            <a [routerLink]="['/update-citerne',citern._id]" class="btn btn-sm btn-warning mr-2">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button (click)="deleteCamion(c)" class="btn btn-sm btn-danger">
+                                            <button (click)="deleteUser(citern)" class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="camionList.length == 0" class="alert alert-warning">Aucun camion trouvé</div>
+                            <div *ngIf="citerneList.length == 0" class="alert alert-warning">Aucune Citerne trouvé</div>
                         </div>
                     </div>
                 </div>

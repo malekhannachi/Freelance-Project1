@@ -20,6 +20,9 @@ import { AdminGuard } from './guards/admin.guard';
 import { AgentAnalyserGuard } from './guards/agent-analyser.guard';
 import { AgentFacturationGuard } from './guards/agent-facturation.guard';
 import { AgentReceptionGuard } from './guards/agent-reception.guard';
+import { ListCiterneComponent } from './components/private/agentReception/citerne/list-citerne/list-citerne.component';
+import { AddCiterneComponent } from './components/private/agentReception/citerne/add-citerne/add-citerne.component';
+import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +46,10 @@ const routes: Routes = [
   { path: 'list-camion', component: ListCamionComponent ,canActivate:[AgentReceptionGuard] },
   { path: 'add-camion', component: AddCamionComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'update-camion/:id', component: UpdateCamionComponent ,canActivate:[AgentReceptionGuard]},
+ // :Gestion des Citernes
+ { path: 'list-citerne', component: ListCiterneComponent ,canActivate:[AgentReceptionGuard] },
+  { path: 'add-citerne', component: AddCiterneComponent ,canActivate:[AgentReceptionGuard]},
+  { path: 'update-citerne/:id', component: UpdateCiterneComponent ,canActivate:[AgentReceptionGuard]},
 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 
