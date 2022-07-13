@@ -48,7 +48,20 @@ const getCiternes = async (req, res) => {
   }
 };
 
+const getCiterne = async (req, res) => {
+  
+  const id = req.citerne._id;
+
+  try {
+    const getCiterne = await Citerne.findById(id);
+    return res.status(200).json(getCiterne);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
 module.exports.addCiterne = addCiterne;
 module.exports.updateCiterne = updateCiterne;
 module.exports.deleteCiterne = deleteCiterne;
 module.exports.getCiternes = getCiternes;
+module.exports.getCiterne = getCiterne;

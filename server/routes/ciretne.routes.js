@@ -3,6 +3,7 @@ const {
   updateCiterne,
   deleteCiterne,
   getCiternes,
+  getCiterne,
 } = require("../controllers/citerne.controllers");
 const Citerne = require("../models/citerne.model");
 
@@ -25,6 +26,7 @@ router.param("citerne", async (req, res, next, id) => {
 });
 
 router.get("/", getCiternes);
+router.get("/getOne/:citerne", getCiterne);
 router.post("/add", addCiterne);
 router.put("/update/:citerne", updateCiterne);
 router.delete("/delete/:citerne", deleteCiterne);
