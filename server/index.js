@@ -21,7 +21,7 @@ const authRouter = require("./auth/auth.routes");
 const agentRoute = require("./routes/agentManager.routes");
 const fournisseurRouter = require("./routes/fournisseur.routes");
 const camionRouter = require("./routes/camion.routes");
-// const orderRouter = require("./routes/order.routes");
+const citerneRouter = require("./routes/ciretne.routes");
  const addressRouter = require("./routes/address.routes");
 // const profileRouter = require("./routes/profile.routes");
 //middelware
@@ -42,7 +42,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/agent", agentRoute);
 app.use("/api/fournisseur", fournisseurRouter);
 app.use("/api/camion", camionRouter);
-// app.use("/api/orders", orderRouter);
+app.use("/api/citerne", citerneRouter);
 app.use("/api/address", addressRouter);
 // app.use("/api/profile", profileRouter);
 
