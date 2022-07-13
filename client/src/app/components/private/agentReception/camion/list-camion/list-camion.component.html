@@ -1,0 +1,94 @@
+<div id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <app-topbar></app-topbar>
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Gestion des Camions</h1>
+                    </div>
+                    <div>
+                        <a [routerLink]="['/add-camion']" class="btn btn-sm btn-primary mb-2">Ajouter Camion</a>
+                    </div>
+
+                </div>
+                <div class="col ml-2">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary"> Liste des camions </h6>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Matricule </th>
+                                       
+                                        <th>Type de Camion</th>
+                                        <th>Fournisseur</th>
+                                        <th>Date d'entreé</th>
+
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let c of camionList">
+                                        <td class="align-middle">{{c._id}}</td>
+
+                                        <td class="align-middle">{{c.matricule}}</td>
+                                    
+                                        <td class="align-middle">{{c.typeCamion}}</td>
+                                        <td class="align-middle">{{c.fournisseur}}</td>
+                                      
+                                        <td class="align-middle">
+                                            <a href="./../clients/my-orders-details.html" class="btn btn-sm btn-light mx-3">
+                                              <i class="fas fa-eye"></i>
+                                            </a>
+                                          </td>
+
+                                        <td class="align-middle">
+
+                                            <button (click)="addDate(c)" class="btn btn-sm btn-success">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <a [routerLink]="['/update-camion',c._id]" class="btn btn-sm btn-warning mx-2">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <button (click)="deleteCamion(c)" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="camionList.length == 0" class="alert alert-warning">Aucun camion trouvé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
