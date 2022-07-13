@@ -13,7 +13,6 @@ const addCiterne = async (req, res) => {
   }
 };
 
-
 const updateCiterne = async (req, res) => {
   const id = req.citerne._id;
   try {
@@ -36,12 +35,14 @@ const deleteCiterne = async (req, res) => {
   }
 };
 
-
 const getCiternes = async (req, res) => {
   const limit = req.query.limit ? parseInt(req.query.limit) : 999;
 
   try {
-    const getCiterne = await Citerne.find().sort({ createdAt: -1 }).limit(limit);
+    const getCiterne = await Citerne.find()
+      .populate("camion")
+      .sort({ createdAt: -1 })
+      .limit(limit);
     return res.status(200).json(getCiterne);
   } catch (err) {
     return res.status(500).json(err);
@@ -49,7 +50,6 @@ const getCiternes = async (req, res) => {
 };
 
 const getCiterne = async (req, res) => {
-  
   const id = req.citerne._id;
 
   try {
