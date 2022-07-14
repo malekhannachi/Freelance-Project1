@@ -41,7 +41,26 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isLoggedInAdmin = this.userService.isLoggedInAdmin();
+    let agentAnalyserisLogged=this.userService.isLoggedInAdmin();
+    let agentReceptionisLogged=this.userService.isLoggedInAdmin();
+    let agentFacturationisLogged=this.userService.isLoggedInAdmin();
+    if (isLoggedInAdmin) {
+      this.router.navigate(['/dashboard']);
+    }
+    if (agentAnalyserisLogged) {
+      this.router.navigate(['/espace-agentAnalyser']);
+    }
+    if (agentReceptionisLogged) {
+      this.router.navigate(['/espace-agentReception']);
+    }
+    if (agentFacturationisLogged) {
+      this.router.navigate(['/espace-agentFacturation']);
+    }
+
+
+  }
 
   loginUser() {
     let data = this.loginForm.value;

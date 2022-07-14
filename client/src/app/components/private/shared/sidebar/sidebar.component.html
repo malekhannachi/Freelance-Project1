@@ -13,8 +13,26 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item active" *ngIf="adminIsLogged">
         <a class="nav-link" routerLink="/dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item active" *ngIf="agentReceptionisLogged">
+        <a class="nav-link" routerLink="/espace-agentReception">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item active" *ngIf="agentAnalyserisLogged">
+        <a class="nav-link" routerLink="/espace-agentAnalyser">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item active" *ngIf="agentFacturationisLogged">
+        <a class="nav-link" routerLink="/espace-agentFacturation">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>

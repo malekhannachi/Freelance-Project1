@@ -10,11 +10,13 @@ export class SidebarComponent implements OnInit {
   adminIsLogged!:Boolean
   agentAnalyserisLogged!:Boolean
   agentReceptionisLogged!:Boolean
+  agentFacturationisLogged!:Boolean
   constructor(private us:UserService) {}
 
   ngOnInit(): void {
     this.adminIsLogged=this.us.isLoggedInAdmin()
     this.agentAnalyserisLogged=this.us.isLoggedInAgentAnalyser()
     this.agentReceptionisLogged=this.us.isLoggedInAgentReception()
+    this.agentFacturationisLogged=this.us.isLoggedInAgentFacturation()
   }
 }

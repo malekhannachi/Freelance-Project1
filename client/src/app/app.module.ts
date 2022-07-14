@@ -28,6 +28,9 @@ import { ListCiterneComponent } from './components/private/agentReception/citern
 import { AddCiterneComponent } from './components/private/agentReception/citerne/add-citerne/add-citerne.component';
 import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +58,8 @@ import { UpdateCiterneComponent } from './components/private/agentReception/cite
     AddCiterneComponent,
     UpdateCiterneComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule,NgToastModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule, BrowserAnimationsModule,
+    ToastrModule.forRoot(),NgToastModule],
   providers: [],
   bootstrap: [AppComponent],
 })
