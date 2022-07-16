@@ -70,4 +70,54 @@ const addAnalyse = async (req, res) => {
   }
 };
 
+const getAnalyse = async (req, res) => {
+  const id = req.analyse._id;
+  try {
+    const getAnalyse = await Analyse.findById(id);
+    return res.status(200).json(getAnalyse);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
+const getAnalyses = async (req, res) => {
+  const limit = req.query.limit ? parseInt(req.query.limit) : 999;
+
+  try {
+    const getAnalyses = await Analyse.find()
+      .sort({ createdAt: -1 })
+      .limit(limit);
+    return res.status(200).json(getAnalyses);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
+const deleteAnalyse = async (req, res) => {
+  const id = req.analyse._id;
+  try {
+    await Analyse.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Analyse deleted" });
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
+const updateAnalyse = async (req, res) => {
+  const id = req.analyse._id;
+
+  try {
+    const updateAnalyse = await Analyse.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    return res.status(200).json(updateAnalyse);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
 module.exports.addAnalyse = addAnalyse;
+module.exports.getAnalyse = getAnalyse;
+module.exports.getAnalyses = getAnalyses;
+module.exports.deleteAnalyse = deleteAnalyse;
+module.exports.updateAnalyse = updateAnalyse;
