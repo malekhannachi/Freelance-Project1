@@ -104,7 +104,7 @@
                             <tbody>
                                 <tr *ngFor="let c of camion.dateEntre;let i =index">
                                     <td>{{i+1}} - </td>
-                                    <td> {{c.dateEntre}}</td>
+                                    <td> {{c.dateEntre |date :'short'}}</td>
                                 </tr>
                             </tbody>
 

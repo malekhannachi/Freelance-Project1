@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private toast: NgToastService
   ) {
     let formControlls = {
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -43,23 +43,24 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let isLoggedInAdmin = this.userService.isLoggedInAdmin();
-    let agentAnalyserisLogged=this.userService.isLoggedInAdmin();
-    let agentReceptionisLogged=this.userService.isLoggedInAdmin();
-    let agentFacturationisLogged=this.userService.isLoggedInAdmin();
+    let agentAnalyserisLogged = this.userService.isLoggedInAdmin();
+    let agentReceptionisLogged = this.userService.isLoggedInAdmin();
+    let agentFacturationisLogged = this.userService.isLoggedInAdmin();
     if (isLoggedInAdmin) {
       this.router.navigate(['/dashboard']);
+    } else {
+      if (agentAnalyserisLogged) {
+        this.router.navigate(['/espace-agentAnalyser']);
+      } else {
+        if (agentReceptionisLogged) {
+          this.router.navigate(['/espace-agentReception']);
+        } else {
+          if (agentFacturationisLogged) {
+            this.router.navigate(['/espace-agentFacturation']);
+          }
+        }
+      }
     }
-    if (agentAnalyserisLogged) {
-      this.router.navigate(['/espace-agentAnalyser']);
-    }
-    if (agentReceptionisLogged) {
-      this.router.navigate(['/espace-agentReception']);
-    }
-    if (agentFacturationisLogged) {
-      this.router.navigate(['/espace-agentFacturation']);
-    }
-
-
   }
 
   loginUser() {
@@ -73,33 +74,46 @@ export class LoginComponent implements OnInit {
       data.password
     );
     console.log(user);
-    this.userService.loginUser(user).subscribe((result) => {
-      console.log(result);
-      alert('connexion réussie');
-      let token = result.token;
-      localStorage.setItem('myToken', token);
 
-      const helper = new JwtHelperService();
-      const decodedToken = helper.decodeToken(token);
-      console.log(decodedToken);
+    // test form vide ou non
+    if (data.email == 0 || data.password == 0 || this.loginForm.invalid) {
+      alert('Vérfier votre champs');
+    } else {
+      this.userService.loginUser(user).subscribe(
+        (result) => {
+          console.log(result);
+          alert('connexion réussie');
+          let token = result.token;
+          localStorage.setItem('myToken', token);
 
-      switch (decodedToken.role) {
-        case 'agentAnalyser':
-          this.router.navigate(['/espace-agentAnalyser']);
-          break;
+          const helper = new JwtHelperService();
+          const decodedToken = helper.decodeToken(token);
+          console.log(decodedToken);
 
-        case 'agentReception':
-          this.router.navigate(['/espace-agentReception']);
-          break;
+          switch (decodedToken.role) {
+            case 'agentAnalyser':
+              this.router.navigate(['/espace-agentAnalyser']);
+              break;
 
-        case 'agentFacturation':
-          this.router.navigate(['/espace-agentFacturation']);
-          break;
+            case 'agentReception':
+              this.router.navigate(['/espace-agentReception']);
+              break;
 
-        default:
-          this.router.navigate(['/dashboard']);
-          break;
-      }
-    });
+            case 'agentFacturation':
+              this.router.navigate(['/espace-agentFacturation']);
+              break;
+
+            default:
+              this.router.navigate(['/dashboard']);
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+
+          alert('la connexion à échoué, Vérfier les donneés');
+        }
+      );
+    }
   }
 }

@@ -41,6 +41,11 @@ openSuccess(){
         console.log(res);
         let index = this.camionList.indexOf(camion);
         this.camionList.splice(index, 1);
+        this.toast.error({
+          detail: ' Message',
+          summary: 'Camion est Supprimé',
+          duration: 2000,
+        });
        
       },
       (err) => {
@@ -62,6 +67,11 @@ openSuccess(){
       (res) => {
         console.log(res);
         window.location.reload();
+        this.toast.success({
+          detail: ' Message',
+          summary: 'Date est Ajouté',
+          duration: 3000,
+        });
       },
       (err) => {
         console.log(err);
