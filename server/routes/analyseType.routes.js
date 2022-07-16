@@ -1,4 +1,4 @@
-const { addAnalyse } = require("../controllers/analyseType.controllers");
+const { addAnalyse, getAnalyse, getAnalyses, deleteAnalyse, updateAnalyse } = require("../controllers/analyseType.controllers");
 const Analyse = require("../models/analyseType.model");
 
 const router = require("express").Router();
@@ -22,5 +22,9 @@ router.param("analyse", async (req, res, next, id) => {
 
 //Analyse
 router.post("/add", addAnalyse);
+router.get("/oneAnalyse/:analyse", getAnalyse);
+router.get("/allAnalyse", getAnalyses);
+router.delete("/delete/:analyse",deleteAnalyse );
+router.put("/update/:analyse", updateAnalyse);
 
 module.exports = router;
