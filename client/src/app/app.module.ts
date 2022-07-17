@@ -30,6 +30,7 @@ import { UpdateCiterneComponent } from './components/private/agentReception/cite
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileComponent } from './components/private/shared/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ToastrModule } from 'ngx-toastr';
     ListCiterneComponent,
     AddCiterneComponent,
     UpdateCiterneComponent,
+    ProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule, BrowserAnimationsModule,
     ToastrModule.forRoot(),NgToastModule],
