@@ -24,11 +24,12 @@ import { ListCiterneComponent } from './components/private/agentReception/citern
 import { AddCiterneComponent } from './components/private/agentReception/citerne/add-citerne/add-citerne.component';
 import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 import { ProfileComponent } from './components/private/shared/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent,},
+  { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
   { path: 'dashboard', component: DashboardComponent,canActivate:[AdminGuard] },
   //ADMIN : Gestion des Agents
   { path: 'list-user', component: ListUserComponent ,canActivate:[AdminGuard] },
