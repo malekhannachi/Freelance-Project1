@@ -7,6 +7,8 @@
         </div>
         <div class="sidebar-brand-text mx-3" *ngIf="adminIsLogged">Espace Admin </div>
         <div class="sidebar-brand-text mx-3" *ngIf="agentReceptionisLogged">Espace Agent-reception </div>
+        <div class="sidebar-brand-text mx-3" *ngIf="agentAnalyserisLogged">Espace Agent-Analyser </div>
+        <div class="sidebar-brand-text mx-3" *ngIf="agentReceptionisLogged">Espace Agent-reception </div>
     </a>
 
     <!-- Divider -->
@@ -52,7 +54,7 @@
             <span>Gestion des Fournisseurs</span></a>
     </li>
     <li class="nav-item" *ngIf="adminIsLogged">
-        <a class="nav-link" [routerLink]="['/']">
+        <a class="nav-link" [routerLink]="['/list-analyses']">
             <i class="fas fa-fw fa-tasks"></i>
             <span>Gestion des Types d'anlyse</span></a>
     </li>
@@ -83,6 +85,22 @@
         <a class="nav-link" [routerLink]="['/']">
             <i class="fas fa-fw fa-tasks"></i>
             <span>Gestion des bons de vidage </span></a>
+    </li>
+
+
+    <!-- Agent Anyalser items -->
+    <li class="nav-item" *ngIf="agentAnalyserisLogged">
+        <a class="nav-link" [routerLink]="['/list-analyse']">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Gestion des Bons d'anlyses</span></a>
+    </li>
+
+    <!-- Agent Facturation items -->
+
+    <li class="nav-item" *ngIf="agentFacturationisLogged">
+        <a class="nav-link" [routerLink]="['/']">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Gestion les Factures</span></a>
     </li>
 
     <!-- Divider -->

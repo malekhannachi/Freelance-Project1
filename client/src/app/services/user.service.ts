@@ -43,6 +43,16 @@ export class UserService {
     return decodedToken;
   }
 
+  //test user logged or no
+  isLoggedIn() {
+    let token = localStorage.getItem("myToken");
+    if (token)
+      return true
+    else
+      return false
+  }
+
+
   //test admin logged or no
   isLoggedInAdmin() {
     let token = localStorage.getItem('myToken');

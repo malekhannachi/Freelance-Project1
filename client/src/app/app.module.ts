@@ -30,6 +30,13 @@ import { UpdateCiterneComponent } from './components/private/agentReception/cite
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileComponent } from './components/private/shared/profile/profile.component';
+import { ListAnylseComponent } from './components/private/agentAnalyser/list-anylse/list-anylse.component';
+import { AddAnylseComponent } from './components/private/agentAnalyser/add-anylse/add-anylse.component';
+import { UpdateAnylseComponent } from './components/private/agentAnalyser/update-anylse/update-anylse.component';
+import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
+import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
+import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +64,14 @@ import { ToastrModule } from 'ngx-toastr';
     ListCiterneComponent,
     AddCiterneComponent,
     UpdateCiterneComponent,
+    ProfileComponent,
+    ListAnylseComponent,
+    AddAnylseComponent,
+    UpdateAnylseComponent,
+    DetailAnylseComponent,
+    ListAnalyseComponent,
+    DetailsAnalyseComponent,
+   
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule, BrowserAnimationsModule,
     ToastrModule.forRoot(),NgToastModule],
