@@ -25,12 +25,19 @@ import { AddCiterneComponent } from './components/private/agentReception/citerne
 import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 import { ProfileComponent } from './components/private/shared/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ListAnylseComponent } from './components/private/agentAnalyser/list-anylse/list-anylse.component';
+import { AddAnylseComponent } from './components/private/agentAnalyser/add-anylse/add-anylse.component';
+import { UpdateAnylseComponent } from './components/private/agentAnalyser/update-anylse/update-anylse.component';
+import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
+import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
+import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
   { path: 'dashboard', component: DashboardComponent,canActivate:[AdminGuard] },
+
   //ADMIN : Gestion des Agents
   { path: 'list-user', component: ListUserComponent ,canActivate:[AdminGuard] },
   { path: 'add-user', component: AddUserComponent ,canActivate:[AdminGuard]},
@@ -39,12 +46,23 @@ const routes: Routes = [
   { path: 'list-fournisseur', component: ListFournisseurComponent,canActivate:[AdminGuard] },
   { path: 'add-fournisseur', component: AddFournisseurComponent,canActivate:[AdminGuard] },
   { path: 'update-fournisseur/:id', component: UpdateFournisseurComponent ,canActivate:[AdminGuard]},
-  //
+ //ADMIN :Gestion des Fournisseurs
+ { path: 'list-analyses', component: ListAnalyseComponent ,canActivate:[AdminGuard] },
+ { path: 'details-anaylses/:id', component: DetailsAnalyseComponent ,canActivate:[AdminGuard]},
+
+
+
+  //Agent Analyser : Gestion des Anayles
   { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent,canActivate:[AgentAnalyserGuard] },
- 
-  // //agentReception :Gestion des Camions
+  //Agent Analyser :
+  { path: 'list-analyse', component: ListAnylseComponent ,canActivate:[AgentAnalyserGuard] },
+  { path: 'add-analyse', component: AddAnylseComponent ,canActivate:[AgentAnalyserGuard]},
+  { path: 'update-analyse/:id', component: UpdateAnylseComponent ,canActivate:[AgentAnalyserGuard]},
+  { path: 'detail-analyse/:id', component: DetailAnylseComponent ,canActivate:[AgentAnalyserGuard]},
+
+   //AgentReception 
   { path: 'espace-agentReception', component: EspaceAgentReceptionComponent ,canActivate:[AgentReceptionGuard]},
-  //
+  //AgentReception :Gestion des Camions
   { path: 'list-camion', component: ListCamionComponent ,canActivate:[AgentReceptionGuard] },
   { path: 'add-camion', component: AddCamionComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'update-camion/:id', component: UpdateCamionComponent ,canActivate:[AgentReceptionGuard]},
@@ -53,6 +71,7 @@ const routes: Routes = [
   { path: 'add-citerne', component: AddCiterneComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'update-citerne/:id', component: UpdateCiterneComponent ,canActivate:[AgentReceptionGuard]},
 
+//Agent Facturation 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 
   { path: '**', component: Page404Component },
