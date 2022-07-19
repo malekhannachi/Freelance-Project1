@@ -86,7 +86,10 @@ const getAnalyses = async (req, res) => {
   try {
     const getAnalyses = await Analyse.find()
       .sort({ createdAt: -1 })
-      .limit(limit);
+      .limit(limit)
+      .populate("fournisseur")
+      .populate("camion")
+      .populate("citerne");
     return res.status(200).json(getAnalyses);
   } catch (err) {
     return res.status(500).json(err);
