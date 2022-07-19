@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Fournisseur } from 'src/app/models/fournisseur';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
 
@@ -21,7 +22,8 @@ export class UpdateFournisseurComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private fs: FournisseurService
+    private fs: FournisseurService,
+    private toast: NgToastService
   ) {
     let formControls = {
       firstname: new FormControl('', [Validators.required]),
@@ -35,6 +37,39 @@ export class UpdateFournisseurComponent implements OnInit {
       zipCode: new FormControl('', [Validators.required]),
     };
     this.fourForm = this.fb.group(formControls);
+  }
+  get firstname() {
+    return this.fourForm.get('firstname');
+  }
+  get lastname() {
+    return this.fourForm.get('lastname');
+  }
+  get role() {
+    return this.fourForm.get('role');
+  }
+
+  get email() {
+    return this.fourForm.get('email');
+  }
+  get cin() {
+    return this.fourForm.get('cin');
+  }
+
+  get number() {
+    return this.fourForm.get('number');
+  }
+  get street() {
+    return this.fourForm.get('street');
+  }
+
+  get city() {
+    return this.fourForm.get('city');
+  }
+  get country() {
+    return this.fourForm.get('country');
+  }
+  get zipCode() {
+    return this.fourForm.get('zipCode');
   }
 
   ngOnInit(): void {
@@ -76,11 +111,33 @@ export class UpdateFournisseurComponent implements OnInit {
       data.zipCode
     );
     console.log(fournisseur);
+    if (this.fourForm.invalid) {
+      this.toast.info({
+        detail: 'Information',
+        summary: 'Vérfier votre champs',
+        duration: 2000,
+      });
+    } else {
+      this.fs.updateFournisseur(this.id, fournisseur).subscribe(
+        (res) => {
+          console.log(res);
 
-    this.fs.updateFournisseur(this.id, fournisseur).subscribe((res) => {
-      console.log(res);
-
-      this.router.navigate(['/list-fournisseur']);
-    });
+          this.router.navigate(['/list-fournisseur']);
+          this.toast.warning({
+            detail: ' Message',
+            summary: 'Fournisseur est Modifié',
+            duration: 2000,
+          });
+        },
+        (error) => {
+          console.log(error);
+          this.toast.info({
+            detail: 'Information',
+            summary: 'Vérfier les donneés',
+            duration: 2000,
+          });
+        }
+      );
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListFournisseurComponent implements OnInit {
   fourniList: any[] = [];
-  constructor(private router: Router, private fs: FournisseurService) {}
+  constructor(private router: Router, private fs: FournisseurService,private toast:NgToastService) {}
 
   ngOnInit(): void {
     this.fs.getAllFournisseur().subscribe((result) => {
@@ -20,15 +21,22 @@ export class ListFournisseurComponent implements OnInit {
     });
   }
   deleteFourni(user: any) {
-    this.fs.deleteFournisseur(user._id).subscribe(
-      (res) => {
-        console.log(res);
-        let index = this.fourniList.indexOf(user);
-        this.fourniList.splice(index, 1);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    if (confirm('Voulez vous supprimer cet Fournisseur ?')) {
+      this.fs.deleteFournisseur(user._id).subscribe(
+        (res) => {
+          console.log(res);
+          let index = this.fourniList.indexOf(user);
+          this.fourniList.splice(index, 1);
+          this.toast.error({
+            detail: ' Message',
+            summary: 'Fournisseur est Supprimé',
+            duration: 2000,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 }
