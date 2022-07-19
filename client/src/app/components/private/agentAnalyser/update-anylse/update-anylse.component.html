@@ -1,1 +1,212 @@
-<p>update-anylse works!</p>
+<div id="page-top">
+    <!-- Page Wrapper -->
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+
+        <app-sidebar></app-sidebar>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+
+            <div id="content">
+                <!-- Topbar -->
+
+                <app-topbar></app-topbar>
+                <!-- End of Topbar -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Modifier Un Analyse</h1>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-warning">Modifier Analyse détaillé</h6>
+                        </div>
+
+                        <div class="card-body">
+                            <form [formGroup]="AnalyseForm" (ngSubmit)="updateAnalyse()">
+                                <div class="row">
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Fournisseur : </label>
+                                            <select class="custom-select" formControlName="fournisseur">
+                                                <option hidden selected value="">--Choisir un Fornisseur--</option>
+                                                <option [ngValue]="frns._id" *ngFor="let frns of fourniList">
+                                                    {{frns.firstName}} {{frns.lastName}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Camion : </label>
+                                            <select class="custom-select" formControlName="camion">
+                                                <option hidden selected value="">--Choisir un Camion--</option>
+                                                <option [ngValue]="camion._id" *ngFor="let camion of camionList">
+                                                    {{camion.typeCamion}} {{camion.matricule}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Citerne : </label>
+                                            <select class="custom-select" formControlName="citerne">
+                                                <option hidden selected value="">--Choisir un Citerne--</option>
+                                                <option [ngValue]="citerne._id" *ngFor="let citerne of citerneList">
+                                                    {{citerne.Num_order}} </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Température (°C) : </label>
+                                            <input type="text" class="form-control" placeholder="entrer le température"
+                                                formControlName="temperature">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Densité : </label>
+                                            <input type="text" class="form-control" placeholder="entrer le densité"
+                                                formControlName="densite">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Matière grasse : </label>
+                                            <input type="text" class="form-control"
+                                                placeholder="entrer le matiére de grasse"
+                                                formControlName="matiereGrasse">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">ESD (%) : </label>
+                                            <input type="text" class="form-control" placeholder="entrer le ESD"
+                                                formControlName="ESD">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Congélation (°C) : </label>
+                                            <input type="text" class="form-control" placeholder="entrer le congélation"
+                                                formControlName="congelation">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Pourcentage d'eau : </label>
+                                            <input type="text" class="form-control"
+                                                placeholder="entrer pourcentage d'eau" formControlName="pourcentageEau">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Acidité (° D) : </label>
+                                            <input type="text" class="form-control" placeholder="entrer l'acidité"
+                                                formControlName="acidite">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">PH (20°C) : </label>
+                                            <input type="text" class="form-control" placeholder="entrer le ph"
+                                                formControlName="PH">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Alcool 72° : </label>
+                                            <select class="custom-select" formControlName="alcool">
+                                                <option hidden selected value="">--Choisir un agent--</option>
+                                                <option value="negatif">Positif</option>
+                                                <option value="positif">Négatif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Formol (NT 14.43) : </label>
+                                            <select class="custom-select" formControlName="formol">
+                                                <option hidden selected value="">--Choisir un agent--</option>
+                                                <option value="negatif">Positif</option>
+                                                <option value="positif">Négatif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Test amidon : </label>
+                                            <select class="custom-select" formControlName="testAmidon">
+                                                <option hidden selected value="">--Choisir un agent--</option>
+                                                <option value="negatif">Positif</option>
+                                                <option value="positif">Négatif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Antibiotique : </label>
+                                            <select class="custom-select" formControlName="antibiotique">
+                                                <option hidden selected value="">--Choisir un agent--</option>
+                                                <option value="negatif">Positif</option>
+                                                <option value="positif">Négatif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Goût et odeur : </label>
+                                            <input type="text" class="form-control"
+                                                placeholder="entrer le matiére de grasse" formControlName="gout">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+                                <button class="btn btn-sm btn-warning mt-3" type="submit">Modifier</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
