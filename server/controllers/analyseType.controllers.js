@@ -73,7 +73,10 @@ const addAnalyse = async (req, res) => {
 const getAnalyse = async (req, res) => {
   const id = req.analyse._id;
   try {
-    const getAnalyse = await Analyse.findById(id);
+    const getAnalyse = await Analyse.findById(id)
+      .populate("fournisseur")
+      .populate("camion")
+      .populate("citerne");
     return res.status(200).json(getAnalyse);
   } catch (err) {
     return res.status(500).json(err);
