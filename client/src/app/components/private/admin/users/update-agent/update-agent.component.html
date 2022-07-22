@@ -35,23 +35,45 @@
                                 <div class="form-group">
                                     <label for="name" id="name">Prénom : </label>
                                     <input type="text" class="form-control" formControlName="firstname">
-
+                                    <div *ngIf="firstname?.touched && firstname?.invalid">
+                                        <small class="text-danger" *ngIf=" firstname?.errors?.['required']">prénom
+                                            est obligatoire</small>
+                                      
+                                    </div>
                                 </div>
                                 <div>
                                     <div class="form-group">
                                         <label for="description" id="desc">Nom : </label>
                                         <input type="text" class="form-control" formControlName="lastname">
-
+                                        <div *ngIf="lastname?.touched && lastname?.invalid">
+                                            <small class="text-danger" *ngIf=" lastname?.errors?.['required']">nom
+                                                est obligatoire</small>
+                                          
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="Email" id="Email">Email : </label>
                                         <input type="email" class="form-control" formControlName="email">
-
+                                        <div *ngIf="email?.touched && email?.invalid">
+                                            <small class="text-danger" *ngIf=" email?.errors?.['required']">e-mail
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
+                                                inccorect
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" id="password">Mot de passe : </label>
                                         <input type="password" class="form-control" formControlName="password">
-
+                                        <div *ngIf="password?.touched && password?.invalid">
+                                            <small class="text-danger" *ngIf="password?.errors?.['required']">mot de
+                                                passe
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="password?.errors?.['minlength']"> mot de
+                                                passe minuim 8
+                                                caractéres
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Type d'Agent : </label>
@@ -62,6 +84,11 @@
                                             <option value="agentFacturation">agent Facturation</option>
 
                                         </select>
+                                        <div *ngIf="role?.touched && (role?.invalid || role?.dirty)">
+                                            <small class="text-danger" *ngIf=" role?.errors?.['required']">role
+                                                est obligatoire</small>
+
+                                        </div>
                                     </div>
 
 

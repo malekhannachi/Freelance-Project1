@@ -35,49 +35,99 @@
                                 <div class="form-group">
                                     <label for="name" id="name">Prénom : </label>
                                     <input type="text" class="form-control" formControlName="firstname">
+                                    <div *ngIf="firstname?.touched && firstname?.invalid">
+                                        <small class="text-danger" *ngIf=" firstname?.errors?.['required']">prénom
+                                            est obligatoire</small>
+
+                                    </div>
 
                                 </div>
                                 <div>
                                     <div class="form-group">
                                         <label for="description" id="desc">Nom : </label>
                                         <input type="text" class="form-control" formControlName="lastname">
+                                        <div *ngIf="lastname?.touched && lastname?.invalid">
+                                            <small class="text-danger" *ngIf=" lastname?.errors?.['required']">nom
+                                                est obligatoire</small>
 
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="Email" id="Email">Email : </label>
                                         <input type="email" class="form-control" formControlName="email">
-
+                                        <div *ngIf="email?.touched && email?.invalid">
+                                            <small class="text-danger" *ngIf=" email?.errors?.['required']">e-mail
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
+                                                inccorect
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Cin : </label>
                                         <input type="number" class="form-control" formControlName="cin">
-
+                                        <div *ngIf="cin?.touched && cin?.invalid">
+                                            <small class="text-danger" *ngIf="cin?.errors?.['required']">Cin
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="cin?.errors?.['minlength']">Cin contient 8
+                                                chiffres
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>number : </label>
+                                        <label>Numéro de Télephone : </label>
                                         <input type="number" class="form-control" formControlName="number">
-
+                                        <div *ngIf="number?.touched && number?.invalid">
+                                            <small class="text-danger" *ngIf=" number?.errors?.['required']">num
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="number?.errors?.['max']">num contient 8
+                                                chiffres
+                                            </small>
+                                            <small class="text-danger" *ngIf="number?.errors?.['min']">num
+                                                contient 8
+                                                chiffres
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>street : </label>
+                                        <label>Rue : </label>
                                         <input type="text" class="form-control" formControlName="street">
+                                        <div *ngIf="street?.touched && street?.invalid">
+                                            <small class="text-danger" *ngIf=" street?.errors?.['required']">Rue
+                                                est obligatoire</small>
 
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>city : </label>
+                                        <label>Ville : </label>
                                         <input type="text" class="form-control" formControlName="city">
+                                        <div *ngIf="city?.touched && city?.invalid">
+                                            <small class="text-danger"
+                                                *ngIf=" city?.errors?.['required']">Ville
+                                                est obligatoire</small>
 
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Country : </label>
+                                        <label> Gouvernorat : </label>
                                         <input type="text" class="form-control" formControlName="country">
+                                        <div *ngIf="country?.touched && country?.invalid">
+                                            <small class="text-danger"
+                                                *ngIf=" country?.errors?.['required']">Gouvernorat
+                                                est obligatoire</small>
 
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>zipCode : </label>
+                                        <label>Code postal : </label>
                                         <input type="number" class="form-control" formControlName="zipCode">
+                                        <div *ngIf="zipCode?.touched && zipCode?.invalid">
+                                            <small class="text-danger" *ngIf=" zipCode?.errors?.['required']">Code
+                                                postal
+                                                est obligatoire</small>
 
+                                        </div>
                                     </div>
 
 

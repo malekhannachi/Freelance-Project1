@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListUserComponent implements OnInit {
   userList: any[] = [];
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
     this.userService.getAllUser().subscribe((result) => {
@@ -17,15 +22,22 @@ export class ListUserComponent implements OnInit {
     });
   }
   deleteUser(user: any) {
-    this.userService.deleteUser(user._id).subscribe(
-      (res) => {
-        console.log(res);
-        let index = this.userList.indexOf(user);
-        this.userList.splice(index, 1);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    if (confirm('Voulez vous supprimer cet Agent ?')) {
+      this.userService.deleteUser(user._id).subscribe(
+        (res) => {
+          console.log(res);
+          let index = this.userList.indexOf(user);
+          this.userList.splice(index, 1);
+          this.toast.error({
+            detail: ' Message',
+            summary: 'Agent est Supprimé',
+            duration: 2000,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 }

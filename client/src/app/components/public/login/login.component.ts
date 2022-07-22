@@ -77,12 +77,23 @@ export class LoginComponent implements OnInit {
 
     // test form vide ou non
     if (data.email == 0 || data.password == 0 || this.loginForm.invalid) {
-      alert('Vérfier votre champs');
+     
+      this.toast.info({
+        detail: 'Information',
+        summary: 'Vérfier votre champs',
+        duration: 2000,
+      });
+
     } else {
       this.userService.loginUser(user).subscribe(
         (result) => {
           console.log(result);
-          alert('connexion réussie');
+        
+          this.toast.success({
+            detail: 'success message',
+            summary: 'connexion réussie',
+            duration: 2000,
+          });
           let token = result.token;
           localStorage.setItem('myToken', token);
 
@@ -110,8 +121,11 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.log(error);
+          this.toast.info({
+            detail: 'Information',
+            summary: 'la connexion à échoué, Vérfier les donneés',
+            duration: 2000,})
 
-          alert('la connexion à échoué, Vérfier les donneés');
         }
       );
     }
