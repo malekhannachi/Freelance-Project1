@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Analyse } from 'src/app/models/analyse';
 import { AnalyseService } from 'src/app/services/analyse.service';
@@ -10,15 +15,14 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 @Component({
   selector: 'app-update-anylse',
   templateUrl: './update-anylse.component.html',
-  styleUrls: ['./update-anylse.component.css']
+  styleUrls: ['./update-anylse.component.css'],
 })
 export class UpdateAnylseComponent implements OnInit {
-
   AnalyseForm!: FormGroup;
   camionList: any[] = [];
   fourniList: any[] = [];
   citerneList: any[] = [];
-  id:any
+  id: any;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -50,7 +54,7 @@ export class UpdateAnylseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDataAnalyse()
+    this.getDataAnalyse();
     this.getAllCamion();
     this.getAllFourni();
     this.getAllCiterne();
@@ -61,27 +65,25 @@ export class UpdateAnylseComponent implements OnInit {
     console.log(this.id);
     console.log(idAnalyse);
 
-
     this.analyseSerive.getbyId(idAnalyse).subscribe((result) => {
       let data = result;
       console.log(data);
       this.AnalyseForm.patchValue({
         temperature: data.temperature,
-        densite:  data.densite,
-        matiereGrasse:    data.matiereGrasse,
-        ESD:   data.ESD,
-        congelation : data.congelation,
+        densite: data.densite,
+        matiereGrasse: data.matiereGrasse,
+        ESD: data.ESD,
+        congelation: data.congelation,
         pourcentageEau: data.pourcentageEau,
-        acidite:  data.acidite,
+        acidite: data.acidite,
         PH: data.PH,
-        alcool:   data.alcool,
+        alcool: data.alcool,
         formol: data.formol,
-        testAmidon:  data.testAmidon,
-        antibiotique:  data.antibiotique,
-        fournisseur:   data.fournisseur,
-        camion:  data.camion,
-        citerne:  data.citerne,
-       
+        testAmidon: data.testAmidon,
+        antibiotique: data.antibiotique,
+        fournisseur: data.fournisseur,
+        camion: data.camion,
+        citerne: data.citerne,
       });
     });
   }
@@ -92,9 +94,6 @@ export class UpdateAnylseComponent implements OnInit {
       this.citerneList = result;
     });
   }
-
-
-
 
   getAllFourni() {
     this.fs.getAllFournisseur().subscribe((result) => {
@@ -112,7 +111,7 @@ export class UpdateAnylseComponent implements OnInit {
     });
   }
 
-/*
+  /*
      temperature,
       densite,
       matiereGrasse,
@@ -131,7 +130,7 @@ export class UpdateAnylseComponent implements OnInit {
 
 */
 
-updateAnalyse() {
+  updateAnalyse() {
     let data = this.AnalyseForm.value;
     console.log(data);
 
@@ -148,19 +147,17 @@ updateAnalyse() {
       data.alcool,
       data.formol,
       data.testAmidon,
-       data.antibiotique,
+      data.antibiotique,
       data.fournisseur,
       data.camion,
-      data.citerne,
-    
+      data.citerne
     );
     console.log(analyse);
 
-    this.analyseSerive.updateAnalyse(this.id,analyse).subscribe((res) => {
+    this.analyseSerive.updateAnalyse(this.id, analyse).subscribe((res) => {
       console.log(res);
 
       this.router.navigate(['/list-analyse']);
     });
   }
-
 }

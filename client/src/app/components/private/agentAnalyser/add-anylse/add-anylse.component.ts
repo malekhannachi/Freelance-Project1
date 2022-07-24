@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Analyse } from 'src/app/models/analyse';
 import { AnalyseService } from 'src/app/services/analyse.service';
 import { CamionService } from 'src/app/services/camion.service';
@@ -28,7 +29,8 @@ export class AddAnylseComponent implements OnInit {
     private cs: CamionService,
     private fs: FournisseurService,
     private citerneService: CiterneService,
-    private analyseSerive: AnalyseService
+    private analyseSerive: AnalyseService,
+    private toast: NgToastService
   ) {
     let formControls = {
       citerne: new FormControl('', [Validators.required]),
@@ -64,9 +66,6 @@ export class AddAnylseComponent implements OnInit {
     });
   }
 
-
-
-
   getAllFourni() {
     this.fs.getAllFournisseur().subscribe((result) => {
       console.log(result);
@@ -83,7 +82,7 @@ export class AddAnylseComponent implements OnInit {
     });
   }
 
-/*
+  /*
      temperature,
       densite,
       matiereGrasse,
@@ -119,18 +118,30 @@ export class AddAnylseComponent implements OnInit {
       data.alcool,
       data.formol,
       data.testAmidon,
-       data.antibiotique,
+      data.antibiotique,
       data.fournisseur,
       data.camion,
-      data.citerne,
-    
+      data.citerne
     );
     console.log(analyse);
 
-    this.analyseSerive.addAnalyse(analyse).subscribe((res) => {
-      console.log(res);
+    if (this.AnalyseForm.invalid) {
+      this.toast.info({
+        detail: 'Information',
+        summary: 'Remplir votre champs',
+        duration: 2000,
+      });
+    } else {
+      this.analyseSerive.addAnalyse(analyse).subscribe((res) => {
+        console.log(res);
 
-      this.router.navigate(['/list-analyse']);
-    });
+        this.router.navigate(['/list-analyse']);
+        this.toast.success({
+          detail: ' Message',
+          summary: 'Analyse est Ajouté',
+          duration: 3000,
+        });
+      });
+    }
   }
 }

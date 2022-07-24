@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+nb:number=0
   constructor() { }
 
   ngOnInit(): void {
   }
+  incriment(){
+    this.nb=this.nb +1
+  }
 
+  desincriment(){
+    this.nb=this.nb -1
+  }
 }
