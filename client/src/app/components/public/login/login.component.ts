@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let isLoggedInAdmin = this.userService.isLoggedInAdmin();
-    let agentAnalyserisLogged = this.userService.isLoggedInAdmin();
-    let agentReceptionisLogged = this.userService.isLoggedInAdmin();
-    let agentFacturationisLogged = this.userService.isLoggedInAdmin();
+    let agentAnalyserisLogged = this.userService.isLoggedInAgentAnalyser();
+    let agentReceptionisLogged = this.userService.isLoggedInAgentReception();
+    let agentFacturationisLogged = this.userService.isLoggedInAgentFacturation();
     if (isLoggedInAdmin) {
       this.router.navigate(['/dashboard']);
-    } else {
+    }
+     else {
       if (agentAnalyserisLogged) {
         this.router.navigate(['/espace-agentAnalyser']);
       } else {
@@ -77,18 +78,16 @@ export class LoginComponent implements OnInit {
 
     // test form vide ou non
     if (data.email == 0 || data.password == 0 || this.loginForm.invalid) {
-     
       this.toast.info({
         detail: 'Information',
         summary: 'Vérfier votre champs',
         duration: 2000,
       });
-
     } else {
       this.userService.loginUser(user).subscribe(
         (result) => {
           console.log(result);
-        
+
           this.toast.success({
             detail: 'success message',
             summary: 'connexion réussie',
@@ -124,8 +123,8 @@ export class LoginComponent implements OnInit {
           this.toast.info({
             detail: 'Information',
             summary: 'la connexion à échoué, Vérfier les donneés',
-            duration: 2000,})
-
+            duration: 2000,
+          });
         }
       );
     }
