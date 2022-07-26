@@ -17,6 +17,7 @@ const addAnalyse = async (req, res) => {
   fournisseur = req.body.fournisseur;
   camion = req.body.camion;
   citerne = req.body.citerne;
+  GoutEtOdeur = req.body.GoutEtOdeur;
 
   let decision = "";
   if (
@@ -34,7 +35,8 @@ const addAnalyse = async (req, res) => {
     alcool === "positif" ||
     formol === "positif" ||
     testAmidon === "positif" ||
-    antibiotique === "positif"
+    antibiotique === "positif" ||
+    GoutEtOdeur === "non"
   ) {
     decision = "Refuse";
   } else {
@@ -61,6 +63,7 @@ const addAnalyse = async (req, res) => {
     fournisseur: fournisseur,
     camion: camion,
     citerne: citerne,
+    GoutEtOdeur: GoutEtOdeur,
   });
   try {
     const savedAnalyse = await newAnalyse.save();
@@ -86,8 +89,12 @@ const getAnalyse = async (req, res) => {
 const getAnalyses = async (req, res) => {
   const limit = req.query.limit ? parseInt(req.query.limit) : 999;
 
+  let filter = {};
+  if (req.query.decision) {
+    filter.decision = req.query.decision;
+  }
   try {
-    const getAnalyses = await Analyse.find()
+    const getAnalyses = await Analyse.find(filter)
       .sort({ createdAt: -1 })
       .limit(limit)
       .populate("fournisseur")

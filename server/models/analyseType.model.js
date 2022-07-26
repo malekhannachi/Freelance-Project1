@@ -3,15 +3,15 @@ const AnalysisTypeSchema = new mongoose.Schema(
   {
     analyseNumber: { type: Number, default: 0 },
 
-    temperature: { type: Number, /*required: true*/ },
+    temperature: { type: Number /*required: true*/ },
 
     densite: { type: Number },
 
-    matiereGrasse: { type: Number,  /*required: true,*/ max: 99999999 },
+    matiereGrasse: { type: Number, /*required: true,*/ max: 99999999 },
 
-    ESD: { type: Number ,max: 101},
+    ESD: { type: Number, max: 101 },
 
-    congelation: { type: Number,  /*required: true*/ },
+    congelation: { type: Number /*required: true*/ },
 
     pourcentageEau: { type: Number },
 
@@ -34,6 +34,7 @@ const AnalysisTypeSchema = new mongoose.Schema(
     citerne: { type: mongoose.Schema.Types.ObjectId, ref: "Citerne" },
 
     decision: { type: String, enum: ["Accepte", "Refuse"] },
+    GoutEtOdeur: { type: String, enum: ["oui", "non"] },
   },
   { timestamps: true }
 );
