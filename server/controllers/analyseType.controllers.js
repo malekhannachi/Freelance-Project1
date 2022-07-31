@@ -21,22 +21,22 @@ const addAnalyse = async (req, res) => {
 
   let decision = "";
   if (
-    temperature > 10 ||
-    densite > 1028 ||
-    matiereGrasse > 30 ||
-    ESD > 100 ||
-    congelation < -0.52 ||
-    pourcentageEau < 1.5 ||
-    pourcentageEau > 5 ||
-    acidite < 14 ||
-    acidite > 16 ||
-    PH < 6.6 ||
-    PH > 6.7 ||
-    alcool === "positif" ||
-    formol === "positif" ||
-    testAmidon === "positif" ||
-    antibiotique === "positif" ||
-    GoutEtOdeur === "non"
+    temperature < 10 ||
+     densite > 1028 ||
+     matiereGrasse < 30 ||
+     ESD > 100 ||
+     congelation < -0.52 ||
+     pourcentageEau < 1.5 ||
+     pourcentageEau > 5 ||
+     acidite < 14 ||
+     acidite > 16 ||
+     PH < 6.6 ||
+     PH > 6.7 ||
+     alcool === "positif" ||
+     formol === "positif" ||
+     testAmidon === "positif" ||
+     antibiotique === "positif" ||
+     GoutEtOdeur === "non"
   ) {
     decision = "Refuse";
   } else {
