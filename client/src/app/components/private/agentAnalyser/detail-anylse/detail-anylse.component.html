@@ -20,12 +20,13 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro : {{analyse.analyseNumber}}
                             </h6>
-                         <br>
-                        
+                            <br>
+
                             <table class="table " id="dataTable" widtd="100%" cellspacing="0">
 
                                 <tr>
-                                    <td>Fournisseur : {{analyse.fournisseur.firstName }}  {{analyse.fournisseur.lastName }} </td>
+                                    <td>Fournisseur : {{analyse.fournisseur.firstName }} {{analyse.fournisseur.lastName
+                                        }} </td>
                                     <td>Camion : {{analyse.camion.matricule }} {{analyse.camion.typeCamion }}</td>
                                     <td>Citerne : {{analyse.citerne?.Num_order }}</td>
 
@@ -131,8 +132,8 @@
                                     </tbody>
 
                                 </table>
-                                <div class=" text-danger text-center" >
-                                  <b>  Décision :</b>
+                                <div class=" text-danger text-center">
+                                    <b> Décision :</b>
                                 </div>
                                 <div class="alert alert-success text-center" *ngIf="analyse.decision == 'Accepte' ">
                                     Accepté

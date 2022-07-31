@@ -43,7 +43,7 @@
                                                     {{frns.firstName}} {{frns.lastName}}</option>
 
                                             </select>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col">
@@ -188,9 +188,12 @@
 
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="name" id="name">Goût et odeur : </label>
-                                            <input type="text" class="form-control"
-                                                placeholder="entrer le matiére de grasse" formControlName="gout">
+                                            <label for="name" id="name">Goût et odeur (Accepté): </label>
+                                            <select class="custom-select" formControlName="gout">
+                                                <option hidden selected value="">--Choisir un --</option>
+                                                <option value="oui">Oui</option>
+                                                <option value="non">Non</option>
+                                            </select>
                                         </div>
                                     </div>
 
