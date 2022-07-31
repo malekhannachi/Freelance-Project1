@@ -119,6 +119,7 @@ export class AddAnylseComponent implements OnInit {
       data.formol,
       data.testAmidon,
       data.antibiotique,
+      data.gout,
       data.fournisseur,
       data.camion,
       data.citerne

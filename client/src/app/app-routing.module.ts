@@ -31,6 +31,8 @@ import { UpdateAnylseComponent } from './components/private/agentAnalyser/update
 import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
 import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
 import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
+import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -70,7 +72,7 @@ const routes: Routes = [
  { path: 'list-citerne', component: ListCiterneComponent ,canActivate:[AgentReceptionGuard] },
   { path: 'add-citerne', component: AddCiterneComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'update-citerne/:id', component: UpdateCiterneComponent ,canActivate:[AgentReceptionGuard]},
-
+  { path: 'bon-vidage', component: BonVidageComponent ,canActivate:[AgentReceptionGuard]},
 //Agent Facturation 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 

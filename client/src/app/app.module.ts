@@ -37,6 +37,8 @@ import { UpdateAnylseComponent } from './components/private/agentAnalyser/update
 import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
 import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
 import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
+import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
+
 
 @NgModule({
   declarations: [
@@ -71,6 +73,9 @@ import { DetailsAnalyseComponent } from './components/private/admin/analyse/deta
     DetailAnylseComponent,
     ListAnalyseComponent,
     DetailsAnalyseComponent,
+    
+    BonVidageComponent,
+    
    
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule, BrowserAnimationsModule,

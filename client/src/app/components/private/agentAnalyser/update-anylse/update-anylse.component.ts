@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Analyse } from 'src/app/models/analyse';
 import { AnalyseService } from 'src/app/services/analyse.service';
 import { CamionService } from 'src/app/services/camion.service';
@@ -30,7 +31,8 @@ export class UpdateAnylseComponent implements OnInit {
     private cs: CamionService,
     private fs: FournisseurService,
     private citerneService: CiterneService,
-    private analyseSerive: AnalyseService
+    private analyseSerive: AnalyseService,
+    private toast: NgToastService
   ) {
     let formControls = {
       citerne: new FormControl('', [Validators.required]),
@@ -81,6 +83,7 @@ export class UpdateAnylseComponent implements OnInit {
         formol: data.formol,
         testAmidon: data.testAmidon,
         antibiotique: data.antibiotique,
+        gout: data.GoutEtOdeur,
         fournisseur: data.fournisseur,
         camion: data.camion,
         citerne: data.citerne,
@@ -148,6 +151,7 @@ export class UpdateAnylseComponent implements OnInit {
       data.formol,
       data.testAmidon,
       data.antibiotique,
+      data.gout,
       data.fournisseur,
       data.camion,
       data.citerne
@@ -158,6 +162,11 @@ export class UpdateAnylseComponent implements OnInit {
       console.log(res);
 
       this.router.navigate(['/list-analyse']);
+      this.toast.warning({
+        detail: ' Message',
+        summary: 'Analyse est Modifié',
+        duration: 3000,
+      });
     });
   }
 }
