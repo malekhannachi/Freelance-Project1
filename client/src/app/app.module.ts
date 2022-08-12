@@ -40,6 +40,7 @@ import { DetailsAnalyseComponent } from './components/private/admin/analyse/deta
 import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
 import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
+import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-anal
     BonVidageComponent,
          TypeAnalyseComponent,
          BonAnalyseComponent,
+         BonReceptionComponent,
     
    
   ],

@@ -16,6 +16,7 @@ export class ListAnylseComponent implements OnInit {
   ngOnInit(): void {
     this.as.getAllAnalyse().subscribe((result) => {
       this.anaylseList = result;
+      console.log(this.anaylseList);
     });
   }
   deleteAnalyse(analyse: any) {

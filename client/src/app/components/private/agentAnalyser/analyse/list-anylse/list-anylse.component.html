@@ -16,7 +16,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des Analyses</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gestion des Analyses éffectueés</h1>
                     </div>
                     <div>
                         <a [routerLink]="['/add-analyse']" class="btn btn-sm btn-primary mb-2">Ajouter Analyse</a>
@@ -35,8 +35,8 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Numéro d'analyse </th>
-                                       
-                                      
+
+
 
                                         <th>Actions</th>
                                     </tr>
@@ -46,19 +46,21 @@
                                         <td class="align-middle">{{analyse._id}}</td>
 
                                         <td class="align-middle">{{analyse.analyseNumber}}</td>
-                                    
-                                       
+
+
 
                                         <td class="align-middle">
-                                            <a [routerLink]="['/detail-analyse',analyse._id]" class="btn btn-sm btn-info mr-2">
+                                            <a [routerLink]="['/detail-analyse',analyse._id]"
+                                                class="btn btn-sm btn-info mr-2">
                                                 détails <i class="fa-solid fa-circle-info"></i>
                                             </a>
 
-                                            <a [routerLink]="['/update-analyse',analyse._id]" class="btn btn-sm btn-warning mr-2">
-                                               Modifier <i class="fas fa-edit"></i>
+                                            <a [routerLink]="['/update-analyse',analyse._id]"
+                                                class="btn btn-sm btn-warning mr-2">
+                                                Modifier <i class="fas fa-edit"></i>
                                             </a>
                                             <button (click)="deleteAnalyse(analyse)" class="btn btn-sm btn-danger">
-                                               Supprimer <i class="fas fa-trash-alt"></i>
+                                                Supprimer <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -83,4 +85,3 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-

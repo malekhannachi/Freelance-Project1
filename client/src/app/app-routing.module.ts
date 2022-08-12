@@ -34,6 +34,7 @@ import { DetailsAnalyseComponent } from './components/private/admin/analyse/deta
 import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
 import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
+import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
 
 
 const routes: Routes = [
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: 'add-citerne', component: AddCiterneComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'update-citerne/:id', component: UpdateCiterneComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'bon-vidage', component: BonVidageComponent ,canActivate:[AgentReceptionGuard]},
+  { path: 'bon-reception', component: BonReceptionComponent ,canActivate:[AgentReceptionGuard]},
 //Agent Facturation 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 
