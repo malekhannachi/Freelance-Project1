@@ -4,6 +4,7 @@ const {
   getFournisseur,
   deleteFournisseur,
   updateFournisseur,
+  getfwithatrub,
 } = require("../controllers/fournusseur.controllers");
 const Fournisseur = require("../models/fournisseur.model");
 const router = require("express").Router();
@@ -26,5 +27,5 @@ router.get("/all", getFournisseurs);
 router.get("/getOne/:fournisseur", getFournisseur);
 router.delete("/delete/:fournisseur", deleteFournisseur);
 router.put("/update/:fournisseur", updateFournisseur);
-
+router.get("/getfournusseurwithatru/:fournisseur", getfwithatrub);
 module.exports = router;

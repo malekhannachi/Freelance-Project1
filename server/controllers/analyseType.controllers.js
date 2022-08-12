@@ -18,6 +18,7 @@ const addAnalyse = async (req, res) => {
   camion = req.body.camion;
   citerne = req.body.citerne;
   GoutEtOdeur = req.body.GoutEtOdeur;
+  malade =req.body.malade;
 
   let decision = "";
   if (
@@ -64,6 +65,7 @@ const addAnalyse = async (req, res) => {
     camion: camion,
     citerne: citerne,
     GoutEtOdeur: GoutEtOdeur,
+    malade:malade,
   });
   try {
     const savedAnalyse = await newAnalyse.save();
