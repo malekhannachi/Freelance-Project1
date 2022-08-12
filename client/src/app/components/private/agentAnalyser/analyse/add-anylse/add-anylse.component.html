@@ -181,10 +181,8 @@
                                     </div>
 
                                 </div>
+
                                 <div class="row">
-
-
-
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="name" id="name">Goût et odeur (Accepté): </label>
@@ -194,11 +192,34 @@
                                                 <option value="non">Non</option>
                                             </select>
                                         </div>
-
-
                                     </div>
 
+
+                                    <div formArrayName="items"></div>
+                                    <div class="col-4" *ngFor="let t of items.controls; let i = index"
+                                        formGroupName="{{i}}">
+                                        <div class="form-group">
+                                            <label for="name" id="name">Row : </label>
+                                            <input type="text" formControlName="row" class="form-control"
+                                                placeholder="entrer row">
+
+                                        </div>
+
+                                        <div class="col-md-2 remove-padding-right"> <a
+                                            (click)="removeContact(i)"><span
+                                                class="btn btn-sm btn-danger">Supprimer
+                                            </span></a>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md -12 pt-2"> <a class="btn btn-sm btn-success" (click)="addrow()">+
+                                            Ajouter </a></div>
                                 </div>
+
+
+
+
+
 
 
                                 <button class="btn btn-sm btn-primary mt-3" type="submit">Ajouter</button>
@@ -210,3 +231,26 @@
 
             </div>
         </div>
+
+
+        <!-- <div class="col" formArrayName="items">
+
+
+            <div *ngFor="let t of items.controls; let i = index" formGroupName="{{i}}"
+                class="form-group">
+                <label for="name" id="name">Row : </label>
+                <input type="text" formControlName="row" class="form-control"
+                    placeholder="entrer row">
+                <div class="col-md-2 remove-padding-right"> <a
+                        (click)="removeContact(i)"><span
+                            class="btn btn-sm btn-danger">Supprimer
+                        </span></a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md -12 pt-2"> <a class="btn btn-sm btn-success"
+                (click)="addrow()">+ Ajouter </a></div>
+    </div> -->

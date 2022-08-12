@@ -8,7 +8,7 @@ import { LoginComponent } from './components/public/login/login.component';
 import { Page404Component } from './components/public/page404/page404.component';
 import { SidebarComponent } from './components/private/shared/sidebar/sidebar.component';
 import { TopbarComponent } from './components/private/shared/topbar/topbar.component';
-import { DashboardComponent } from './components/private/shared/dashboard/dashboard.component';
+import { DashboardComponent } from './components/private/admin/dashboard/dashboard.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,13 +31,15 @@ import { UpdateCiterneComponent } from './components/private/agentReception/cite
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './components/private/shared/profile/profile.component';
-import { ListAnylseComponent } from './components/private/agentAnalyser/list-anylse/list-anylse.component';
-import { AddAnylseComponent } from './components/private/agentAnalyser/add-anylse/add-anylse.component';
-import { UpdateAnylseComponent } from './components/private/agentAnalyser/update-anylse/update-anylse.component';
-import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
+import { ListAnylseComponent } from './components/private/agentAnalyser/analyse/list-anylse/list-anylse.component';
+import { AddAnylseComponent } from './components/private/agentAnalyser/analyse/add-anylse/add-anylse.component';
+import { UpdateAnylseComponent } from './components/private/agentAnalyser/analyse/update-anylse/update-anylse.component';
+import { DetailAnylseComponent } from './components/private/agentAnalyser/analyse/detail-anylse/detail-anylse.component';
 import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
 import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
 import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
+import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
+import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 
 
 @NgModule({
@@ -75,6 +77,8 @@ import { BonVidageComponent } from './components/private/agentReception/bon-vida
     DetailsAnalyseComponent,
     
     BonVidageComponent,
+         TypeAnalyseComponent,
+         BonAnalyseComponent,
     
    
   ],

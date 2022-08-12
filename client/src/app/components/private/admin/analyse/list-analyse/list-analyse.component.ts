@@ -5,7 +5,7 @@ import { AnalyseService } from 'src/app/services/analyse.service';
 @Component({
   selector: 'app-list-analyse',
   templateUrl: './list-analyse.component.html',
-  styleUrls: ['./list-analyse.component.css']
+  styleUrls: ['./list-analyse.component.css'],
 })
 export class ListAnalyseComponent implements OnInit {
   anaylseList: any[] = [];
@@ -18,16 +18,15 @@ export class ListAnalyseComponent implements OnInit {
   }
   deleteAnaylse(analyse: any) {
     this.as.deleteAnalyse(analyse._id).subscribe(
-      (res:Data) => {
+      (res: Data) => {
         console.log(res);
+        console.table(res);
         let index = this.anaylseList.indexOf(analyse);
         this.anaylseList.splice(index, 1);
       },
-      (err:Error) => {
+      (err: Error) => {
         console.log(err);
       }
     );
   }
-
-
 }

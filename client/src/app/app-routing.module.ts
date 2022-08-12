@@ -12,7 +12,7 @@ import { UpdateCamionComponent } from './components/private/agentReception/camio
 import { EspaceAgentAnalyserComponent } from './components/private/agentAnalyser/espace-agent-analyser/espace-agent-analyser.component';
 import { EspaceAgentFacturationComponent } from './components/private/agentFacturation/espace-agent-facturation/espace-agent-facturation.component';
 import { EspaceAgentReceptionComponent } from './components/private/agentReception/espace-agent-reception/espace-agent-reception.component';
-import { DashboardComponent } from './components/private/shared/dashboard/dashboard.component';
+import { DashboardComponent } from './components/private/admin/dashboard/dashboard.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { Page404Component } from './components/public/page404/page404.component';
@@ -25,13 +25,15 @@ import { AddCiterneComponent } from './components/private/agentReception/citerne
 import { UpdateCiterneComponent } from './components/private/agentReception/citerne/update-citerne/update-citerne.component';
 import { ProfileComponent } from './components/private/shared/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
-import { ListAnylseComponent } from './components/private/agentAnalyser/list-anylse/list-anylse.component';
-import { AddAnylseComponent } from './components/private/agentAnalyser/add-anylse/add-anylse.component';
-import { UpdateAnylseComponent } from './components/private/agentAnalyser/update-anylse/update-anylse.component';
-import { DetailAnylseComponent } from './components/private/agentAnalyser/detail-anylse/detail-anylse.component';
+import { ListAnylseComponent } from './components/private/agentAnalyser/analyse/list-anylse/list-anylse.component';
+import { AddAnylseComponent } from './components/private/agentAnalyser/analyse/add-anylse/add-anylse.component';
+import { UpdateAnylseComponent } from './components/private/agentAnalyser/analyse/update-anylse/update-anylse.component';
+import { DetailAnylseComponent } from './components/private/agentAnalyser/analyse/detail-anylse/detail-anylse.component';
 import { ListAnalyseComponent } from './components/private/admin/analyse/list-analyse/list-analyse.component';
 import { DetailsAnalyseComponent } from './components/private/admin/analyse/details-analyse/details-analyse.component';
 import { BonVidageComponent } from './components/private/agentReception/bon-vidage/bon-vidage.component';
+import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
+import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 
 
 const routes: Routes = [
@@ -57,6 +59,8 @@ const routes: Routes = [
   //Agent Analyser : Gestion des Anayles
   { path: 'espace-agentAnalyser', component: EspaceAgentAnalyserComponent,canActivate:[AgentAnalyserGuard] },
   //Agent Analyser :
+  { path: 'type-analyse', component: TypeAnalyseComponent ,canActivate:[AgentAnalyserGuard] },
+  { path: 'bon-analyse', component: BonAnalyseComponent ,canActivate:[AgentAnalyserGuard] },
   { path: 'list-analyse', component: ListAnylseComponent ,canActivate:[AgentAnalyserGuard] },
   { path: 'add-analyse', component: AddAnylseComponent ,canActivate:[AgentAnalyserGuard]},
   { path: 'update-analyse/:id', component: UpdateAnylseComponent ,canActivate:[AgentAnalyserGuard]},
