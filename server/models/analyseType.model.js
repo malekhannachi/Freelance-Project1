@@ -35,6 +35,7 @@ const AnalysisTypeSchema = new mongoose.Schema(
 
     decision: { type: String, enum: ["Accepte", "Refuse"] },
     GoutEtOdeur: { type: String, enum: ["oui", "non"] },
+    malade: { type: Array, default: [] },
   },
   { timestamps: true }
 );

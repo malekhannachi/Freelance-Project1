@@ -80,6 +80,39 @@ const updateFournisseur = async (req, res) => {
   }
 };
 
+const getfwithatrub = async (req, res) => {
+  const fournusseurId = req.fournisseur._id;
+
+  try {
+    const fournusseur = await Fournisseur.aggregate([
+      { $match: { _id: fournusseurId } },
+      {
+        $lookup: {
+          from: "camions",
+          localField: "_id",
+          foreignField: "fournisseur",
+          as: "camions",
+          pipeline: [
+            {
+              $lookup: {
+                from: "citernes",
+                localField: "_id",
+                foreignField: "camion",
+                as: "citernes",
+              },
+            },
+          ],
+        },
+      },
+    ]).sort({ createdAt: -1 });
+    // await Product.populate(product, { path: "category", select: "title" });
+    return res.status(200).json(fournusseur[0]);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
+module.exports.getfwithatrub = getfwithatrub;
 module.exports.addFournisseur = addFournisseur;
 module.exports.getFournisseurs = getFournisseurs;
 module.exports.getFournisseur = getFournisseur;
