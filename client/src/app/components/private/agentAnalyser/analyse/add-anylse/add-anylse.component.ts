@@ -52,7 +52,7 @@ export class AddAnylseComponent implements OnInit {
       gout: new FormControl('', [Validators.required]),
       items: this.fb.array([
         this.fb.group({
-          row: new FormControl('', [Validators.required]),
+          row: new FormControl('', ),
         }),
       ]),
     });
@@ -140,7 +140,8 @@ export class AddAnylseComponent implements OnInit {
       data.gout,
       data.fournisseur,
       data.camion,
-      data.citerne
+      data.citerne,
+      data.items
     );
     console.log(analyse);
 

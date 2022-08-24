@@ -13,9 +13,10 @@ export class Analyse {
     public formol?: String,
     public testAmidon?: String,
     public antibiotique?: String,
-    public GoutEtOdeur?:String,
+    public GoutEtOdeur?: String,
     public fournisseur?: String,
     public camion?: String,
-    public citerne?: String
+    public citerne?: String,
+    public malade?: []
   ) {}
 }

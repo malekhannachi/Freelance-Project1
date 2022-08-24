@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit {
     let isLoggedInAdmin = this.userService.isLoggedInAdmin();
     let agentAnalyserisLogged = this.userService.isLoggedInAgentAnalyser();
     let agentReceptionisLogged = this.userService.isLoggedInAgentReception();
-    let agentFacturationisLogged = this.userService.isLoggedInAgentFacturation();
+    let agentFacturationisLogged =
+      this.userService.isLoggedInAgentFacturation();
     if (isLoggedInAdmin) {
       this.router.navigate(['/dashboard']);
-    }
-     else {
+    } else {
       if (agentAnalyserisLogged) {
         this.router.navigate(['/espace-agentAnalyser']);
       } else {

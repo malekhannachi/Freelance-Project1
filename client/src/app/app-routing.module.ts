@@ -35,6 +35,7 @@ import { BonVidageComponent } from './components/private/agentReception/bon-vida
 import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
+import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse-detail/bon-analyse-detail.component';
 
 
 const routes: Routes = [
@@ -62,10 +63,12 @@ const routes: Routes = [
   //Agent Analyser :
   { path: 'type-analyse', component: TypeAnalyseComponent ,canActivate:[AgentAnalyserGuard] },
   { path: 'bon-analyse', component: BonAnalyseComponent ,canActivate:[AgentAnalyserGuard] },
+  { path: 'bon-reception-details/:id', component: BonAnalyseDetailComponent ,canActivate:[AgentAnalyserGuard]},
   { path: 'list-analyse', component: ListAnylseComponent ,canActivate:[AgentAnalyserGuard] },
   { path: 'add-analyse', component: AddAnylseComponent ,canActivate:[AgentAnalyserGuard]},
   { path: 'update-analyse/:id', component: UpdateAnylseComponent ,canActivate:[AgentAnalyserGuard]},
   { path: 'detail-analyse/:id', component: DetailAnylseComponent ,canActivate:[AgentAnalyserGuard]},
+
 
    //AgentReception 
   { path: 'espace-agentReception', component: EspaceAgentReceptionComponent ,canActivate:[AgentReceptionGuard]},
@@ -79,6 +82,7 @@ const routes: Routes = [
   { path: 'update-citerne/:id', component: UpdateCiterneComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'bon-vidage', component: BonVidageComponent ,canActivate:[AgentReceptionGuard]},
   { path: 'bon-reception', component: BonReceptionComponent ,canActivate:[AgentReceptionGuard]},
+ 
 //Agent Facturation 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
 

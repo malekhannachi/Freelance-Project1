@@ -32,7 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Numéro d'analyse </th>
+
 
 
 
@@ -43,7 +43,7 @@
                                     <tr *ngFor="let analyse of anaylseList">
                                         <td class="align-middle">{{analyse._id}}</td>
 
-                                        <td class="align-middle">{{analyse.analyseNumber}}</td>
+
 
 
 
@@ -60,7 +60,8 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Analyse  détaillée
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Bon Vidage
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Fermer">
@@ -71,135 +72,35 @@
                                 <tbody>
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro : {{analyse.analyseNumber}}
+                                            <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro :
+                                                {{analyse.analyseNumber}}
                                             </h6>
                                             <br>
-                
+
                                             <table class="table " id="dataTable" widtd="100%" cellspacing="0">
-                
-                                                <tr>
-                                                    <td>Fournisseur : {{analyse.fournisseur.firstName }} {{analyse.fournisseur.lastName
-                                                        }} </td>
-                                                    <td>Camion : {{analyse.camion.matricule }} {{analyse.camion.typeCamion }}</td>
-                                                    <td>Citerne : {{analyse.citerne?.Num_order }}</td>
-                
-                
-                                                </tr>
                                                 <tr>
                                                     <td> Date de prélèvement : {{analyse.createdAt | date}} </td>
-                                                    <td> Heure de prélèvement : {{analyse.createdAt | date:'shortTime'}}</td>
+                                                    <td> Heure de prélèvement : {{analyse.createdAt | date:'shortTime'}}
+                                                    </td>
                                                 </tr>
-                
+                                                <tr>
+                                                    <td>Fournisseur : {{analyse.fournisseur.firstName }}
+                                                        {{analyse.fournisseur.lastName
+                                                        }} </td>
+                                                    <td>Camion : {{analyse.camion.matricule }}
+                                                        {{analyse.camion.typeCamion }}</td>
+                                                    <td>Citerne : {{analyse.citerne?.Num_order }}</td>
+
+
+                                                </tr>
+
+
                                             </table>
                                         </div>
-                
-                                        <div class="card-body">
-                
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered" id="dataTable" widtd="50%" cellspacing="2">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Paramètres</th>
-                                                            <th>Résultats</th>
-                                                            <th>Limites d'acceptation </th>
-                
-                
-                                                        </tr>
-                                                    </thead>
-                
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Température (°C)</td>
-                                                            <td>{{analyse.temperature}}</td>
-                                                            <td> &lt;10 </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>densité</td>
-                                                            <td>{{analyse.densite}}</td>
-                                                            <td>> = 1028 </td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Matière grasse</td>
-                                                            <td>{{analyse.matiereGrasse}}</td>
-                                                            <td> > = 30</td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>ESD %</td>
-                                                            <td>{{analyse.ESD}}</td>
-                                                            <td> --- </td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Congélation (°C)</td>
-                                                            <td>{{analyse.congelation}}</td>
-                                                            <td>-0.520</td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Pourcentage d'eau</td>
-                                                            <td>{{analyse.pourcentageEau}}</td>
-                                                            <td>1.5 ---- 5</td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Acidité (° D) </td>
-                                                            <td>{{analyse.acidite}}</td>
-                                                            <td>14≤ acidité ≤16 </td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>PH (20°C)</td>
-                                                            <td>{{analyse.PH}}</td>
-                
-                                                            <td>6,6≤ pH≤6,70 </td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Alcool 72° </td>
-                                                            <td>{{analyse.alcool}}</td>
-                                                            <td>Négatif</td>
-                                                        </tr>
-                
-                                                        <tr>
-                                                            <td>Formol (NT 14.43)</td>
-                                                            <td>{{analyse.formol}}</td>
-                                                            <td>Négatif</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Test Amidon</td>
-                                                            <td>{{analyse.testAmidon}}</td>
-                                                            <td>Négatif</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Antibiotique</td>
-                                                            <td>{{analyse.antibiotique}}</td>
-                                                            <td>Négatif</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Gout et odeur</td>
-                                                            <td>{{analyse.GoutEtOdeur}}</td>
-                                                            <td>Normal</td>
-                                                        </tr>
-                                                    </tbody>
-                
-                                                </table>
-                                                <div class=" text-danger text-center">
-                                                    <b> Décision :</b>
-                                                </div>
-                                                <div class="alert alert-success text-center" *ngIf="analyse.decision == 'Accepte' ">
-                                                    Accepté
-                                                </div>
-                
-                                                <div class="alert alert-danger text-center" *ngIf="analyse.decision == 'Refuse'">
-                                                    Refusé
-                                                </div>
-                
-                                            </div>
-                                        </div>
+
+
                                     </div>
-                
+
                                 </tbody>
 
                         </div>

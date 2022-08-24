@@ -41,6 +41,7 @@ import { BonVidageComponent } from './components/private/agentReception/bon-vida
 import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
+import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse-detail/bon-analyse-detail.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { BonReceptionComponent } from './components/private/agentReception/bon-r
          TypeAnalyseComponent,
          BonAnalyseComponent,
          BonReceptionComponent,
+         BonAnalyseDetailComponent,
     
    
   ],
