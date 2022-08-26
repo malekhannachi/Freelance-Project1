@@ -28,4 +28,9 @@ export class FournisseurService {
   updateFournisseur(id: any, fournisseur: Fournisseur) {
     return this.http.put<any>(this.FournisseurUrl + 'update/' + id, fournisseur);
   }
+
+
+  getCamionByFounisseur(id:any){
+    return this.http.get<any>(this.FournisseurUrl+'getfournusseurwithatru/'+id)
+  }
 }

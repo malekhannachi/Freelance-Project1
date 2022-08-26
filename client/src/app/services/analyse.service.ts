@@ -31,10 +31,23 @@ export class AnalyseService {
 
   getAnalyse( decision:string) {
     const queryParams = new HttpParams()
-      .set('decision', 'Accepte')
+      .set('decision', 'Accepte',)
+     
      
     return this.http.get<any>(this.AnalyseUrl + 'allAnalyse', {
       params: queryParams,
     });
   }
+
+  getAnalyser( decision:string) {
+    const queryParams = new HttpParams()
+      .set('decision', 'Refuse',)
+     
+     
+    return this.http.get<any>(this.AnalyseUrl + 'allAnalyse', {
+      params: queryParams,
+    });
+  }
+
+  
 }

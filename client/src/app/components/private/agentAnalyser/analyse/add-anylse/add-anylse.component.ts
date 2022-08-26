@@ -21,9 +21,10 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 })
 export class AddAnylseComponent implements OnInit {
   AnalyseForm!: FormGroup;
-  camionList: any[] = [];
+  camionList:any= [];
   fourniList: any[] = [];
   citerneList: any[] = [];
+  CamionF: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -50,30 +51,19 @@ export class AddAnylseComponent implements OnInit {
       testAmidon: new FormControl('', [Validators.required]),
       antibiotique: new FormControl('', [Validators.required]),
       gout: new FormControl('', [Validators.required]),
-      items: this.fb.array([
-        this.fb.group({
-          row: new FormControl('', ),
-        }),
-      ]),
+      
     });
   }
 
-  get items(): FormArray {
-    return <FormArray>this.AnalyseForm.get('items');
-  }
 
-  addrow() {
-    const control = <FormArray>this.AnalyseForm.controls['items'];
-    control.push(new FormGroup({ row: new FormControl('') }));
-  }
-  removeContact(index: any) {
-    const control = <FormArray>this.AnalyseForm.controls['items'];
-    control.removeAt(index);
-  }
+
+
+  
   ngOnInit(): void {
-    this.getAllCamion();
+
     this.getAllFourni();
-    this.getAllCiterne();
+      this.getAllCiterne() 
+   
   }
   getAllCiterne() {
     this.citerneService.getAllCiterne().subscribe((result) => {
@@ -91,13 +81,7 @@ export class AddAnylseComponent implements OnInit {
     });
   }
 
-  getAllCamion() {
-    this.cs.getAllCamion().subscribe((result) => {
-      console.log(result);
 
-      this.camionList = result;
-    });
-  }
 
   /*
      temperature,
@@ -141,7 +125,7 @@ export class AddAnylseComponent implements OnInit {
       data.fournisseur,
       data.camion,
       data.citerne,
-      data.items
+   
     );
     console.log(analyse);
 
@@ -154,8 +138,7 @@ export class AddAnylseComponent implements OnInit {
     } else {
       this.analyseSerive.addAnalyse(analyse).subscribe((res) => {
         console.log(res);
-      
-       
+
         this.router.navigate(['/list-analyse']);
         this.toast.success({
           detail: ' Message',
@@ -164,5 +147,18 @@ export class AddAnylseComponent implements OnInit {
         });
       });
     }
+  }
+
+  filterByFourn(event: any) {
+    let value = event.target.value;
+    console.log(value);
+    this.getCamionsFounisseur(value);
+  }
+
+  getCamionsFounisseur(id: any) {
+    this.fs.getCamionByFounisseur(id).subscribe((res) => {
+      this.camionList = res;
+      console.log(this.camionList);
+    });
   }
 }

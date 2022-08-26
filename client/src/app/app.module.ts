@@ -42,6 +42,7 @@ import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-an
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
 import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse-detail/bon-analyse-detail.component';
+import { FactureDetailComponent } from './components/private/agentFacturation/facture/facture-detail/facture-detail.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bo
          BonAnalyseComponent,
          BonReceptionComponent,
          BonAnalyseDetailComponent,
+         FactureDetailComponent,
     
    
   ],

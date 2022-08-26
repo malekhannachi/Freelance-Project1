@@ -36,6 +36,7 @@ import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-an
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 import { BonReceptionComponent } from './components/private/agentReception/bon-reception/bon-reception.component';
 import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse-detail/bon-analyse-detail.component';
+import { FactureDetailComponent } from './components/private/agentFacturation/facture/facture-detail/facture-detail.component';
 
 
 const routes: Routes = [
@@ -85,6 +86,7 @@ const routes: Routes = [
  
 //Agent Facturation 
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
+  { path: 'facture', component: FactureDetailComponent, canActivate:[AgentFacturationGuard]},
 
   { path: '**', component: Page404Component },
 ];

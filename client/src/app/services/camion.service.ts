@@ -33,4 +33,7 @@ export class CamionService {
   enterCamion(id: number) {
     return this.http.post<any>(this.CamionUrl + 'entreCamion/' + id,id);
   }
+
+
+
 }

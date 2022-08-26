@@ -50,69 +50,11 @@
                                         <td class="align-middle">
 
                                             <button class="btn btn-sm  btn-info mx-3" data-toggle="modal"
-                                                data-target="#exampleModal">
+                                                data-target="#exampleModal" (click)="getAnaylyse(analyse)">
                                                 détails
                                                 <i class="fa-solid fa-circle-info"></i>
                                             </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                                Bon Vidage
-                                                            </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Fermer">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                <tbody>
-                                    <div class="card shadow mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro :
-                                                {{analyse.analyseNumber}}
-                                            </h6>
-                                            <br>
-
-                                            <table class="table " id="dataTable" widtd="100%" cellspacing="0">
-                                                <tr>
-                                                    <td> Date de prélèvement : {{analyse.createdAt | date}} </td>
-                                                    <td> Heure de prélèvement : {{analyse.createdAt | date:'shortTime'}}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Fournisseur : {{analyse.fournisseur.firstName }}
-                                                        {{analyse.fournisseur.lastName
-                                                        }} </td>
-                                                    <td>Camion : {{analyse.camion.matricule }}
-                                                        {{analyse.camion.typeCamion }}</td>
-                                                    <td>Citerne : {{analyse.citerne?.Num_order }}</td>
-
-
-                                                </tr>
-
-
-                                            </table>
-                                        </div>
-
-
-                                    </div>
-
-                                </tbody>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!--End of  Modal -->
+                                  
             </tr>
             </tbody>
             </table>
@@ -131,7 +73,71 @@
 <!-- End of Content Wrapper -->
 
 </div>
+
+
+
 <!-- End of Page Wrapper -->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                          Bon Vidage
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal"
+                          aria-label="Fermer">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+<tbody>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro :
+          {{analyse.analyseNumber}}
+      </h6>
+      <br>
+
+      <table class="table " id="dataTable" widtd="100%" cellspacing="0">
+          <tr>
+              <td> Date de prélèvement : {{analyse.createdAt | date}} </td>
+              <td> Heure de prélèvement : {{analyse.createdAt | date:'shortTime'}}
+              </td>
+          </tr>
+          <tr>
+              <td>Fournisseur : {{analyse.fournisseur?.firstName }}
+                  {{analyse.fournisseur?.lastName
+                  }} </td>
+              <td>Camion : {{analyse.camion?.matricule }}
+                  {{analyse.camion?.typeCamion }}</td>
+              <td>Citerne : {{analyse.citerne?.Num_order }}</td>
+
+
+          </tr>
+
+
+      </table>
+  </div>
+
+
+</div>
+
+</tbody>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+</div>
+</div>
+</div>
+
+</div>
+<!--End of  Modal -->

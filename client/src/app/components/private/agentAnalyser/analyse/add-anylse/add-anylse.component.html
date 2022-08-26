@@ -37,9 +37,9 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="name" id="name">Fournisseur : </label>
-                                            <select class="custom-select" formControlName="fournisseur">
+                                            <select class="custom-select" formControlName="fournisseur" (change)="filterByFourn($event)">
                                                 <option hidden selected value="">--Choisir un Fornisseur--</option>
-                                                <option [ngValue]="frns._id" *ngFor="let frns of fourniList">
+                                                <option value="{{frns._id}}" *ngFor="let frns of fourniList">
                                                     {{frns.firstName}} {{frns.lastName}}</option>
 
                                             </select>
@@ -48,10 +48,10 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="name" id="name">Camion : </label>
-                                            <select class="custom-select" formControlName="camion">
-                                                <option hidden selected value="">--Choisir un Camion--</option>
-                                                <option [ngValue]="camion._id" *ngFor="let camion of camionList">
-                                                    {{camion.typeCamion}} {{camion.matricule}}</option>
+                                            <select class="custom-select" formControlName="camion" >
+                                                <option hidden selected value="" >--Choisir un Camion--</option>
+                                                <option value="{{item._id}}" *ngFor="let item of camionList.camions">
+                                                   {{item.matricule}}  {{item.typeCamion}}</option>
 
                                             </select>
                                         </div>
