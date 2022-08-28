@@ -22,8 +22,9 @@ const agentRoute = require("./routes/agentManager.routes");
 const fournisseurRouter = require("./routes/fournisseur.routes");
 const camionRouter = require("./routes/camion.routes");
 const citerneRouter = require("./routes/ciretne.routes");
- const addressRouter = require("./routes/address.routes");
- const analyseRouter = require("./routes/analyseType.routes");
+const addressRouter = require("./routes/address.routes");
+const analyseRouter = require("./routes/analyseType.routes");
+const bonReception = require("./routes/bonReception.routes");
 //middelware
 app.use(cors());
 app.use(
@@ -44,7 +45,8 @@ app.use("/api/fournisseur", fournisseurRouter);
 app.use("/api/camion", camionRouter);
 app.use("/api/citerne", citerneRouter);
 app.use("/api/address", addressRouter);
-app.use("/api/analyse",analyseRouter);
+app.use("/api/analyse", analyseRouter);
+app.use("/api/bonReception", bonReception);
 
 //listen server
 const port = process.env.PORT || 5000;
