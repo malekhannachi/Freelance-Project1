@@ -52,6 +52,15 @@ const getCamion = async (req, res) => {
           as: "dateEntre",
         },
       },
+
+      {
+        $lookup: {
+          from: "citernes",
+          localField: "_id",
+          foreignField: "camion",
+          as: "citernes",
+        },
+      },
     ]).sort({ createdAt: -1 });
 
     return res.status(200).json(camion[0]);
