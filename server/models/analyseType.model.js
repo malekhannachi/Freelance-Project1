@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const AnalysisTypeSchema = new mongoose.Schema(
   {
+    identifier: { type: Number, default: 0 },
     analyseNumber: { type: Number, default: 0 },
 
     temperature: { type: Number /*required: true*/ },

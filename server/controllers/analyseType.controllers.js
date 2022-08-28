@@ -18,26 +18,25 @@ const addAnalyse = async (req, res) => {
   camion = req.body.camion;
   citerne = req.body.citerne;
   GoutEtOdeur = req.body.GoutEtOdeur;
-  malade =req.body.malade;
 
   let decision = "";
   if (
-    temperature < 10 ||
-     densite > 1028 ||
-     matiereGrasse < 30 ||
-     ESD > 100 ||
-     congelation < -0.52 ||
-     pourcentageEau < 1.5 ||
-     pourcentageEau > 5 ||
-     acidite < 14 ||
-     acidite > 16 ||
-     PH < 6.6 ||
-     PH > 6.7 ||
-     alcool === "positif" ||
-     formol === "positif" ||
-     testAmidon === "positif" ||
-     antibiotique === "positif" ||
-     GoutEtOdeur === "non"
+    temperature > 10 ||
+    densite > 1028 ||
+    matiereGrasse > 30 ||
+    ESD > 100 ||
+    congelation < -0.52 ||
+    pourcentageEau < 1.5 ||
+    pourcentageEau > 5 ||
+    acidite < 14 ||
+    acidite > 16 ||
+    PH < 6.6 ||
+    PH > 6.7 ||
+    alcool === "positif" ||
+    formol === "positif" ||
+    testAmidon === "positif" ||
+    antibiotique === "positif" ||
+    GoutEtOdeur === "non"
   ) {
     decision = "Refuse";
   } else {
@@ -45,8 +44,9 @@ const addAnalyse = async (req, res) => {
   }
 
   const count = await Analyse.find().countDocuments();
-
+  let theRandomNumber = Math.floor(Math.random() * 10) + 1;
   const newAnalyse = new Analyse({
+    identifier: theRandomNumber * count,
     analyseNumber: count + 1,
     temperature: temperature,
     densite: densite,
@@ -65,7 +65,7 @@ const addAnalyse = async (req, res) => {
     camion: camion,
     citerne: citerne,
     GoutEtOdeur: GoutEtOdeur,
-    malade:malade,
+    malade: req.body.malade,
   });
   try {
     const savedAnalyse = await newAnalyse.save();

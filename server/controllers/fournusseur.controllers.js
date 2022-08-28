@@ -9,9 +9,10 @@ const addFournisseur = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err });
   }
-
+  let theRandomNumber = Math.floor(Math.random() * 10) + 1;
   try {
     const newAddress = new Address({
+      identifier: count * theRandomNumber,
       street: req.body.street,
       city: req.body.city,
       country: req.body.country,
