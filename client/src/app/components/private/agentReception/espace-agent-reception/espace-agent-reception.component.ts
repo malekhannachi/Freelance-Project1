@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyseService } from 'src/app/services/analyse.service';
+import { BonReceptionService } from 'src/app/services/bon-reception.service';
 import { CamionService } from 'src/app/services/camion.service';
 import { CiterneService } from 'src/app/services/citerne.service';
 
@@ -22,7 +23,7 @@ export class EspaceAgentReceptionComponent implements OnInit {
   constructor(
     private camionservice: CamionService,
     private analyseservice: AnalyseService,
-    private CiterneService: CiterneService
+    private CiterneService: CiterneService,  private bonRservice: BonReceptionService,
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,12 @@ export class EspaceAgentReceptionComponent implements OnInit {
     this.numberBonAnalyses();
     this.numberBonReceptions();
   }
-  numberBonReceptions() {}
+  numberBonReceptions() {
+    this.bonRservice.getAllBonReception().subscribe((result) => {
+      this.listBonReception = result;
+      this.numberBonReception = this.listBonReception.length;
+    });
+  }
   numberBonAnalyses() {
     this.analyseservice.getAnalyse(this.decision).subscribe((result) => {
       this.listBonVidage = result;

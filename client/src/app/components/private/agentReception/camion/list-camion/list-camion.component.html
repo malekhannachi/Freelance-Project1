@@ -43,8 +43,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let c of camionList">
-                  <td class="align-middle">{{c._id}}</td>
+                <tr *ngFor="let c of camionList; let i =index">
+                  <td class="align-middle">{{i+1}}</td>
 
                   <td class="align-middle">{{c.matricule}}</td>
 

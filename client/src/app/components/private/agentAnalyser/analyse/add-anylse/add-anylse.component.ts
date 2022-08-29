@@ -21,10 +21,9 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 })
 export class AddAnylseComponent implements OnInit {
   AnalyseForm!: FormGroup;
-  camionList:any= [];
+  camionList: any = [];
   fourniList: any[] = [];
-  citerneList: any[] = [];
-  CamionF: any[] = [];
+  citerneList: any = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -51,19 +50,11 @@ export class AddAnylseComponent implements OnInit {
       testAmidon: new FormControl('', [Validators.required]),
       antibiotique: new FormControl('', [Validators.required]),
       gout: new FormControl('', [Validators.required]),
-      
     });
   }
 
-
-
-
-  
   ngOnInit(): void {
-
     this.getAllFourni();
-      this.getAllCiterne() 
-   
   }
   getAllCiterne() {
     this.citerneService.getAllCiterne().subscribe((result) => {
@@ -80,8 +71,6 @@ export class AddAnylseComponent implements OnInit {
       this.fourniList = result;
     });
   }
-
-
 
   /*
      temperature,
@@ -124,8 +113,7 @@ export class AddAnylseComponent implements OnInit {
       data.gout,
       data.fournisseur,
       data.camion,
-      data.citerne,
-   
+      data.citerne
     );
     console.log(analyse);
 
@@ -155,10 +143,23 @@ export class AddAnylseComponent implements OnInit {
     this.getCamionsFounisseur(value);
   }
 
+  filterByCamion(event: any) {
+    let value = event.target.value;
+    console.log(value);
+    this.getCiternesCamions(value);
+  }
+
   getCamionsFounisseur(id: any) {
     this.fs.getCamionByFounisseur(id).subscribe((res) => {
       this.camionList = res;
       console.log(this.camionList);
+    });
+  }
+
+  getCiternesCamions(id: any) {
+    this.cs.getbyId(id).subscribe((res) => {
+      this.citerneList = res;
+      console.log(this.citerneList);
     });
   }
 }

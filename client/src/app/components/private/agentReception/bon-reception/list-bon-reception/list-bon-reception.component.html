@@ -16,17 +16,18 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Gestion des Citernes</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gestion Bons Receptions</h1>
                     </div>
                     <div>
-                        <a [routerLink]="['/add-citerne']" class="btn btn-sm btn-primary mb-2">Ajouter Citerne</a>
+                        <a [routerLink]="['/add-bon-reception']" class="btn btn-sm btn-primary mb-2">Ajouter Bon
+                            Reception</a>
                     </div>
 
                 </div>
                 <div class="col ml-2">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary"> Liste des Citernes </h6>
+                            <h6 class="m-0 font-weight-bold text-primary"> Liste des Bons Receptions </h6>
                         </div>
 
                         <div class="card-body">
@@ -34,34 +35,37 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Numéro de Citerne </th>
+                                        <th>Quantité </th>
+                                        <th>Fournisseur</th>
                                         <th>Camion</th>
-                                      
-
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let citern of citerneList;let i =index">
+                                    <tr *ngFor="let bon of bonReceptionList;let i =index">
                                         <td class="align-middle">{{i+1}}</td>
+                                        <td class="align-middle">{{bon.quantite}}</td>
+                                        <td class="align-middle">{{bon.camion}}</td>
+                                        <td class="align-middle"> {{bon.camion.typeCamion}}
+                                            {{bon.camion.matricule}}</td>
 
-                                        <td class="align-middle">{{citern.Num_order}}</td>
-                                        <td class="align-middle"> {{citern.camion.typeCamion}} {{citern.camion.matricule}}</td>
-                                       
 
                                         <td class="align-middle">
 
-                                            <a [routerLink]="['/update-citerne',citern._id]" class="btn btn-sm btn-warning mr-2">
+                                            <a [routerLink]="['/update-bon-reception',bon._id]"
+                                                class="btn btn-sm btn-warning mr-2">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button (click)="deleteCiterne(citern)" class="btn btn-sm btn-danger">
+                                            <button (click)="deleteBonReception(bon)" class="btn btn-sm btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="citerneList.length == 0" class="alert alert-warning">Aucune Citerne trouvé</div>
+                            <div *ngIf="bonReceptionList.length == 0" class="alert alert-warning">Aucune Bon Reception
+                                trouvé
+                            </div>
                         </div>
                     </div>
                 </div>

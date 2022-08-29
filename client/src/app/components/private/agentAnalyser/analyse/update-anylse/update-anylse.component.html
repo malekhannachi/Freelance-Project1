@@ -37,22 +37,23 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="name" id="name">Fournisseur : </label>
-                                            <select class="custom-select" formControlName="fournisseur">
+                                            <select class="custom-select" formControlName="fournisseur"
+                                                (change)="filterByFourn($event)">
                                                 <option hidden selected value="">--Choisir un Fornisseur--</option>
-                                                <option [ngValue]="frns._id" *ngFor="let frns of fourniList">
+                                                <option value="{{frns._id}}" *ngFor="let frns of fourniList">
                                                     {{frns.firstName}} {{frns.lastName}}</option>
 
                                             </select>
-
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="name" id="name">Camion : </label>
-                                            <select class="custom-select" formControlName="camion">
+                                            <select class="custom-select" formControlName="camion"
+                                                (change)="filterByCamion($event)">
                                                 <option hidden selected value="">--Choisir un Camion--</option>
-                                                <option [ngValue]="camion._id" *ngFor="let camion of camionList">
-                                                    {{camion.typeCamion}} {{camion.matricule}}</option>
+                                                <option value="{{item._id}}" *ngFor="let item of camionList.camions">
+                                                    {{item.matricule}} {{item.typeCamion}}</option>
 
                                             </select>
                                         </div>
@@ -62,7 +63,8 @@
                                             <label for="name" id="name">Citerne : </label>
                                             <select class="custom-select" formControlName="citerne">
                                                 <option hidden selected value="">--Choisir un Citerne--</option>
-                                                <option [ngValue]="citerne._id" *ngFor="let citerne of citerneList">
+                                                <option value="{{citerne._id}}"
+                                                    *ngFor="let citerne of citerneList.citernes">
                                                     {{citerne.Num_order}} </option>
 
                                             </select>
@@ -161,14 +163,14 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group">
-                                            <label for="name" id="name">Test amidon : </label>
-                                            <select class="custom-select" formControlName="testAmidon">
-                                                <option hidden selected value="">--Choisir un --</option>
-                                                <option value="positif">Positif</option>
-                                                <option value="negatif">Négatif</option>
-                                            </select>
-                                        </div>
+
+                                        <label for="name" id="name">Test amidon : </label>
+                                        <select class="custom-select" formControlName="testAmidon">
+                                            <option hidden selected value="">--Choisir un --</option>
+                                            <option value="positif">Positif</option>
+                                            <option value="negatif">Négatif</option>
+                                        </select>
+
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
@@ -182,10 +184,8 @@
                                     </div>
 
                                 </div>
+
                                 <div class="row">
-
-
-
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="name" id="name">Goût et odeur (Accepté): </label>
@@ -196,6 +196,7 @@
                                             </select>
                                         </div>
                                     </div>
+
 
                                 </div>
 

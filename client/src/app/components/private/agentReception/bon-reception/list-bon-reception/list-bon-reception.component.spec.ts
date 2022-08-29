@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BonReceptionComponent } from './bon-reception.component';
+import { ListBonReceptionComponent } from './list-bon-reception.component';
 
-describe('BonReceptionComponent', () => {
-  let component: BonReceptionComponent;
-  let fixture: ComponentFixture<BonReceptionComponent>;
+describe('ListBonReceptionComponent', () => {
+  let component: ListBonReceptionComponent;
+  let fixture: ComponentFixture<ListBonReceptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BonReceptionComponent ]
+      declarations: [ ListBonReceptionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BonReceptionComponent);
+    fixture = TestBed.createComponent(ListBonReceptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

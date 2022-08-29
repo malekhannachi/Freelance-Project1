@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { CiterneService } from 'src/app/services/citerne.service';
-import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-list-citerne',
