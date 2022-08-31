@@ -23,7 +23,10 @@ const addBonReception = async (req, res) => {
 const getBonReception = async (req, res) => {
   const id = req.bonReception._id;
   try {
-    const getBonReception = await bonReception.findById(id);
+    const getBonReception = await bonReception
+      .findById(id)
+      .populate("fournisseur")
+      .populate("camion");
     return res.status(200).json(getBonReception);
   } catch (err) {
     return res.status(500).json(err);
@@ -41,7 +44,9 @@ const getBonReceptions = async (req, res) => {
     const getBonReception = await bonReception
       .find(filter)
       .sort({ createdAt: -1 })
-      .limit(limit);
+      .limit(limit)
+      .populate("fournisseur")
+      .populate("camion");
     return res.status(200).json(getBonReception);
   } catch (err) {
     return res.status(500).json(err);

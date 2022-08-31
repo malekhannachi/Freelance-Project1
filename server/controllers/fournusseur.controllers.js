@@ -9,6 +9,7 @@ const addFournisseur = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err });
   }
+  const count = await Fournisseur.find().countDocuments();
   let theRandomNumber = Math.floor(Math.random() * 10) + 1;
   try {
     const newAddress = new Address({
