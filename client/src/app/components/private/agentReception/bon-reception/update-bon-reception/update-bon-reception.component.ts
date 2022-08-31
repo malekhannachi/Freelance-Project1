@@ -62,7 +62,7 @@ export class UpdateBonReceptionComponent implements OnInit {
       this.FormBon.patchValue({
         quantite: bon.quantite,
         fournisseur: bon.fournisseur,
-        camion: bon.camion,
+      
       });
     });
   }

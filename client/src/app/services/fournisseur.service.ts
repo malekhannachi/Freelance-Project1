@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Fournisseur } from '../models/fournisseur';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FournisseurService {
-  private FournisseurUrl = 'http://localhost:4000/api/fournisseur/';
+  private FournisseurUrl = environment.ApiUrl +'fournisseur/';
   constructor(private http: HttpClient) {}
 
   getAllFournisseur() {

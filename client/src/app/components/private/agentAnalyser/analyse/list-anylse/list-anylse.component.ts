@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Data } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AnalyseService } from 'src/app/services/analyse.service';
-import { CiterneService } from 'src/app/services/citerne.service';
 
 @Component({
   selector: 'app-list-anylse',
@@ -21,14 +20,14 @@ export class ListAnylseComponent implements OnInit {
   }
   deleteAnalyse(analyse: any) {
     if (confirm('Voulez vous supprimer cette Analyse ?')) {
-      this.as.deleteAnalyse(analyse._id).subscribe((res: Data) => {
+      this.as.deleteAnalyse(analyse._id).subscribe((res: any) => {
         console.log(res);
         let index = this.anaylseList.indexOf(analyse);
         this.anaylseList.splice(index, 1);
 
         this.toast.error({
           detail: ' Message',
-          summary: 'Citerne est Supprimé',
+          summary: 'Analyse est Supprimé',
           duration: 2000,
         });
       });

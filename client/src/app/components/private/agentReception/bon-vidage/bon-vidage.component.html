@@ -31,7 +31,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>Analyse Id</th>
 
 
 
@@ -41,7 +41,7 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let analyse of anaylseList">
-                                        <td class="align-middle">{{analyse._id}}</td>
+                                        <td class="align-middle">{{analyse.analyseNumber}}</td>
 
 
 
@@ -100,7 +100,7 @@
 <tbody>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Analyse Numéro :
+      <h6 class="m-0 font-weight-bold text-primary">Analyse ID :
           {{analyse.analyseNumber}}
       </h6>
       <br>

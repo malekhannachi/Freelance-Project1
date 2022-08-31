@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <form [formGroup]="FormCiterne" (ngSubmit)="addCiterne()">
                                 <div class="form-group">
-                                    <label for="name" id="name">Numéro de Citerne : </label>
+                                    <label for="name" id="name">Num d'ordre  : </label>
                                     <input type="text" class="form-control" formControlName="nom">
                                     <div *ngIf="nom?.touched && nom?.invalid">
                                         <small class="text-danger" *ngIf=" nom?.errors?.['required']">nom

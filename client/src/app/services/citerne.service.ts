@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Citerne } from '../models/citerne';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CiterneService {
-  private CiterneUrl = 'http://localhost:4000/api/citerne/';
+  private CiterneUrl = environment.ApiUrl +'citerne/';
   constructor(private http: HttpClient) {}
 
   getAllCiterne() {

@@ -33,21 +33,27 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Numéro d'analyse </th>
+                                        <th>ID Analyse</th>
 
 
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
 
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let analyse of anaylseList">
-                                        <td class="align-middle">{{analyse._id}}</td>
+
 
                                         <td class="align-middle">{{analyse.analyseNumber}}</td>
 
-
+                                        <td class="align-middle">&nbsp;</td>
+                                        <td class="align-middle">&nbsp;</td>
+                                        <td class="align-middle">&nbsp;</td>
+                                        <td class="align-middle">&nbsp;</td>
 
                                         <td class="align-middle">
                                             <a [routerLink]="['/detail-analyse',analyse._id]"

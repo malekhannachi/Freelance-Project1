@@ -27,7 +27,7 @@
                 <div class="col">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Add Fourniseur details</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Ajouter Fourniseur par détails </h6>
                         </div>
 
                         <div class="card-body">
@@ -65,13 +65,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Cin : </label>
-                                        <input type="number" class="form-control" formControlName="cin">
+                                        <input type="text" class="form-control" formControlName="cin" ng-minlength=8 ng-maxlength=8>
                                         <div *ngIf="cin?.touched && cin?.invalid">
                                             <small class="text-danger" *ngIf="cin?.errors?.['required']">Cin
                                                 est obligatoire</small>
-                                            <small class="text-danger" *ngIf="cin?.errors?.['minlength']">Cin contient 8
+                                            <small class="text-danger" *ngIf="cin?.errors?.['pattern']">Cin contient 8
                                                 chiffres
                                             </small>
+
+
                                         </div>
                                     </div>
                                     <div class="form-group">

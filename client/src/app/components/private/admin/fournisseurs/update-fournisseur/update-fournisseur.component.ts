@@ -29,8 +29,15 @@ export class UpdateFournisseurComponent implements OnInit {
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      cin: new FormControl('', [Validators.required]),
-      number: new FormControl('', [Validators.required]),
+      cin: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{8}$'),
+      ]),
+      number: new FormControl('', [
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(99999999),
+      ]),
       street: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),

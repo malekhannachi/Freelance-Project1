@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { BonReception } from '../models/bon-reception';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BonReception } from '../models/bon-reception';
 })
 export class BonReceptionService {
 
-  private BonReceptionUrl = 'http://localhost:4000/api/bonReception/';
+  private BonReceptionUrl = environment.ApiUrl +  'bonReception/';
   constructor(private http: HttpClient) {}
 
   getAllBonReception() {

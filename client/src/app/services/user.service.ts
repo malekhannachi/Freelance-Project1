@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private userUrl = 'http://localhost:4000/api/agent';
-  private loginUrl = 'http://localhost:4000/api/auth';
+  private userUrl = environment.ApiUrl + 'agent';
+  private loginUrl = environment.ApiUrl + 'auth';
   constructor(private http: HttpClient) {}
 
   loginUser(user: User) {
@@ -45,13 +46,10 @@ export class UserService {
 
   //test user logged or no
   isLoggedIn() {
-    let token = localStorage.getItem("myToken");
-    if (token)
-      return true
-    else
-      return false
+    let token = localStorage.getItem('myToken');
+    if (token) return true;
+    else return false;
   }
-
 
   //test admin logged or no
   isLoggedInAdmin() {

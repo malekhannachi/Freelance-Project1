@@ -35,7 +35,7 @@ import { BonVidageComponent } from './components/private/agentReception/bon-vida
 import { TypeAnalyseComponent } from './components/private/agentAnalyser/type-analyse/type-analyse.component';
 import { BonAnalyseComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse.component';
 
-import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse-detail/bon-analyse-detail.component';
+import { BonAnalyseDetailComponent } from './components/private/agentAnalyser/bon-analyse/bon-analyse-detail/bon-analyse-detail.component';
 import { FactureDetailComponent } from './components/private/agentFacturation/facture/facture-detail/facture-detail.component';
 import { ListBonReceptionComponent } from './components/private/agentReception/bon-reception/list-bon-reception/list-bon-reception.component';
 import { AddBonReceptionComponent } from './components/private/agentReception/bon-reception/add-bon-reception/add-bon-reception.component';

@@ -27,7 +27,7 @@ export class AddFournisseurComponent implements OnInit {
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      cin: new FormControl('', [Validators.required]),
+      cin: new FormControl('', [Validators.required,Validators.pattern('^[0-9]{8}$')]),
       number: new FormControl('', [
         Validators.required,
         Validators.min(10000000),
@@ -74,6 +74,8 @@ export class AddFournisseurComponent implements OnInit {
   get zipCode() {
     return this.fourForm.get('zipCode');
   }
+
+  
 
   ngOnInit(): void {}
 

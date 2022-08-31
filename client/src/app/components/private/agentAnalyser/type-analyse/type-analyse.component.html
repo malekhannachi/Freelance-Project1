@@ -17,7 +17,7 @@
                     <div>
 
 
-                        <button class="btn btn-sm  btn-info m-3 "  data-toggle="modal" data-target="#exampleModal">
+                        <button class="btn btn-sm  btn-info m-3 " data-toggle="modal" data-target="#exampleModal0">
                             <i class="fa-solid fa-plus"></i> Ajouter Paramètere
                         </button>
 
@@ -40,7 +40,7 @@
                                             <th>Paramètres</th>
 
                                             <th>Limites d'acceptation </th>
-
+                                            <th colspan="2" >Actions </th>
 
                                         </tr>
                                     </thead>
@@ -48,8 +48,9 @@
                                     <tbody>
                                         <tr>
                                             <td>Température (°C)</td>
-
+                                           
                                             <td> &lt;10 </td>
+                                            <td  colspan="2" rowspan="13"></td>
                                         </tr>
                                         <tr>
                                             <td>densité</td>
@@ -120,6 +121,19 @@
 
                                             <td>Normal</td>
                                         </tr>
+                                        <tr *ngFor="let item of paramterList">
+                                            <td>{{item.parametres}}</td>
+
+                                            <td>Normal</td>
+
+                                            <td> <button class="btn btn-sm  btn-warning  " data-toggle="modal"
+                                                    data-target="#exampleModal" (click)="getone(item)">
+                                                    Modifier <i class="fas fa-edit"></i>
+                                                </button></td>
+                                            <td> <button (click)="deleteParemter(item)" class="btn btn-sm btn-danger">
+                                                    Supprimer <i class="fas fa-trash-alt"></i>
+                                                </button></td>
+                                        </tr>
                                     </tbody>
 
                                 </table>
@@ -134,24 +148,34 @@
             </div>
             <!-- End of Main Content -->
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="exampleModal0" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Date d'entreé
+                            <h5 class="modal-title" id="exampleModalLabel">Ajouter Paramétre
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <tbody>
-                                <tr>
-                                    <td>hyh </td>
-                                    <td>hyhy</td>
-                                </tr>
-                            </tbody>
+
+                            <form [formGroup]="FormPameter" (ngSubmit)="addPameter()">
+                                <div class="form-group">
+                                    <label for="name" id="name">Paramètres : </label>
+                                    <input type="text" class="form-control" formControlName="paramter">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" id="name">Limite d'acceptation : </label>
+                                    <input type="text" class="form-control" formControlName="limite">
+
+                                </div>
+                                <button class="btn btn-sm btn-primary mt-3" type="submit">Ajouter</button>
+
+                            </form>
+
 
                         </div>
                         <div class="modal-footer">
@@ -163,9 +187,48 @@
 
             </div>
             <!--End of  Modal -->
-            <!-- Footer -->
 
-            <!-- End of Footer -->
+
+            <!-- Modal 2 -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modifier Paramétre
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form [formGroup]="FormPameter" (ngSubmit)="addPameter()">
+                                <div class="form-group">
+                                    <label for="name" id="name">Paramètres : </label>
+                                    <input type="text" class="form-control" formControlName="paramter">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" id="name">Limite d'acceptation : </label>
+                                    <input type="text" class="form-control" formControlName="limite">
+
+                                </div>
+                                <button class="btn btn-sm btn-warning mt-3" type="submit">Modifier</button>
+
+                            </form>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of  Modal 2  -->
 
         </div>
         <!-- End of Content Wrapper -->

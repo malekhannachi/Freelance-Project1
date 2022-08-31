@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Analyse } from '../models/analyse';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnalyseService {
-  private AnalyseUrl = 'http://localhost:4000/api/analyse/';
+  private AnalyseUrl = environment.ApiUrl +'analyse/';
   constructor(private http: HttpClient) {}
 
   getAllAnalyse() {
