@@ -13,7 +13,6 @@ const addFournisseur = async (req, res) => {
   let theRandomNumber = Math.floor(Math.random() * 10) + 1;
   try {
     const newAddress = new Address({
-      identifier: count * theRandomNumber,
       street: req.body.street,
       city: req.body.city,
       country: req.body.country,
@@ -22,6 +21,7 @@ const addFournisseur = async (req, res) => {
     const savedAddress = await newAddress.save();
 
     const newFournisseur = new Fournisseur({
+      identifier: count * theRandomNumber,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
