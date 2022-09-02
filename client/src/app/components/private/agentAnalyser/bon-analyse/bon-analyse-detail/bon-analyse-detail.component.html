@@ -11,7 +11,7 @@
             <!-- Main Content -->
             <div id="content">
                 <app-topbar></app-topbar>
-                <div class="container-fluid">
+                <div class="container-fluid" id="print-section">
 
                     <!-- Page Heading -->
 
@@ -23,19 +23,19 @@
 
                             <table class="table " id="dataTable" widtd="100%" cellspacing="0">
                                 <tr>
-                                    <td>
+                                    <td colspan="3">
                                         <h6 class="m-0 font-weight-bold text-primary">ID Analyse :
                                             {{analyse.analyseNumber}}
                                         </h6>
                                     </td>
 
-
+                                   
                                 </tr>
 
 
 
                                 <tr>
-                                    <td> Date de prélèvement : {{analyse.createdAt | date}} </td>
+                                    <td colspan="2"> Date de prélèvement : {{analyse.createdAt | date}} </td>
                                     <td> Heure de prélèvement : {{analyse.createdAt | date:'shortTime'}}</td>
                                 </tr>
 
@@ -70,15 +70,19 @@
 
 
 
-            
+
 
             </div>
             <div class="panel panel-default text-center">
                 <div class="panel-body">
 
-                    <button class="btn btn-sm btn-success"  target="_blank"> <i
+                    <button class="btn btn-sm btn-success" target="_blank" printTitle="Bons des analyses"
+                        printSectionId="print-section" [useExistingCss]="true" ngxPrint> <i
                             class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i> Imprimer</button>
+
                 </div>
+
+
             </div>
             <!-- End of Main Content -->
 

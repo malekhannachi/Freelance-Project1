@@ -61,8 +61,8 @@ export class UpdateBonReceptionComponent implements OnInit {
       console.log(bon);
       this.FormBon.patchValue({
         quantite: bon.quantite,
-        fournisseur: bon.fournisseur,
-      
+        fournisseur: bon.fournisseur._id,
+     
       });
     });
   }

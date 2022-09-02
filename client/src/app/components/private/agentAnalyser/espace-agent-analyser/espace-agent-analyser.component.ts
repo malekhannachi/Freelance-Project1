@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyseService } from 'src/app/services/analyse.service';
 import { CamionService } from 'src/app/services/camion.service';
+import { ParametreService } from 'src/app/services/parametre.service';
 
 @Component({
   selector: 'app-espace-agent-analyser',
@@ -20,25 +21,31 @@ export class EspaceAgentAnalyserComponent implements OnInit {
   listAccepte: any[] = [];
   listRefuse: any[] = [];
   constructor(
-
-    private analyseservice: AnalyseService
+    private analyseservice: AnalyseService,
+    private parametreService: ParametreService
   ) {}
 
   ngOnInit(): void {
     this.numberAnalyseAccepte();
     this.numberAnalyseRefuse();
     this.numberAnalyse();
+    this.numberParamter();
   }
 
+  numberParamter() {
+    this.parametreService.getAllParametre().subscribe((result) => {
+      this.listType = result;
+      this.numberType = this.listType.length;
+    });
+  }
   numberAnalyse() {
     this.analyseservice.getAllAnalyse().subscribe((result) => {
       this.listAnalyse = result;
       this.numberAnalyses = this.listAnalyse.length;
     });
-
   }
   numberAnalyseRefuse() {
-    let decision ="Refuse"
+    let decision = 'Refuse';
     this.analyseservice.getAnalyser(decision).subscribe((result) => {
       this.listAccepte = result;
       this.numberRefuse = this.listAccepte.length;

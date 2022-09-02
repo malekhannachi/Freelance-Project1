@@ -124,7 +124,7 @@
                                         <tr *ngFor="let item of paramterList">
                                             <td>{{item.parametres}}</td>
 
-                                            <td>Normal</td>
+                                            <td>{{item.limitesDacceptation}}</td>
 
                                             <td> <button class="btn btn-sm  btn-warning  " data-toggle="modal"
                                                     data-target="#exampleModal" (click)="getone(item)">
@@ -203,7 +203,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <form [formGroup]="FormPameter" (ngSubmit)="addPameter()">
+                            <form [formGroup]="FormPameter" (ngSubmit)="updatePameter()">
                                 <div class="form-group">
                                     <label for="name" id="name">Paramètres : </label>
                                     <input type="text" class="form-control" formControlName="paramter">

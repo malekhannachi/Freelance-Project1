@@ -186,7 +186,7 @@
 
                                 </div>
 
-                                <div class="row">
+                                <div class="row" >
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="name" id="name">Goût et odeur (Accepté): </label>
@@ -200,8 +200,24 @@
 
 
                                 </div>
+                                <hr>
+                                <div>
+                                <div class="row" >
+                                    <div class="col-4" *ngFor="let item of paramterList">
+                                        <div class="form-group">
+                                            <label class="text-center my-2">{{item.parametres}} : </label>
+                                            <select class="custom-select" formControlName="malade">
+                                                <option hidden selected value="">--Choisir un Choix --</option>
+                                                <option value="positif">Positif</option>
+                                                <option value="negatif">Négatif</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
 
+                                </div>
+
+                            </div>
 
 
 

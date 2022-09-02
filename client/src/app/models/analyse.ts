@@ -16,7 +16,7 @@ export class Analyse {
     public GoutEtOdeur?: String,
     public fournisseur?: String,
     public camion?: String,
-    public citerne?: String
-    
+    public citerne?: String,
+    public malade?:[]
   ) {}
 }

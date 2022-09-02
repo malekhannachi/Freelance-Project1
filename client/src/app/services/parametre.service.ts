@@ -1,23 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Parametre } from '../models/parametre';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ParametreService {
+  private ParametreUrl = environment.ApiUrl + 'analyse/parameter/';
 
-  private ParametreUrl =environment.ApiUrl + 'analyse/parameter/';
+  private _refreshrequired = new Subject<void>();
+
+  get refreshRequired() {
+    return this._refreshrequired;
+  }
   constructor(private http: HttpClient) {}
 
   getAllParametre() {
-    return this.http.get<any>(this.ParametreUrl+'all');
+    return this.http.get<any>(this.ParametreUrl + 'all');
   }
 
   addParametre(parametre: Parametre) {
-    return this.http.post<any>(this.ParametreUrl + 'add', parametre);
+    return this.http.post<any>(this.ParametreUrl + 'add', parametre).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
   }
 
   deleteParametre(id: number) {
@@ -29,6 +38,10 @@ export class ParametreService {
   }
 
   updateParametre(id: any, parametre: Parametre) {
-    return this.http.put<any>(this.ParametreUrl + 'update/' + id, parametre);
+    return this.http.put<any>(this.ParametreUrl + 'update/' + id, parametre).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );;
   }
 }

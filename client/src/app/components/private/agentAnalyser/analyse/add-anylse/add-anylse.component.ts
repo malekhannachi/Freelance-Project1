@@ -13,6 +13,7 @@ import { AnalyseService } from 'src/app/services/analyse.service';
 import { CamionService } from 'src/app/services/camion.service';
 import { CiterneService } from 'src/app/services/citerne.service';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
+import { ParametreService } from 'src/app/services/parametre.service';
 
 @Component({
   selector: 'app-add-anylse',
@@ -24,13 +25,14 @@ export class AddAnylseComponent implements OnInit {
   camionList: any = [];
   fourniList: any[] = [];
   citerneList: any = [];
+  paramterList: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private cs: CamionService,
     private fs: FournisseurService,
     private citerneService: CiterneService,
-    private analyseSerive: AnalyseService,
+    private analyseSerive: AnalyseService, private parametreService: ParametreService,
     private toast: NgToastService
   ) {
     this.AnalyseForm = this.fb.group({
@@ -55,6 +57,8 @@ export class AddAnylseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllFourni();
+
+    this.getAllParameter()
   }
   getAllCiterne() {
     this.citerneService.getAllCiterne().subscribe((result) => {
@@ -162,4 +166,13 @@ export class AddAnylseComponent implements OnInit {
       console.log(this.citerneList);
     });
   }
+
+
+  getAllParameter(){
+    this.parametreService.getAllParametre().subscribe((result) => {
+      this.paramterList = result;
+      console.log(this.paramterList);
+    });
+  }
+  
 }

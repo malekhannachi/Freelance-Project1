@@ -45,7 +45,8 @@
                                     <tr *ngFor="let bon of bonReceptionList;let i =index">
                                         <td class="align-middle">{{i+1}}</td>
                                         <td class="align-middle">{{bon.quantite}}</td>
-                                        <td class="align-middle">{{bon.camion}}</td>
+                                        <td class="align-middle">{{bon.fournisseur.firstName}} {{bon.fournisseur.lastName}}
+                                        </td>
                                         <td class="align-middle"> {{bon.camion.typeCamion}}
                                             {{bon.camion.matricule}}</td>
 

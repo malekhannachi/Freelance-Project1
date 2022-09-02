@@ -46,7 +46,7 @@ import { FactureDetailComponent } from './components/private/agentFacturation/fa
 import { ListBonReceptionComponent } from './components/private/agentReception/bon-reception/list-bon-reception/list-bon-reception.component';
 import { AddBonReceptionComponent } from './components/private/agentReception/bon-reception/add-bon-reception/add-bon-reception.component';
 import { UpdateBonReceptionComponent } from './components/private/agentReception/bon-reception/update-bon-reception/update-bon-reception.component';
-
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -96,7 +96,7 @@ import { UpdateBonReceptionComponent } from './components/private/agentReception
    
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,HttpClientModule, BrowserAnimationsModule,
-    ToastrModule.forRoot(),NgToastModule],
+    ToastrModule.forRoot(),NgToastModule,NgxPrintModule],
   providers: [],
   bootstrap: [AppComponent],
 })

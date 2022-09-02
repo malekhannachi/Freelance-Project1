@@ -1,7 +1,7 @@
 export class Parametre {
   constructor(
-    public id?: Number,
+    public _id?: Number,
     public parametres?: String,
-    public limite?: String
+    public limitesDacceptation?: String
   ) {}
 }
