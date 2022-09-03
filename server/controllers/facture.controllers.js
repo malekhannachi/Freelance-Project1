@@ -11,7 +11,8 @@ const createFac = async (req, res) => {
     milkQuantity: milkQuantity,
     literPrice: literPrice,
     fournisseur: req.body.fournisseur,
-    dateFin: req.body.dateFin,
+    endDate: req.body.dateFin,
+    startDate: req.body.startDate,
     ref: req.body.ref,
   });
   try {

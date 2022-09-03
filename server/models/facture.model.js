@@ -5,7 +5,8 @@ const factureSchema = new mongoose.Schema(
     milkQuantity: { type: Number, default: 0 },
 
     ref: { type: String, unique: true },
-    dateFin: { type: Date, default: 30 },
+    endDate: { type: Date, default: 30 },
+    startDate: { type: Date, default: 1 },
     genPrice: { type: Number, default: 0 },
     literPrice: { type: Number, default: 0 },
     fournisseur: { type: mongoose.Schema.Types.ObjectId, ref: "Fournisseur" },
