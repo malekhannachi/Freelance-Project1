@@ -25,6 +25,7 @@ const citerneRouter = require("./routes/ciretne.routes");
 const addressRouter = require("./routes/address.routes");
 const analyseRouter = require("./routes/analyseType.routes");
 const bonReception = require("./routes/bonReception.routes");
+const facture = require("./routes/facture.routes");
 //middelware
 app.use(cors());
 app.use(
@@ -47,6 +48,7 @@ app.use("/api/citerne", citerneRouter);
 app.use("/api/address", addressRouter);
 app.use("/api/analyse", analyseRouter);
 app.use("/api/bonReception", bonReception);
+app.use("/api/facture",facture);
 
 //listen server
 const port = process.env.PORT || 5000;

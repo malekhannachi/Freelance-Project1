@@ -28,6 +28,7 @@ const addFournisseur = async (req, res) => {
       number: req.body.number,
       cin: req.body.cin,
       address: savedAddress._id,
+      milkPrice:req.body.milkPrice
     });
     const savedFournisseur = await newFournisseur.save();
 

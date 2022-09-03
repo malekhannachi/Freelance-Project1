@@ -34,9 +34,7 @@ const getParameters = async (req, res) => {
     filter.parametres = req.query.parametres;
   }
   try {
-    const getParameter = await Parameter.find(filter)
-      .sort({ createdAt: -1 })
-      .limit(limit);
+    const getParameter = await Parameter.find(filter).limit(limit);
     return res.status(200).json(getParameter);
   } catch (err) {
     return res.status(500).json(err);
