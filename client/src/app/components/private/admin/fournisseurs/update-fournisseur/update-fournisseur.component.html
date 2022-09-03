@@ -132,7 +132,17 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label> Prix du Litre de Lait : </label>
+                                        <input type="number" class="form-control" formControlName="prixlait">
+                                        <div *ngIf="prixlait?.touched && prixlait?.invalid">
+                                            <small class="text-danger" *ngIf=" prixlait?.errors?.['required']"> prix du litre de lait
+                                                est obligatoire</small>
 
+                                        </div>
+
+                                        
+                                    </div>
 
                                     <button class="btn btn-sm btn-primary mt-3" type="submit">Modifier</button>
                                 </div>

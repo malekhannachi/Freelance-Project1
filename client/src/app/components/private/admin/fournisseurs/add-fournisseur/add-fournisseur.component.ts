@@ -37,6 +37,7 @@ export class AddFournisseurComponent implements OnInit {
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       zipCode: new FormControl('', [Validators.required]),
+      prixlait: new FormControl('', [Validators.required]),
     };
     this.fourForm = this.fb.group(formControls);
   }
@@ -74,7 +75,9 @@ export class AddFournisseurComponent implements OnInit {
   get zipCode() {
     return this.fourForm.get('zipCode');
   }
-
+  get prixlait() {
+    return this.fourForm.get('prixlait');
+  }
   
 
   ngOnInit(): void {}
@@ -93,7 +96,7 @@ export class AddFournisseurComponent implements OnInit {
       data.street,
       data.city,
       data.country,
-      data.zipCode
+      data.zipCode,data.prixlait
     );
     console.log(fournisseur);
 

@@ -186,7 +186,7 @@
 
                                 </div>
 
-                                <div class="row" >
+                                <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="name" id="name">Goût et odeur (Accepté): </label>
@@ -202,22 +202,23 @@
                                 </div>
                                 <hr>
                                 <div>
-                                <div class="row" >
-                                    <div class="col-4" *ngFor="let item of paramterList">
-                                        <div class="form-group">
-                                            <label class="text-center my-2">{{item.parametres}} : </label>
-                                            <select class="custom-select" formControlName="malade">
-                                                <option hidden selected value="">--Choisir un Choix --</option>
-                                                <option value="positif">Positif</option>
-                                                <option value="negatif">Négatif</option>
-                                            </select>
+
+                               
+
+                                    <div class="row">
+                                        <div class="col-4" formArrayName="items" *ngFor="let item of paramterList ; let i = index" >
+                                            <div *ngFor="let t of items.controls" 
+                                                class="form-group">
+                                                <label for="name" id="name">{{item.parametres}} : </label>
+                                                <input type="text" formControlName="row" class="form-control"
+                                                    placeholder="entrer row">
+
+                                            </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
-                            </div>
+
 
 
 

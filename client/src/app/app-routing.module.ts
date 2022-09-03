@@ -40,6 +40,9 @@ import { FactureDetailComponent } from './components/private/agentFacturation/fa
 import { ListBonReceptionComponent } from './components/private/agentReception/bon-reception/list-bon-reception/list-bon-reception.component';
 import { AddBonReceptionComponent } from './components/private/agentReception/bon-reception/add-bon-reception/add-bon-reception.component';
 import { UpdateBonReceptionComponent } from './components/private/agentReception/bon-reception/update-bon-reception/update-bon-reception.component';
+import { AddFactureComponent } from './components/private/agentFacturation/facture/add-facture/add-facture.component';
+import { ListFactureComponent } from './components/private/agentFacturation/facture/list-facture/list-facture.component';
+import { UpdateFactureComponent } from './components/private/agentFacturation/facture/update-facture/update-facture.component';
 
 
 const routes: Routes = [
@@ -91,8 +94,11 @@ const routes: Routes = [
   { path: 'update-bon-reception/:id', component: UpdateBonReceptionComponent ,canActivate:[AgentReceptionGuard]},
  
 //Agent Facturation 
+ { path: 'add-facture', component: AddFactureComponent, canActivate:[AgentFacturationGuard]},
+ { path: 'list-facture', component: ListFactureComponent, canActivate:[AgentFacturationGuard]},
+ { path: 'update-facture/:id', component: UpdateFactureComponent, canActivate:[AgentFacturationGuard]},
   { path: 'espace-agentFacturation', component: EspaceAgentFacturationComponent, canActivate:[AgentFacturationGuard]},
-  { path: 'facture', component: FactureDetailComponent, canActivate:[AgentFacturationGuard]},
+  { path: 'detail-facture/:id', component: FactureDetailComponent, canActivate:[AgentFacturationGuard]},
 
   { path: '**', component: Page404Component },
 ];

@@ -42,6 +42,7 @@ export class UpdateFournisseurComponent implements OnInit {
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       zipCode: new FormControl('', [Validators.required]),
+      prixlait: new FormControl('', [Validators.required]),
     };
     this.fourForm = this.fb.group(formControls);
   }
@@ -79,6 +80,10 @@ export class UpdateFournisseurComponent implements OnInit {
     return this.fourForm.get('zipCode');
   }
 
+  get prixlait() {
+    return this.fourForm.get('prixlait');
+  }
+
   ngOnInit(): void {
     let idUser = this.route.snapshot.params['id'];
     this.id = idUser;
@@ -98,6 +103,7 @@ export class UpdateFournisseurComponent implements OnInit {
         city: user.address.city,
         country: user.address.country,
         zipCode: user.address.zipCode,
+        prixlait: user.milkPrice,
       });
     });
   }
@@ -115,8 +121,12 @@ export class UpdateFournisseurComponent implements OnInit {
       data.number,
       data.street,
       data.city,
-      data.zipCode
+      data.country,
+      data.zipCode,
+      data.prixlait
     );
+    console.log(data);
+
     console.log(fournisseur);
     if (this.fourForm.invalid) {
       this.toast.info({

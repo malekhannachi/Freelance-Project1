@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FactureService } from 'src/app/services/facture.service';
 
 @Component({
   selector: 'app-espace-agent-facturation',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EspaceAgentFacturationComponent implements OnInit {
   nbrFacture:number=0
-  constructor() { }
+  FactureList:any=[];
+  constructor(private factureService:FactureService,) { }
 
   ngOnInit(): void {
+    this.factureService.getAllFacture().subscribe((result) => {
+      this.FactureList = result;
+      console.log(this.FactureList);
+      this.nbrFacture=this.FactureList.length
+    });
   }
 
 }

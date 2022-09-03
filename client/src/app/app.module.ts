@@ -47,6 +47,9 @@ import { ListBonReceptionComponent } from './components/private/agentReception/b
 import { AddBonReceptionComponent } from './components/private/agentReception/bon-reception/add-bon-reception/add-bon-reception.component';
 import { UpdateBonReceptionComponent } from './components/private/agentReception/bon-reception/update-bon-reception/update-bon-reception.component';
 import {NgxPrintModule} from 'ngx-print';
+import { ListFactureComponent } from './components/private/agentFacturation/facture/list-facture/list-facture.component';
+import { AddFactureComponent } from './components/private/agentFacturation/facture/add-facture/add-facture.component';
+import { UpdateFactureComponent } from './components/private/agentFacturation/facture/update-facture/update-facture.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +94,9 @@ import {NgxPrintModule} from 'ngx-print';
          ListBonReceptionComponent,
          AddBonReceptionComponent,
          UpdateBonReceptionComponent,
+         ListFactureComponent,
+         AddFactureComponent,
+         UpdateFactureComponent,
        
     
    

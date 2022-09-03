@@ -9,6 +9,7 @@ export class Fournisseur {
     public street?: String,
     public city?: String,
     public country?: String,
-    public zipCode?: Number
+    public zipCode?: Number,
+    public milkPrice?:Number
   ) {}
 }
