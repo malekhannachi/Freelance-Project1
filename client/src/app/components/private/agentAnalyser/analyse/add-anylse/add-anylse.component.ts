@@ -53,11 +53,11 @@ export class AddAnylseComponent implements OnInit {
       testAmidon: new FormControl('', [Validators.required]),
       antibiotique: new FormControl('', [Validators.required]),
       gout: new FormControl('', [Validators.required]),
-      items: this.fb.array([
-        this.fb.group({
-          row: new FormControl('', [Validators.required]),
-        }),
-      ]),
+      // items: this.fb.array([
+      //   this.fb.group({
+      //     row: new FormControl('', ),
+      //   }),
+      // ]),
     });
   }
   get items(): FormArray {
@@ -108,45 +108,45 @@ export class AddAnylseComponent implements OnInit {
     console.log(data);
     console.log(this.AnalyseForm);
 
-    // let analyse = new Analyse(
-    //   undefined,
-    //   data.temperature,
-    //   data.densite,
-    //   data.matiereGrasse,
-    //   data.ESD,
-    //   data.congelation,
-    //   data.pourcentageEau,
-    //   data.acidite,
-    //   data.PH,
-    //   data.alcool,
-    //   data.formol,
-    //   data.testAmidon,
-    //   data.antibiotique,
-    //   data.gout,
-    //   data.fournisseur,
-    //   data.camion,
-    //   data.citerne,
-    // );
-    // console.log(analyse);
+    let analyse = new Analyse(
+      undefined,
+      data.temperature,
+      data.densite,
+      data.matiereGrasse,
+      data.ESD,
+      data.congelation,
+      data.pourcentageEau,
+      data.acidite,
+      data.PH,
+      data.alcool,
+      data.formol,
+      data.testAmidon,
+      data.antibiotique,
+      data.gout,
+      data.fournisseur,
+      data.camion,
+      data.citerne,
+    );
+    console.log(analyse);
 
-    // if (this.AnalyseForm.invalid) {
-    //   this.toast.info({
-    //     detail: 'Information',
-    //     summary: 'Remplir votre champs',
-    //     duration: 2000,
-    //   });
-    // } else {
-    //   this.analyseSerive.addAnalyse(analyse).subscribe((res) => {
-    //     console.log(res);
+    if (this.AnalyseForm.invalid) {
+      this.toast.info({
+        detail: 'Information',
+        summary: 'Remplir votre champs',
+        duration: 2000,
+      });
+    } else {
+      this.analyseSerive.addAnalyse(analyse).subscribe((res) => {
+        console.log(res);
 
-    //     this.router.navigate(['/list-analyse']);
-    //     this.toast.success({
-    //       detail: ' Message',
-    //       summary: 'Analyse est Ajouté',
-    //       duration: 3000,
-    //     });
-    //   });
-    // }
+        this.router.navigate(['/list-analyse']);
+        this.toast.success({
+          detail: ' Message',
+          summary: 'Analyse est Ajouté',
+          duration: 3000,
+        });
+      });
+    }
   }
 
   filterByFourn(event: any) {

@@ -17,6 +17,6 @@ export class Analyse {
     public fournisseur?: String,
     public camion?: String,
     public citerne?: String,
-    public malade?:[]
+    // public malade?:[]
   ) {}
 }
