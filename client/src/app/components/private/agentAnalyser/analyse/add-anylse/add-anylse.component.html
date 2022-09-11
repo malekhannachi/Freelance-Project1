@@ -210,8 +210,11 @@
                                             <div  
                                                 class="form-group">
                                                 <label for="name" id="name">{{item.parametres}} : </label>
-                                                <input type="text"  class="form-control"
-                                                    placeholder="entrer row">
+                                                <select class="custom-select" >
+                                                    <option hidden selected value="">--Choisir un Choix --</option>
+                                                    <option value="positif">Positif</option>
+                                                    <option value="negatif">Négatif</option>
+                                                </select>
 
                                             </div>
                                         </div>

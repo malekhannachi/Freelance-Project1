@@ -57,9 +57,8 @@ export class UpdateAnylseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataAnalyse();
-   
+
     this.getAllFourni();
-    
   }
   getDataAnalyse() {
     let idAnalyse = this.route.snapshot.params['id'];
@@ -84,8 +83,7 @@ export class UpdateAnylseComponent implements OnInit {
         testAmidon: data.testAmidon,
         antibiotique: data.antibiotique,
         gout: data.GoutEtOdeur,
-      
-      
+        fournisseur: data.fournisseur._id,
       });
     });
   }
@@ -168,7 +166,6 @@ export class UpdateAnylseComponent implements OnInit {
       });
     });
   }
-
 
   filterByFourn(event: any) {
     let value = event.target.value;

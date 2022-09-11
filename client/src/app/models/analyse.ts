@@ -1,6 +1,6 @@
 export class Analyse {
   constructor(
-    public id?: Number,
+    public _id?: Number,
     public temperature?: Number,
     public densite?: Number,
     public matiereGrasse?: Number,

@@ -22,10 +22,12 @@ const addAnalyse = async (req, res) => {
   let decision = "";
   if (
     temperature > 10 ||
-    densite > 1028 ||
-    matiereGrasse > 30 ||
-    ESD > 100 ||
-    congelation < -0.52 ||
+    densite < 1028 ||
+    matiereGrasse < 30 ||
+    ESD > 100 
+    ||
+    congelation != -0.52
+    ||
     pourcentageEau < 1.5 ||
     pourcentageEau > 5 ||
     acidite < 14 ||
