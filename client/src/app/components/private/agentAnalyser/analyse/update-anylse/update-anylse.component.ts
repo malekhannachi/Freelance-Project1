@@ -83,7 +83,7 @@ export class UpdateAnylseComponent implements OnInit {
         testAmidon: data.testAmidon,
         antibiotique: data.antibiotique,
         gout: data.GoutEtOdeur,
-        fournisseur: data.fournisseur._id,
+       
       });
     });
   }
