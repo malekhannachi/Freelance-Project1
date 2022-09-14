@@ -138,6 +138,7 @@ const updateAnalyse = async (req, res) => {
   camion = req.body.camion;
   citerne = req.body.citerne;
   GoutEtOdeur = req.body.GoutEtOdeur;
+  malade = req.body.malade;
 
   let decision = "";
   if (
@@ -190,6 +191,7 @@ const updateAnalyse = async (req, res) => {
         new: true,
       }
     );
+
     return res.status(200).json(updateAnalyse);
   } catch (err) {
     return res.status(500).json(err);
