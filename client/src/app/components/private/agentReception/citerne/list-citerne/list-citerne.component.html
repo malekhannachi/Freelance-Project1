@@ -43,7 +43,7 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let citern of citerneList;let i =index">
-                                        <td class="align-middle">{{i+1}}</td>
+                                        <td class="align-middle">{{citern.id}}</td>
 
                                         <td class="align-middle">{{citern.Num_order}}</td>
                                         <td class="align-middle"> {{citern.camion.typeCamion}} {{citern.camion.matricule}}</td>
