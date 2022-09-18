@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+const counter = require("./counter.model")
 const FournisseurSchema = new mongoose.Schema(
   {
-    identifier: { type: Number, default: 0 },
+    id: { type: Number, default: 0 },
     firstName: { type: String, required: true },
     lastName: { type: String },
     cin: { type: Number, required: true, max: 99999999 },
@@ -19,4 +20,13 @@ const FournisseurSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+FournisseurSchema.pre('save', function (next) {
+  if (!this.isNew) {
+    next();
+    return;
+  }
+
+  counter('activities', this, next);
+});
 module.exports = mongoose.model("Fournisseur", FournisseurSchema);

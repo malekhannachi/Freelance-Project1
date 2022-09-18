@@ -9,7 +9,7 @@
     "start": "node index.js",
     "dev": "concurrently -n'server,client' -c'green,red' \"npm run server:dev\" \"npm run client:dev\""
   },
-  "author": "nour",
+  "author": "monta",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^7.2.2",

@@ -6,7 +6,7 @@ const {
   updateFournisseur,
   getfwithatrub,
 } = require("../controllers/fournusseur.controllers");
-const Fournisseur = require("../models/fournisseur.model");
+const Fournisseur = require("../models/fournisseur.Model");
 const router = require("express").Router();
 router.param("fournisseur", async (req, res, next, id) => {
   try {

@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
+const counter = require("./counter.model")
 const UserSchema = new mongoose.Schema(
   {
+    id: {
+      type: Number,
+      default: 0
+    },
     firstName: { type: String, required: true },
     lastName: { type: String },
     number: { type: Number, default: 0000 },
@@ -27,4 +32,15 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+
+
+UserSchema.pre('save', function (next) {
+  if (!this.isNew) {
+    next();
+    return;
+  }
+
+  counter('activities', this, next);
+});
 module.exports = mongoose.model("User", UserSchema);

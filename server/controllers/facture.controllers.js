@@ -6,7 +6,7 @@ const createFac = async (req, res) => {
   const count = await Facture.find().countDocuments();
   let theRandomNumber = Math.floor(Math.random() * 10) + 1;
   const newFacture = new Facture({
-    identifier: count * theRandomNumber,
+    //identifier: count * theRandomNumber,
     genPrice: milkQuantity * literPrice,
     milkQuantity: milkQuantity,
     literPrice: literPrice,

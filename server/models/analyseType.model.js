@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+const counter = require("./counter.model")
 const AnalysisTypeSchema = new mongoose.Schema(
   {
-    identifier: { type: Number, default: 0 },
+    id: { type: Number, default: 0 },
     analyseNumber: { type: Number, default: 0 },
 
     temperature: { type: Number /*required: true*/ },
@@ -40,4 +41,15 @@ const AnalysisTypeSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+
+
+AnalysisTypeSchema.pre('save', function (next) {
+  if (!this.isNew) {
+    next();
+    return;
+  }
+
+  counter('activities', this, next);
+});
 module.exports = mongoose.model("AnalysisType", AnalysisTypeSchema);
