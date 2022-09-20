@@ -6,12 +6,18 @@ const addAgent = async (req, res) => {
   //console.log(req.verifiedUser);
 
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({
+      email: req.body.email
+    });
     if (user) {
-      return res.status(422).json({ message: "Email already exist" });
+      return res.status(422).json({
+        message: "Email already exist"
+      });
     }
   } catch (err) {
-    return res.status(500).json({ message: err });
+    return res.status(500).json({
+      message: err
+    });
   }
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -47,12 +53,19 @@ const getAgents = async (req, res) => {
   try {
     // const getAgents = await User.find(/*{ role: role }*/).sort({ createdAt: -1 });
     const getAgents = await User.find({
-      $or: [
-        { role: "agentAnalyser" },
-        { role: "agentReception" },
-        { role: "agentFacturation" },
+      $or: [{
+          role: "agentAnalyser"
+        },
+        {
+          role: "agentReception"
+        },
+        {
+          role: "agentFacturation"
+        },
       ],
-    }).sort({ createdAt: -1 });
+    }).sort({
+      createdAt: -1
+    });
     return res.status(200).json(getAgents);
   } catch (err) {
     return res.status(500).json(err);
@@ -62,10 +75,10 @@ const updateAgent = async (req, res) => {
   const id = req.agent._id;
   console.log(id);
   try {
-    const updateAgent = await User.findByIdAndUpdate(id, req.body, {
+    update = await User.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    return res.status(200).json(updateAgent);
+    return res.status(200).json(update);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -74,7 +87,9 @@ const deleteAgent = async (req, res) => {
   const id = req.agent._id;
   try {
     await User.findByIdAndDelete(id);
-    return res.status(200).json({ message: " delete successfully" });
+    return res.status(200).json({
+      message: " delete successfully"
+    });
   } catch (err) {
     return res.status(500).json(err);
   }

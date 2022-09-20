@@ -2,12 +2,18 @@ const Fournisseur = require("../models/fournisseur.Model");
 const Address = require("../models/address.models");
 const addFournisseur = async (req, res) => {
   try {
-    const user = await Fournisseur.findOne({ cin: req.body.cin });
+    const user = await Fournisseur.findOne({
+      cin: req.body.cin
+    });
     if (user) {
-      return res.status(422).json({ message: "cin already exist" });
+      return res.status(422).json({
+        message: "cin already exist"
+      });
     }
   } catch (err) {
-    return res.status(500).json({ message: err });
+    return res.status(500).json({
+      message: err
+    });
   }
   const count = await Fournisseur.find().countDocuments();
   let theRandomNumber = Math.floor(Math.random() * 10) + 1;
@@ -28,7 +34,7 @@ const addFournisseur = async (req, res) => {
       number: req.body.number,
       cin: req.body.cin,
       address: savedAddress._id,
-      milkPrice:req.body.milkPrice
+      milkPrice: req.body.milkPrice
     });
     const savedFournisseur = await newFournisseur.save();
 
@@ -42,7 +48,9 @@ const getFournisseurs = async (req, res) => {
   try {
     const getFournisseur = await Fournisseur.find()
       .populate("address")
-      .sort({ createdAt: -1 });
+      .sort({
+        createdAt: -1
+      });
 
     return res.status(200).json(getFournisseur);
   } catch (err) {
@@ -64,7 +72,9 @@ const deleteFournisseur = async (req, res) => {
   const id = req.fournisseur._id;
   try {
     await Fournisseur.findByIdAndDelete(id);
-    return res.status(200).json({ message: " delete successfully" });
+    return res.status(200).json({
+      message: " delete successfully"
+    });
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -74,9 +84,13 @@ const updateFournisseur = async (req, res) => {
   const id = req.fournisseur._id;
 
   try {
+
+
     const update = await Fournisseur.findByIdAndUpdate(id, req.body, {
       new: true,
     });
+
+    console.log("test test",update)
     return res.status(200).json(update);
   } catch (err) {
     return res.status(500).json(err);
@@ -87,27 +101,30 @@ const getfwithatrub = async (req, res) => {
   const fournusseurId = req.fournisseur._id;
 
   try {
-    const fournusseur = await Fournisseur.aggregate([
-      { $match: { _id: fournusseurId } },
+    const fournusseur = await Fournisseur.aggregate([{
+        $match: {
+          _id: fournusseurId
+        }
+      },
       {
         $lookup: {
           from: "camions",
           localField: "_id",
           foreignField: "fournisseur",
           as: "camions",
-          pipeline: [
-            {
-              $lookup: {
-                from: "citernes",
-                localField: "_id",
-                foreignField: "camion",
-                as: "citernes",
-              },
+          pipeline: [{
+            $lookup: {
+              from: "citernes",
+              localField: "_id",
+              foreignField: "camion",
+              as: "citernes",
             },
-          ],
+          }, ],
         },
       },
-    ]).sort({ createdAt: -1 });
+    ]).sort({
+      createdAt: -1
+    });
     // await Product.populate(product, { path: "category", select: "title" });
     return res.status(200).json(fournusseur[0]);
   } catch (err) {
